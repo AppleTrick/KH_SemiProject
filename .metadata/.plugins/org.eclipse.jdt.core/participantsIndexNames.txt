@@ -1,3 +1,0 @@
-INDEX VERSION 1.131
-C:\workspaces\Worksapce_Semi\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3913069819.index
-\Semi\src
