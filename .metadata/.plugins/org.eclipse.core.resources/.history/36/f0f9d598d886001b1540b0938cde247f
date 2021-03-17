@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+    <a href="">1.메인 화면</a>
+	<a href="login/login.jsp">2.로그인</a>
+	<a href="join/join.jsp">3.회원가입 선택</a>
+	<a href="join/join_terms.jsp">4.회원가입 약관 동의</a>
+	<a href="join/join_insert.jsp">5.회원가입 항목 입력</a>
+	<a href="mypage/mypage.jsp">6.회원정보 수정</a>
+	<a href="match/match_popup.jsp">7.닮은꼴찾기 팝업</a>
+	<a href="match/match_pet.jsp">8.닮은꼴찾기 선택페이지</a>
+	<a href="match/match_test.jsp">9.닮은꼴 찾기 성향 설문지</a>
+	<a href="match/match_test_res.jsp">10.성향 설문지 결과</a>
+	<a href="map/map_main.jsp">11.MAP 메인</a>
+	<a href="map/map_res.jsp">12.MAP에서 클릭 시 결과</a>
+	<a href="donate/donate.jsp">13.후원 메인 페이지</a>
+	<a href="donate/donate_card.jsp">14.카드 후원</a>
+	<a href="donate/donate_account.jsp">15.계좌 후원</a>
+	<a href="petboard/petboard.jsp">16.입양대기/후기 게시판 메인</a>
+	<a href="petboard/petboard_adopt.jsp">17.입양게시판 상세 페이지</a>
+	<a href="petboard/petboard_adopt_select.jsp">18.입양 신청 페이지</a>
+	<a href="petboard/petboard_insert.jsp">19.입양후기글 작성 페이지</a>
+	<a href="petboard/petboard_update.jsp">20.입양 후기글 수정 페이지</a>
+	<a href="petboard/petboard_select.jsp">21.입양 후기글(select one)페이지</a>
+	<a href="petdoctor/petdoctor.jsp">22.펫닥터 메인</a>
+	<a href="petdoctor/petdoctor_select.jsp">23.펫닥터(select one)페이지</a>
+	<a href="noticeboard/noticeboard.jsp">24.공지사항 게시판 메인</a>
+	<a href="noticeboard/noticeboard_select.jsp">25.공지사항 (select one)페이지</a>
+	<a href="noticeboard/noticeboard_insert.jsp">26.공지사항 작성(관리자 권한)</a>
+	<a href="noticeboard/noticeboard_update.jsp">27.공지사항 수정(관리자 권한)</a>
+	<a href="qnaboard/qnaboard.jsp">28.Q&A 게시판</a>
+	<a href="qnaboard/qnaboard_insert.jsp">29.질문 등록(회원)</a>
+
+</body>
+</html>
