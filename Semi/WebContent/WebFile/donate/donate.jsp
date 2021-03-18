@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-    <a href = "donate_card.jsp">카드후원</a>
-    <a href = "donate_account.jsp">계좌후원</a>
+    <a href = "donate_card.jsp">移대������</a>
+    <a href = "donate_account.jsp">怨�醫�����</a>
 
 </body>
 </html>

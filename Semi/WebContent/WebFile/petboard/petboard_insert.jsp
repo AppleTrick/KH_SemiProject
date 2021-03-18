@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-    <a href = "petboard_insert.jsp">ют╬Г хд╠Б юш╪╨</a>
-    <a href = "petboard.jsp">юш╪╨ ©о╥А</a>
-    <a href = "petboard.jsp">╦Я╥ою╦╥н</a>
+    <a href = "petboard_insert.jsp">Л·┘Л√▒ М⌡└Й╦╟ Л·▒Л└╠</a>
+    <a href = "petboard.jsp">Л·▒Л└╠ Л≥└Кё▄</a>
+    <a href = "petboard.jsp">К╙╘К║²Л°╪К║°</a>
 
 </body>
 </html>

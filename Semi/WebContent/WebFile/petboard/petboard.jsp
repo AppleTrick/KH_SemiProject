@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-    <a href = "petboard_adopt.jsp">유기동물 사진 눌렀을 때 그 동물 상세 페이지</a>
-    <a href = "petboard_select.jsp">후기 상세 게시판</a>
+    <a href = "petboard_adopt.jsp">��湲곕��臾� �ъ� ������ �� 洹� ��臾� ���� ���댁�</a>
+    <a href = "petboard_select.jsp">��湲� ���� 寃�����</a>
 </body>
 </html>

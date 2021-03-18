@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-    <a href = "petboard.jsp">¸ñ·ÏÀ¸·Î</a>
+    <a href = "petboard.jsp">ëª©ë¡ìœ¼ë¡œ</a>
     <br/>
-    ¿©±â¿¡ ÀÔ¾ç¿Ï·á ¹öÆ° ´©¸£¸é ³ª¿À´Â ÆäÀÌÁö ÇÊ¿äÇÏÁö ¾ÊÀ»±î?
+    ì—¬ê¸°ì— ìž…ì–‘ì™„ë£Œ ë²„íŠ¼ ëˆ„ë¥´ë©´ ë‚˜ì˜¤ëŠ” íŽ˜ì´ì§€ í•„ìš”í•˜ì§€ ì•Šì„ê¹Œ?
 
 </body>
 </html>

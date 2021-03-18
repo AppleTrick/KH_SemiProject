@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-    <a href = "noticeboard_select.jsp">°øÁö±Û ÇÏ³ª ¼±ÅÃ</a>
-    <a href = "noticeboard_insert.jsp">°øÁö±Û ¾²±â(°ü¸®ÀÚ)</a>
-    <a href = "noticeboard_update.jsp">°øÁö±Û ¼öÁ¤(°ü¸®ÀÚ)</a>
+    <a href = "noticeboard_select.jsp">ê³µì§€ê¸€ í•˜ë‚˜ ì„ íƒ</a>
+    <a href = "noticeboard_insert.jsp">ê³µì§€ê¸€ ì“°ê¸°(ê´€ë¦¬ìž)</a>
+    <a href = "noticeboard_update.jsp">ê³µì§€ê¸€ ìˆ˜ì •(ê´€ë¦¬ìž)</a>
 </body>
 </html>
