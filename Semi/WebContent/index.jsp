@@ -8,7 +8,7 @@
 <body>
 
     <a href="">1.메인</a>
-    <a href="">1.안녕하세요</a>
+    <a href="">1.메인 _ UPDATE 안녕하세요</a>
 	<a href="login/login.jsp">2.로그인</a>
 	<a href="join/join.jsp">3.회원가입</a>
 	<a href="join/join_terms.jsp">4.약관</a>
