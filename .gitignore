@@ -58,6 +58,7 @@ Desktop.ini
 ######################
   
 *.pydevproject
+Servers/
 .project
 .metadata
 bin/**
