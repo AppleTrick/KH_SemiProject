@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-    <a href = "donate.jsp">Ãë¼Ò(ÈÄ¿ø ¸ŞÀÎÀ¸·Î µ¹¾Æ°¡±â)</a>
+    <a href = "donate.jsp">ì·¨ì†Œ(í›„ì› ë©”ì¸ìœ¼ë¡œ ëŒì•„ê°€ê¸°)</a>
 
 </body>
 </html>
