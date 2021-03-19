@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@ include file="Form/header.jsp" %>
 
     <a href="">1.메인</a>
     <a href="">1.메인 _ UPDATE 안녕하세요</a>
