@@ -26,7 +26,7 @@
           <div class="d-flex flex-row justify-content-between align-items-center col-12">
             <!-- 로고 -->
             <a class="navbar-brand" href="#">
-              <img src="resources/img/logo.png" alt="" height="48">
+              <img src="resources/img/logo.png" alt="" width="200px">
             </a>
             <!-- 서칭박스 -->
             <div>
