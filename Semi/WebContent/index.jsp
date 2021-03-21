@@ -8,38 +8,112 @@
 </head>
 <body>
 	<%@ include file="Form/header.jsp" %>
-
-    <a href="">1.메인</a>
-    <a href="">1.메인 _ UPDATE 안녕하세요</a>
-	<a href="login/login.jsp">2.로그인 update</a>
-	<a href="login/login.jsp">2.로그인 페이지</a>
-	<a href="join/join.jsp">3.회원가입</a>
-	<a href="join/join_terms.jsp">4.약관</a>
-	<a href="join/join_insert.jsp">5.가입하는 페이지</a>
-	<a href="mypage/mypage.jsp">6.개인정보수정</a>
-	<a href="match/match_popup.jsp">7.닮은 꼴 팝업</a>
-	<a href="match/match_pet.jsp">8.닮은꼴 메인</a>
-	<a href="match/match_test.jsp">9.닮은꼴 성향 설문지</a>
-	<a href="match/match_test_res.jsp">10.닮은꼴 결과</a>
-	<a href="map/map_main.jsp">11.MAP 메인</a>
-	<a href="map/map_res.jsp">12.MAP 결과</a>
-	<a href="donate/donate.jsp">13.후원</a>
-	<a href="donate/donate_card.jsp">14.카드후원</a>
-	<a href="donate/donate_account.jsp">15.계정 후원</a>
-	<a href="petboard/petboard.jsp">16.펫보드</a>
-	<a href="petboard/petboard_adopt.jsp">17.입양 펫보드</a>
-	<a href="petboard/petboard_adopt_select.jsp">18.입양 결정서 작성</a>
-	<a href="petboard/petboard_insert.jsp">19.펫보드 후기 작성</a>
-	<a href="petboard/petboard_update.jsp">20.펫보드 후기 수정</a>
-	<a href="petboard/petboard_select.jsp">21.펫보드 글 하나 클릭</a>
-	<a href="petdoctor/petdoctor.jsp">22.펫닥터메인</a>
-	<a href="petdoctor/petdoctor_select.jsp">23.펫닥터글하나선택</a>
-	<a href="noticeboard/noticeboard.jsp">24.공지게시판 메인</a>
-	<a href="noticeboard/noticeboard_select.jsp">25.공지글 하나 선택</a>
-	<a href="noticeboard/noticeboard_insert.jsp">26.공지글 작성</a>
-	<a href="noticeboard/noticeboard_update.jsp">27.공지글 수정</a>
-	<a href="qnaboard/qnaboard.jsp">28.Q&A 메인</a>
-	<a href="qnaboard/qnaboard_insert.jsp">29.질문하기(회원)</a>
-
+		
+	<textarea readonly rows="10" cols="50" id="messageTextArea"></textarea>
+	
+	<div>
+		<input id="user" type="text" value="anonymous">
+		<input id="textMessage" type="text">
+		<input onclick="sendMessage()" value="Send" type="button">
+		<input onclick="disconnect()" value="Disconnect" type="button">
+	</div>
+	
+	<script type="text/javascript">
+		// 콘솔 텍스트 에리어 오브젝트
+		const messageTextArea = document.getElementById("messageTextArea");
+		
+		// 웹 소켓 접속 함수, url 뒤의 파라미터는 callback 함수를 받는다.
+		function connectWebSocket(url, message, open, close, error) {
+			
+			let webSocket = new WebSocket(url);
+			
+			// 함수 체크하는 함수
+			function call(cb, msg) {
+				// cb가 함수 타입인지 확인
+				if (cb !== undefined && typeof cb === "function") {
+				// 함수 호출
+				cb.call(null, msg);
+			}
+		}
+			
+		// WebSocket 서버와 접속이 되면 호출되는 함수
+		webSocket.onopen = function() {
+			call(open);
+		};
+		
+		// WebSocket 서버와 접속이 끊기면 호출되는 함수
+		webSocket.onclose = function() {
+			call(close);
+		};
+		
+		// WebSocket 서버와 통신 중에 에러가 발생하면 요청되는 함수
+		webSocket.onerror = function() {
+			call(error);
+		};
+		
+		// WebSocket 서버로 부터 메시지가 오면 호출되는 함수
+		webSocket.onmessage = function(msg) {
+				call(message, msg);
+			};
+			return webSocket;
+		}
+	
+		// 연결 발생 때 사용할 callback 함수
+		var open = function() {
+		// 콘솔 텍스트에 메시지를 출력한다
+			messageTextArea.value += "Server connect...\n";
+		}
+		
+		// 종료 발생 때 사용할 callback 함수
+		var close = function() {
+			// 콘솔 텍스트에 메시지를 출력한다
+			messageTextArea.value += "Server Disconnect...\n";
+			// 재 접속을 시도한다.
+				setTimeout(function() {
+				// 재접속
+				webSocket = connectWebSocket("ws://localhost:8787/Semi/semiIndexChat", message, open, close, error);
+				});
+		}
+		
+		// 에러 발생 때 사용할 callback 함수
+		var error = function() {
+			messageTextArea.value += "error...\n";
+		}
+		
+		// 메세지를 받을 때 사용할 callback 함수
+		var message = function(msg) {
+			messageTextArea.value += msg.data + "\n";
+		};
+		
+		
+		
+		// 웹 소켓 생성
+		var webSocket = connectWebSocket("ws://localhost:8787/Semi/semiIndexChat", message, open, close, error);
+	
+		// Send 버튼을 누르면 호출되는 함수
+		function sendMessage() {
+			
+			// 유저명 텍스트 박스 오브젝트를 취득
+			var user = document.getElementById("user");
+			
+			// 송신 메시지를 작성하는 텍스트 박스 오브젝트를 취득
+			var message = document.getElementById("textMessage");
+			
+			// 콘솔 텍스트에 메시지를 출력한다.
+			messageTextArea.value += user.value + "(me) => " + message.value + "\n";
+			
+			// WebSocket 서버에 메시지를 전송(형식 「{{유저명}}메시지」)
+			webSocket.send("{{" + user.value + "}}" + message.value);
+			
+			// 송신 메시지를 작성한 텍스트 박스를 초기화한다.
+			message.value = "";
+		}
+		
+			// Disconnect 버튼을 누르면 호출되는 함수
+		function disconnect() {
+			// WebSocket 접속 해제
+			webSocket.close();
+		}
+	</script>
 </body>
 </html>
