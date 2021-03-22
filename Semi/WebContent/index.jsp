@@ -15,9 +15,9 @@
 	<!-- 바디부분 -->
     <div class="mt-4">
       <div class="container d-flex justify-content-center">
-        <div class="col-8">
+        <div class="col-9">
           <div class="row">
-            <div class="col-7">
+            <div class="col-8">
               <!-- Start Of Stories -->
               <div class="card">
                 <div class="card-body d-flex justify-content-start">
@@ -29,7 +29,7 @@
                             class="rounded-circle overflow-hidden d-flex border border-danger justify-content-center align-items-center story-profile-photo"
                           >
                             <img
-                              src="profile.jpg"
+                              src="resources/img/profile.jpg"
                               alt=""
                               style="
                                 transform: scale(1.5);
@@ -50,7 +50,7 @@
                             class="rounded-circle overflow-hidden d-flex border border-danger justify-content-center align-items-center story-profile-photo"
                           >
                             <img
-                              src="profile.jpg"
+                              src="resources/img/profile.jpg"
                               alt=""
                               style="
                                 transform: scale(1.5);
@@ -71,7 +71,7 @@
                             class="rounded-circle overflow-hidden d-flex border border-danger justify-content-center align-items-center story-profile-photo"
                           >
                             <img
-                              src="profile.jpg"
+                              src="resources/img/profile.jpg"
                               alt=""
                               style="
                                 transform: scale(1.5);
@@ -99,7 +99,7 @@
                         class="rounded-circle overflow-hidden d-flex border border-danger justify-content-center align-items-center post-profile-photo me-3"
                       >
                         <img
-                          src="profile.jpg"
+                          src="resources/img/profile.jpg"
                           alt=""
                           style="
                             transform: scale(1.5);
@@ -116,7 +116,7 @@
                   <!-- 카드 바디 부분 -->
                   <div class="card-body p-0">
                     <div class="ratio ratio-1x1">
-                      <img src="dog.jpg" alt="" />
+                      <img src="resources/img/dog.jpg" alt="" />
                     </div>
 
                     <!-- 하단 버튼 리스트 -->
@@ -260,24 +260,21 @@
               </div>
               <!-- End Of post -->
             </div>
-            <div class="col-5" style="border: 1px solid springgreen">
+            <!--  옆에 내용부분 추가 -->
+            <div class="col-4" style="border: 1px solid springgreen">
               <div>
-                <div
-                  class="rounded-circle overflow-hidden d-flex border border-danger justify-content-center align-items-center story-profile-photo"
-                >
-                  <img
-                    src="profile.jpg"
-                    alt=""
-                    style="
-                      transform: scale(1.5);
-                      width: 100%;
-                      position: absolute;
-                      left: 0;
-                    "
-                  />
-                </div>
+              	<!-- 채팅시작 -->
+                <textarea readonly rows="10" cols="50" id="messageTextArea">                </textarea>
+				<div>
+					<input id="user" type="text" value="anonymous">
+					<input id="textMessage" type="text">
+					<input onclick="sendMessage()" value="Send" type="button">
+					<input onclick="disconnect()" value="Disconnect" type="button">
+				</div>
+				<!-- 채팅 종료 -->
               </div>
             </div>
+            <!-- 옆에 내용 부분 끝 -->
           </div>
         </div>
       </div>
@@ -286,15 +283,8 @@
 	
 	
 	
-	<!--  -->	
-	<textarea readonly rows="10" cols="50" id="messageTextArea"></textarea>
+
 	
-	<div>
-		<input id="user" type="text" value="anonymous">
-		<input id="textMessage" type="text">
-		<input onclick="sendMessage()" value="Send" type="button">
-		<input onclick="disconnect()" value="Disconnect" type="button">
-	</div>
 	
 	<script type="text/javascript">
 		// 콘솔 텍스트 에리어 오브젝트

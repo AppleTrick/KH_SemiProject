@@ -23,7 +23,7 @@
       <!-- 네비게이션바 -->
       <nav class="navbar navbar-expend-lg navbar-light bg-light">
         <div class="container justify-content-center">
-          <div class="d-flex flex-row justify-content-between align-items-center col-8">
+          <div class="d-flex flex-row justify-content-between align-items-center col-9">
             <!-- 로고 -->
             <a class="navbar-brand" href="#">
               <img src="resources/img/logo.png" alt="" width="200px">
