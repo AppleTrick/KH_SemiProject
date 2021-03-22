@@ -56,7 +56,8 @@ Desktop.ini
 ######################
 # Eclipse
 ######################
-  
+
+.vscode 
 *.pydevproject
 Servers/
 .project
