@@ -12,13 +12,15 @@
 	<!-- 헤더부분 추가 -->
 	<%@ include file="Form/header.jsp" %>
 	
-	<!-- 바디부분 -->
+	<!-- 바디부분 시작 -->
     <div class="mt-4">
       <div class="container d-flex justify-content-center">
         <div class="col-9">
           <div class="row">
+          <!-- 로우 단위로 나눔 (좌측) -->
             <div class="col-8">
-              <!-- Start Of Stories -->
+            
+              <!-- 상단 스토리 부분 (추후 삭제 예정) -->
               <div class="card">
                 <div class="card-body d-flex justify-content-start">
                   <ul class="list-inline mb-0">
@@ -88,11 +90,13 @@
                   </ul>
                 </div>
               </div>
-              <!-- End Of Stories -->
+              <!-- 스토리 부분 종류 (추후 삭제 예정) -->
 
-              <!-- Start Of Post -->
+              <!-- 글 부분 -->
               <div class="d-flex flex-column mt-4 mb-4">
                 <div class="card">
+                
+                < 카드 헤더부분>
                   <div class="card-header">
                     <div class="d-flex flex-row align-items-center">
                       <div
@@ -279,12 +283,7 @@
         </div>
       </div>
     </div>
-    <!-- 바디부분 종료 -->
-	
-	
-	
-
-	
+    <!-- 바디부분 종료 -->	
 	
 	<script type="text/javascript">
 		// 콘솔 텍스트 에리어 오브젝트
