@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardmapper">
+
+	<select id = "selectList" resultType="SemiDto">
+		SELECT SEQ, WRITER, TITLE, CONTENT, REGDATE FROM BOARD
+	</select>
+	
+	<resultMap type="semiDto" id="semiMap">
+		<result property = "seq" column = "SEQ"/>
+		<result property = "writer" column = "WRITER"/>
+		<result property = "title" column = "TITLE"/>
+		<result property = "content" column = "CONTENT" />
+		<result property = "regdate" column = "REGDATE" />
+	</resultMap>
+	
+	<select id = "selectOne" parameterType="int" resultMap="semiMap">
+		SELECT SEQ, WRITER, TITLE, CONTENT, REGDATE FROM BOARD WHERE SEQ = #{seq}
+	</select>
+
+	<insert id = "insert" parameterType="semiDto">
+		INSERT INTO BOARD
+		VALUES(BOARDSEQ.NEXTVAL, '관리자', #{title}, #{content}, SYSDATE)
+	</insert>
+	
+	<update id = "update" parameterType="SemiDto">
+		UPDATE BOARD SET TITLE =?, CONTENT =?, WHERE SEQ=?
+	</update>
+	
+	<delete id="delete" parameterType="SemiDto">
+		DELETE FROM BOARD WHERE SEQ = ?
+	</delete>
+
+</mapper>
