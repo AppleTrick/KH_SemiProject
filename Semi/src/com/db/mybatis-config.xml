@@ -5,9 +5,7 @@
 
 	<properties resource="com/db/db.properties"></properties>
 	
-	<settings>
-		<setting name="" value=""/>
-	</settings>
+	
 	
 	
 	<typeAliases>

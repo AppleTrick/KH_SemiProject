@@ -16,14 +16,27 @@
  
  
  </select>
+ 
+  
+  <select id="idchk" resultType="int" parameterType="String">
+  SELECT COUNT(*)
+  FROM LOGINBOARD 
+  WHERE MEM_ID = #{mem_id}
   
   
   
+  </select>
+  
+  <insert id="insertUser" parameterType="LoginDto">
+  	INSERT INTO LOGINBOARD
+  	VALUES(LOGINSEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_name},#{mem_nickname},#{mem_phone},
+  	#{mem_addr},#{mem_email},'Y','USER',#{mem_image, jdbcType=VARCHAR})
   
   
+  </insert>
   
   
-  
+
   
   
   

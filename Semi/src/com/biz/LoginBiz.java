@@ -13,7 +13,7 @@ public class LoginBiz {
 
 	}
 
-	public LoginDto idCheck(String mem_id) {
+	public int idCheck(String mem_id) {
 
 		return dao.idCheck(mem_id);
 	}

@@ -39,19 +39,41 @@ public class LoginDao extends SqlMapConfig {
 		
 	}
 	//id  중복체크
-	public LoginDto idCheck(String mem_id) {
+	public int idCheck(String mem_id) {
+		
+		SqlSession session = null; 
+		//LoginDto dto = new LoginDto();
+		int res = 0 ;
 		
 		
+		try {
+			
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne("loginmapper.idchk",mem_id);
+			if(res>0) {
+				session.commit();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
 		
-		
-		
-		return null;
+		return res;
 	}
 	
 	//회원 가입
 	public int insertMember(LoginDto dto) {
-
-		return 0;
+		int res = 0 ; 
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			res = session.insert("loginmapper.insertUser",dto);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 		
 		
 	}

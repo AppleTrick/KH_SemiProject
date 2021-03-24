@@ -55,8 +55,6 @@ public class LoginController extends HttpServlet {
 	    	
 	    	
 	    	if(dto != null){
-	    		//session.setAttribute("dto",dto);
-	    		
 	    		
 	    		HttpSession session = request.getSession();//세션 객체 만들기
 
@@ -74,16 +72,62 @@ public class LoginController extends HttpServlet {
 	    	
 				jsResponse(response, "index.jsp", "아이디, 비밀번호가 틀렸습니다");
 	    	
-	    	
 
+			}
+	    	
+	    }else if(command.equals("joinform")){
+			response.sendRedirect("join_terms.jsp");
+
+
+		}else if(command.equals("idchk")){
+			
+			String mem_id = request.getParameter("mem_id");
+			int result = biz.idCheck(mem_id);
+			
+			//LoginDto dto = biz.idCheck(mem_id);
+			boolean idnotused = true;
+		
+			if(result>0){
+				idnotused = false;
+			}
+			System.out.println(idnotused);
+			
+			response.sendRedirect("join_idchk.jsp?idnotused="+idnotused);
+			//dispatch(request, response, "login_idchk.jsp?idnotused="+idnotused);
+
+		}else if(command.equals("insertuser")){
+			
+			String mem_id = request.getParameter("mem_id");
+			String mem_pw = request.getParameter("mem_pw");
+			String mem_name = request.getParameter("mem_name");
+			String mem_nickname = request.getParameter("mem_nickname");
+			String mem_addr = request.getParameter("mem_addr");
+			String mem_phone = request.getParameter("mem_phone");
+			String mem_email = request.getParameter("mem_email");
+
+			LoginDto dto = new LoginDto();
+			dto.setMem_id(mem_id);
+			dto.setMem_pw(mem_pw);
+			dto.setMem_name(mem_name);
+			dto.setMem_nickname(mem_nickname);
+			dto.setMem_addr(mem_addr);
+			dto.setMem_phone(mem_phone);
+			dto.setMem_email(mem_email);
+			
+			int res = biz.insertMember(dto);
+			
+			if(res>0) {
+				jsResponse(response, "login.jsp", "회원가입 완료 ! 로그인 하러 가기");
 				
 				
-				
+			}else{
+				jsResponse(response, "login.do?command=joinform", "회원가입에 실패하였습니다. 회원가입 내용을 확인하세요.");
 				
 				
 			}
-	    	
-	    }
+
+
+		}
 	
 	
 	
