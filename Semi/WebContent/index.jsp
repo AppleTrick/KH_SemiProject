@@ -27,51 +27,7 @@
 					<!-- 로우 단위로 나눔 (좌측) -->
 					<div class="col-8">
 
-						<!-- 상단 스토리 부분 (추후 삭제 예정) -->
-						<div class="card">
-							<div class="card-body d-flex justify-content-start">
-								<ul class="list-inline mb-0">
-									<list class="list-inline-item">
-									<button class="btn p-o m-0">
-										<div class="d-flex flex-column align-items-center">
-											<div
-												class="rounded-circle overflow-hidden d-flex border border-danger justify-content-center align-items-center story-profile-photo">
-												<img src="resources/img/profile.jpg" alt=""
-													style="transform: scale(1.5); width: 100%; position: absolute; left: 0;" />
-											</div>
-											<small>username</small>
-										</div>
-									</button>
-									</list>
-									<list class="list-inline-item">
-									<button class="btn p-o m-0">
-										<div class="d-flex flex-column align-items-center">
-											<div
-												class="rounded-circle overflow-hidden d-flex border border-danger justify-content-center align-items-center story-profile-photo">
-												<img src="resources/img/profile.jpg" alt=""
-													style="transform: scale(1.5); width: 100%; position: absolute; left: 0;" />
-											</div>
-											<small>username</small>
-										</div>
-									</button>
-									</list>
-									<list class="list-inline-item">
-									<button class="btn p-o m-0">
-										<div class="d-flex flex-column align-items-center">
-											<div
-												class="rounded-circle overflow-hidden d-flex border border-danger justify-content-center align-items-center story-profile-photo">
-												<img src="resources/img/profile.jpg" alt=""
-													style="transform: scale(1.5); width: 100%; position: absolute; left: 0;" />
-											</div>
-											<small>username</small>
-										</div>
-									</button>
-									</list>
-								</ul>
-							</div>
-						</div>
-						<!-- 스토리 부분 종류 (추후 삭제 예정) -->
-
+						
 						<!-- 글 부분 -->
 						<div class="d-flex flex-column mt-4 mb-4">
 							<div class="card">
