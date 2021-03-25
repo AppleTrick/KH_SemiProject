@@ -144,7 +144,6 @@ body {
 				};
 				reader.readAsDataURL(input.files[0]);
 				init().then(function(){
-					console.log("hello");
 					predict();
 				});
 			} else {
@@ -210,6 +209,9 @@ body {
 					resultMessege = "알수없음";
 					break;
 			}
+			$(document).ready(function () {
+				$(".result-message").val(resultMessege);
+			});
 			$(".result-message").html(resultMessege);
 			for (let i = 0; i < maxPredictions; i++) {
 				const classPrediction = prediction[i].className + ": "
@@ -220,32 +222,31 @@ body {
 	</script>
 </head>
 <body>
-    <a href = "match_test.jsp">성향 테스트 설문지</a>
-
+	<form action="donate.do" method="POST">
 		<div class="file-upload">
-		<button class="file-upload-btn" type="button"
-			onclick="$('.file-upload-input').trigger( 'click' )">Add
-			Image</button>
-
-		<div class="image-upload-wrap">
-			<input class="file-upload-input" type='file'
-				onchange="readURL(this);" accept="image/*" />
-			<div class="drag-text">
-				<h3>Drag and drop a file or select add Image</h3>
+			<button class="file-upload-btn" type="button"
+				onclick="$('.file-upload-input').trigger( 'click' )">Add
+				Image</button>
+			<div class="image-upload-wrap">
+				<input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*"/>
+				<div class="drag-text">
+					<h3>Drag and drop a file or select add Image</h3>
+				</div>
+			</div>
+			<div class="file-upload-content">
+				<img class="file-upload-image" id="face-image" src="#" alt="your image"/>
+				<!-- <a name="command" href="Servlet.do"><p class="result-message"></p></a> -->
+				<!-- <button class="result-message" name="kindoftype" onclick="location.href='animal.do'"></button> -->
+				<input type="submit" class="result-message" name="command">
+				<div id="label-container"></div>
+				<div class="image-title-wrap">
+					<button type="button" onclick="removeUpload();" class="remove-image">
+						Remove <span class="image-title">Uploaded Image</span>
+					</button>
+				</div>
 			</div>
 		</div>
-		<div class="file-upload-content">
-			<img class="file-upload-image" id="face-image" src="#" alt="your image"/>
-			<p class="result-message"></p>
-			<div id="label-container"></div>
-			<div class="image-title-wrap">
-				<button type="button" onclick="removeUpload()" class="remove-image">
-					Remove <span class="image-title">Uploaded Image</span>
-				</button>
-			</div>
-		</div>
-	</div>
-	<div id="webcam-container"></div>
-	
+		<div id="webcam-container"></div>
+	</form>
 </body>
 </html>
