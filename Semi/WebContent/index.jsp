@@ -17,7 +17,6 @@
 
 </head>
 <body>
-	<!-- 헤더부분 추가 -->
 	<%@ include file="Form/header.jsp"%>
 	<!-- 바디부분 시작 -->
 	<div class="mt-4">
@@ -266,7 +265,6 @@
 			// 송신 메시지를 작성한 텍스트 박스를 초기화한다.
 			message.value = "";
 		}
-
 		// Disconnect 버튼을 누르면 호출되는 함수
 		function disconnect() {
 			// WebSocket 접속 해제
