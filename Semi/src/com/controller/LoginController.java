@@ -175,9 +175,15 @@ public class LoginController extends HttpServlet {
 			
 			
 			
-		}else if(command.equals("delete")) {
+		}else if(command.equals("deleteuser")) {
+			int mem_no = Integer.parseInt(request.getParameter("mem_no"));
 			
-			
+			int res = biz.deleteMember(mem_no);
+			if(res>0) {
+				jsResponse(response, "index.jsp", "회원 탈퇴가 완료되었습니다");
+			}else {
+				jsResponse(response, "mypage.jsp", "회원탈퇴가 정상적으로 되지 않았습니다.. 다시 시도하세요 ");
+			}
 			
 			
 			

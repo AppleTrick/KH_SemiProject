@@ -73,5 +73,12 @@
   
   
   </update>
+  
+  <update id="deleteUser" parameterType="int">
+  UPDATE LOGINBOARD
+  SET MEM_ENABLED='N'
+  WHERE MEM_NO= #{mem_no}
+  
+  </update>
  
 </mapper>

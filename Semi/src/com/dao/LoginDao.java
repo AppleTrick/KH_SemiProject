@@ -135,7 +135,7 @@ public class LoginDao extends SqlMapConfig {
 		int res = 0; 
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
-			res = session.insert("loginmapper.delete",mem_no);
+			res = session.insert("loginmapper.deleteUser",mem_no);
 			
 		}catch (Exception e) {
 			e.printStackTrace();

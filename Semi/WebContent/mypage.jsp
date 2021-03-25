@@ -19,6 +19,6 @@
 
 
     <a href = "login.do?command=updatform&mem_no=<%=dto.getMem_no()%>">내 정보 수정</a>
-    
+    <a href="login.do?command=deleteuser&mem_no=<%=dto.getMem_no()%>">회원탈퇴</a>
 </body>
 </html>
