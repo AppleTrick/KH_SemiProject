@@ -96,7 +96,7 @@
               <div class="d-flex flex-column mt-4 mb-4">
                 <div class="card">
                 
-                < 카드 헤더부분>
+                <!--  카드 헤더부분 --> 
                   <div class="card-header">
                     <div class="d-flex flex-row align-items-center">
                       <div
@@ -119,7 +119,7 @@
 
                   <!-- 카드 바디 부분 -->
                   <div class="card-body p-0">
-                    <div class="ratio ratio-1x1">
+                    <div class="ratio ratio-4x3">
                       <img src="resources/img/dog.jpg" alt="" />
                     </div>
 
