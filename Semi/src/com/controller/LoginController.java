@@ -127,6 +127,61 @@ public class LoginController extends HttpServlet {
 			}
 
 
+		}else if(command.equals("updatform")) {
+			int mem_no = Integer.parseInt(request.getParameter("mem_no"));
+			LoginDto dto = biz.selectMember(mem_no);
+			request.setAttribute("dto", dto);
+			
+			dispatch(request, response, "mypage_update.jsp");
+			
+		}else if(command.equals("userupdate")) {
+			int mem_no = Integer.parseInt(request.getParameter("mem_no"));
+			
+			String mem_pw = request.getParameter("mem_pw");
+			String mem_name = request.getParameter("mem_name");
+			String mem_nickname = request.getParameter("mem_nickname");
+			
+			String mem_phone = request.getParameter("mem_phone");
+			String mem_addr = request.getParameter("mem_addr");
+			String mem_email = request.getParameter("mem_email");
+			
+			
+			LoginDto dto = new LoginDto(); 
+			dto.setMem_no(mem_no);
+			dto.setMem_pw(mem_pw);
+			dto.setMem_name(mem_name);
+			dto.setMem_nickname(mem_nickname);
+			dto.setMem_phone(mem_phone);
+			dto.setMem_addr(mem_addr);
+			dto.setMem_email(mem_email);
+			
+			
+			int res = biz.updateMember(dto);
+			
+			
+			
+			System.out.println(res);
+			
+			if(res>0) {
+				jsResponse(response, "mypage.jsp", "개인정보 수정이 완료되었습니다.");
+				
+				
+			}else{
+				jsResponse(response, "login.do?command=updatform&mem_no="+mem_no, "수정 실패...!!! 다시 확인 하세요! ");
+				
+				
+			}
+			
+			
+			
+			
+		}else if(command.equals("delete")) {
+			
+			
+			
+			
+			
+			
 		}
 	
 	

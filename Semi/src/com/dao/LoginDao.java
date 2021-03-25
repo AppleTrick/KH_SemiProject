@@ -1,6 +1,8 @@
 package com.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -24,7 +26,7 @@ public class LoginDao extends SqlMapConfig {
 		
 		try {
 			session = getSqlSessionFactory().openSession(true);
-			System.out.println("잘 나오니....? ");
+			
 			dto = session.selectOne("loginmapper.login",map);
 			System.out.println(dto);
 		} catch (Exception e) {
@@ -68,6 +70,7 @@ public class LoginDao extends SqlMapConfig {
 		int res = 0 ; 
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
 			res = session.insert("loginmapper.insertUser",dto);
+			System.out.println(res);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -82,22 +85,62 @@ public class LoginDao extends SqlMapConfig {
 	//정보 조회 
 	public LoginDto selectMember(int mem_no) {
 		
-		return null;
+		SqlSession session = null; 
+		LoginDto dto = new LoginDto();
+		//int res = 0 ; 
+		
+		
+		
+		try {
+			
+			session = getSqlSessionFactory().openSession(true);
+			System.out.println(mem_no);
+			dto = session.selectOne("loginmapper.selectUser",mem_no);
+			
+			System.out.println("logindao. selectone"+dto);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return dto;
+		
 	}
 	
 	
 	//정보 수정 
 	public int updateMember(LoginDto dto) {
+		int res = 0; 
 		
+		try(SqlSession session = getSqlSessionFactory().openSession(false);){
+			
+			
+			res = session.update("loginmapper.updateMember",dto);
+			if(res>0){
+				session.commit();
+				}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		
-		return 0; 
+		return res; 
 	}
 	
 	//탈퇴
 	public int deleteMember(int mem_no) {
+		int res = 0; 
 		
-		return 0;
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			res = session.insert("loginmapper.delete",mem_no);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
 		
 	}
 		
