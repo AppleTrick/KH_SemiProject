@@ -10,6 +10,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 <link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body class="container">
+	<%@ include file="Form/header.jsp"%>
     <article class="start">
         <h1 class="mt-5 text-center">나랑 꼭 닮은 동물</h1>
         <button type="button" class="btn btn-success mt-5" onclick="start();">강아지</button>
