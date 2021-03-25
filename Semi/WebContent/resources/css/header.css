@@ -7,3 +7,7 @@
 .link-menu {
     color: black;
 }
+
+body{
+	overflow-y:scroll;
+}

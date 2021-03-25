@@ -2,28 +2,22 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- 부트스트랩 -->
-    <!-- CSS only -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-      crossorigin="anonymous"
-    />
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-
-    <link rel="stylesheet" href="resources/css/header.css">
-
-    <title>Document</title>
-  </head>
+<head>
+	<link rel="stylesheet" href="resources/css/header.css">
+	<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	crossorigin="anonymous" />
+	<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+</head>
   <body>
     <div>
       <!-- 네비게이션바 -->
       <nav class="navbar navbar-expend-lg navbar-light bg-light">
         <div class="container justify-content-center">
-          <div class="d-flex flex-row justify-content-between align-items-center col-12">
+          <div class="d-flex flex-row justify-content-between align-items-center col-9">
             <!-- 로고 -->
             <a class="navbar-brand" href="#">
               <img src="resources/img/logo.png" alt="" width="200px">
@@ -80,14 +74,5 @@
         </div>
       </nav>
     </div>
-
-
-    <!-- 부트스트랩 -->
-    <!-- JavaScript Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
