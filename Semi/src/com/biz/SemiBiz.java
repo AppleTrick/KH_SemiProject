@@ -13,8 +13,8 @@ public class SemiBiz {
 		return dao.selectList();
 	}
 	
-	public SemiDto selectOne(int boardseq) {
-		return dao.selectOne(boardseq);
+	public SemiDto selectOne(int seq) {
+		return dao.selectOne(seq);
 	}
 	public int insert(SemiDto dto) {
 		return dao.insert(dto);
@@ -24,8 +24,8 @@ public class SemiBiz {
 		return dao.update(dto);
 	}
 	
-	public int delete(int boardseq) {
-		return dao.delete(boardseq);
+	public int delete(int seq) {
+		return dao.delete(seq);
 	}
 
 }

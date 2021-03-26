@@ -9,7 +9,7 @@
   background-color: #ff9999!important;}
   .btn:hover, .btn:focus{
   background-color: hotpink!important;}
-.btn:focus, .btn:active, .btn:hover, input:active, input:focus{
+.btn:focus, .btn:active, .btn:hover, input:active, input:focus, nav:active, nav:focus, nav:hover{
     box-shadow: none!important;
     outline: none!important;
 }
@@ -53,16 +53,18 @@
 %>    
     <h2 style="margin-bottom: 20px; margin-top: 20px; text-align: center">공지사항</h2>
     <table class="table table-hover" id="notice_list">
-    	<col width="50px"/>
+    	<col width="70px"/>
     	<col width="500px"/>
     	<col width="120px"/>
     	<col width="120px"/>
+    	<col width="70px"/>
     <thead>
 		<tr>
-			<th scope="col" class="">번호</th>
+			<th scope="col" class="" style="text-align: center;">번호</th>
 			<th scope="col" class="">제목</th>
-			<th scope="col" class="">작성자</th>
-			<th scope="col" class="">날짜</th>
+			<th scope="col" class="" style="text-align: center;">작성자</th>
+			<th scope="col" class="" style="text-align: center;">날짜</th>
+			<th scope="col" class="" style="text-align: center;">조회수</th>
 		</tr>
 	</thead>
 
@@ -77,11 +79,12 @@
 		for (SemiDto dto : list){
 %>
 		
-		<tr >
-    		<td><%=dto.getSeq()%></td>
-    		<td class="text_underline"><a href="board.do?command=selectone&seq=<%=dto.getSeq() %>"><%= dto.getTitle()%></a></td>
-    		<td><%= dto.getWriter()%></td>
-    		<td><%= dto.getRegdate()%></td>
+		<tr>
+    		<td style="text-align: center;"><%=dto.getArticle_no()%></td>
+    		<td class="text_underline"><a href="board.do?command=selectone&seq=<%=dto.getArticle_no() %>"><%= dto.getNotice_title()%></a></td>
+    		<td style="text-align: center;"><%= dto.getAdmin_writer()%></td>
+    		<td style="text-align: center;"><%= dto.getNotice_regdate()%></td>
+    		<td style="text-align: center;"><%= dto.getNotice_hit() %></td>
     	</tr>
 <%
 		}
@@ -92,6 +95,25 @@
     <div style="text-align: right; margin-right: 10px; margin-bottom: 10px;">
     <input type="button" class="btn" value="글작성" onclick="location.href='board.do?command=insertform'"/>
     </div>
+    <!-- pagination 시작 -->
+    <nav aria-label="pagination">
+  <ul class="pagination justify-content-center" >
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+	<!-- pagination 끝-->
     </div><!-- 카드 끝 -->
     		</div>
     	</div>

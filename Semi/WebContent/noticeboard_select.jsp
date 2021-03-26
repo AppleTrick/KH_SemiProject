@@ -53,15 +53,15 @@
     	<col width="120px"/>
 	<tr>
 		<th style="text-align: center">작성자</th>
-		<td><%=dto.getWriter() %></td>
+		<td><%=dto.getAdmin_writer() %></td>
 	</tr>
 	<tr>
 		<th style="text-align: center">제목</th>
-		<td><%=dto.getTitle() %></td>
+		<td><%=dto.getNotice_title() %></td>
 	</tr>
 	<tr>
 		<th style="text-align: center; height:350px;">내용</th>
-		<td><div><%=dto.getContent() %></div></td>
+		<td><div><%=dto.getNotice_content() %></div></td>
 
 	</table>
 	

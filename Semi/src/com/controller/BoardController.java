@@ -46,14 +46,15 @@ public class BoardController extends HttpServlet {
 			response.sendRedirect("noticeboard_insert.jsp");
 		
 		}else if(command.equals("insertres")) {
-			String writer = request.getParameter("writer");
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
-			
+			//1. 보내준 값이 있으면 받기
+			String admin_writer = request.getParameter("admin_writer");
+			String notice_title = request.getParameter("notice_title");
+			String notice_content = request.getParameter("notice_content");
+			//2. 1번 값을 담아서 리턴
 			SemiDto dto = new SemiDto();
-			dto.setWriter(writer);
-			dto.setTitle(title);
-			dto.setContent(content);
+			dto.setAdmin_writer(admin_writer);
+			dto.setNotice_title(notice_title);
+			dto.setNotice_content(notice_content);
 			
 			int res = biz.insert(dto);
 			
@@ -70,21 +71,21 @@ public class BoardController extends HttpServlet {
 			dispatch(request, response, "noticeboard_update.jsp");
 		
 		}else if(command.equals("updateres")) {
-			int seq = Integer.parseInt(request.getParameter("seq"));
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
+			int article_no = Integer.parseInt(request.getParameter("seq"));
+			String notice_title = request.getParameter("notice_title");
+			String notice_content = request.getParameter("notice_content");
 			
 			SemiDto dto = new SemiDto();
-			dto.setSeq(seq);
-			dto.setTitle(title);
-			dto.setContent(content);
+			dto.setArticle_no(article_no);
+			dto.setNotice_title(notice_title);
+			dto.setNotice_content(notice_content);
 			
 			int res=biz.update(dto);
 			
 			if(res>0) {
-				response.sendRedirect("board.do?command=selectone&seq="+seq);
+				response.sendRedirect("board.do?command=selectone&seq="+article_no);
 			}else {
-				response.sendRedirect("board.do?command=updateform.do&seq="+seq);
+				response.sendRedirect("board.do?command=updateform.do&seq="+article_no);
 			}
 			
 		}else if(command.equals("delete")) {

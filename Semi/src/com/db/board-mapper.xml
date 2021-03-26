@@ -5,33 +5,35 @@
 <mapper namespace="boardmapper">
 
 	<select id = "selectList" resultType="SemiDto">
-		SELECT SEQ, WRITER, TITLE, CONTENT, REGDATE FROM BOARD
-		ORDER BY SEQ DESC
+		SELECT ARTICLE_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT FROM NOTICEBOARD
+		ORDER BY ARTICLE_NO DESC
 	</select>
 	
 	<resultMap type="semiDto" id="semiMap">
-		<result property = "seq" column = "SEQ"/>
-		<result property = "writer" column = "WRITER"/>
-		<result property = "title" column = "TITLE"/>
-		<result property = "content" column = "CONTENT" />
-		<result property = "regdate" column = "REGDATE" />
+		<result property = "article_no" column = "ARTICLE_NO" />
+		<result property = "brd_no" column = "BRD_NO" />
+		<result property = "admin_writer" column = "ADMIN_WRITER"/>
+		<result property = "notice_title" column = "NOTICE_TITLE"/>
+		<result property = "notice_content" column = "NOTICE_CONTENT" />
+		<result property = "notice_regdate" column = "NOTICE_REGDATE" />
+		<result property = "notice_hit" column = "NOTICE_HIT" />
 	</resultMap>
 	
 	<select id = "selectOne" parameterType="int" resultMap="semiMap">
-		SELECT SEQ, WRITER, TITLE, CONTENT, REGDATE FROM BOARD WHERE SEQ = #{seq}
+		SELECT ARTICLE_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT FROM NOTICEBOARD WHERE ARTICLE_NO = #{article_no}
 	</select>
 
 	<insert id = "insert" parameterType="semiDto">
-		INSERT INTO BOARD
-		VALUES(BOARDSEQ.NEXTVAL, '관리자', #{title}, #{content}, SYSDATE)
+		INSERT INTO NOTICEBOARD(ARTICLE_NO, BRD_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT)
+		VALUES(NOTICEBOARDSEQ.NEXTVAL, 2, '관리자', #{notice_title}, #{notice_content}, SYSDATE, 3)
 	</insert>
 	
 	<update id = "update" parameterType="semiDto">
-		UPDATE BOARD SET TITLE = #{title}, CONTENT = #{content} WHERE SEQ= #{seq}
+		UPDATE NOTICEBOARD SET NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content} WHERE ARTICLE_NO= #{article_no}
 	</update>
 	
 	<delete id="delete" parameterType="semiDto">
-		DELETE FROM BOARD WHERE SEQ = #{seq}
+		DELETE FROM NOTICEBOARD WHERE ARTICLE_NO = #{article_no}
 	</delete>
 
 </mapper>

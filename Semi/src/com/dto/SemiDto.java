@@ -4,62 +4,83 @@ import java.sql.Date;
 
 public class SemiDto {
 	
-	private int seq;
-	private String writer;
-	private String title;
-	private String content;
-	private Date regdate;
+	private int brd_no;
+	private int article_no;
+	private String admin_writer;
+	private String notice_title;
+	private String notice_content;
+	private Date notice_regdate;
+	private int notice_hit;
 	
 	public SemiDto() {
 		
 	}
 
-	public SemiDto(int seq, String writer, String title, String content, Date regdate) {
-		this.seq = seq;
-		this.writer = writer;
-		this.title = title;
-		this.content = content;
-		this.regdate = regdate;
+	public SemiDto(int brd_no, int article_no, String admin_writer, String notice_title, String notice_content,
+			Date notice_regdate, int notice_hit) {
+		this.brd_no = brd_no;
+		this.article_no = article_no;
+		this.admin_writer = admin_writer;
+		this.notice_title = notice_title;
+		this.notice_content = notice_content;
+		this.notice_regdate = notice_regdate;
+		this.notice_hit = notice_hit;
 	}
 
-	public int getSeq() {
-		return seq;
+	public int getBrd_no() {
+		return brd_no;
 	}
 
-	public void setSeq(int seq) {
-		this.seq = seq;
+	public void setBrd_no(int brd_no) {
+		this.brd_no = brd_no;
 	}
 
-	public String getWriter() {
-		return writer;
+	public int getArticle_no() {
+		return article_no;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setArticle_no(int article_no) {
+		this.article_no = article_no;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getAdmin_writer() {
+		return admin_writer;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setAdmin_writer(String admin_writer) {
+		this.admin_writer = admin_writer;
 	}
 
-	public String getContent() {
-		return content;
+	public String getNotice_title() {
+		return notice_title;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setNotice_title(String notice_title) {
+		this.notice_title = notice_title;
 	}
 
-	public Date getRegdate() {
-		return regdate;
+	public String getNotice_content() {
+		return notice_content;
 	}
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setNotice_content(String notice_content) {
+		this.notice_content = notice_content;
+	}
+
+	public Date getNotice_regdate() {
+		return notice_regdate;
+	}
+
+	public void setNotice_regdate(Date notice_regdate) {
+		this.notice_regdate = notice_regdate;
+	}
+
+	public int getNotice_hit() {
+		return notice_hit;
+	}
+
+	public void setNotice_hit(int notice_hit) {
+		this.notice_hit = notice_hit;
 	}
 	
 	

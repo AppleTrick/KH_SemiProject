@@ -1,3 +1,5 @@
+<%@page import="com.dto.SemiDto"%>
+<%@page import="com.dao.SemiDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,6 +36,8 @@
 <body>
 	<%@ include file="Form/header.jsp" %>
 
+<jsp:useBean id="dto" class="com.dto.SemiDto" scope="request"></jsp:useBean>
+
  <form action="board.do" method="post">
  <input type="hidden" name="command" value="insertres"/>
   <div class="content-wrapper">
@@ -51,12 +55,11 @@
 						<h5 style="margin-bottom: 20px; text-align: center">공지 작성</h5>
 						<tr>						
 							<th class="text-center">제목</th>
-							<td><input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해 주세요." value=""></td>
+							<td><input type="text" class="form-control" id="title" name="notice_title" placeholder="제목을 입력해 주세요." value=""></td>
 						</tr>
 						<tr>
 							<th class="text-center">내용</th>
-							<td>
-								<textarea id="summernote" name="content"></textarea>
+								<td><textarea id="summernote" name="notice_content"></textarea>
 							</td>
 						</tr>
 					</table>			      
