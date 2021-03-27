@@ -32,7 +32,7 @@
     console.log(naver_id_login.getProfileData('birthday'));
     console.log(naver_id_login.getProfileData('age'));
     
-  opener.location.href="sns.do?command=naverlogin&email="+naver_id_login.getProfileData('email');
+  opener.location.href="sns.do?command=naverlogin&naver_email="+naver_id_login.getProfileData('email');
   window.close();
   }
    

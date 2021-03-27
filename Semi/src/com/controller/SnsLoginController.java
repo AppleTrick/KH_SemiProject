@@ -48,87 +48,132 @@ public class SnsLoginController extends HttpServlet {
 		LoginBiz biz = new LoginBiz();
 
 		if (command.equals("naverlogin")) {
-			String email = request.getParameter("email");
+			String email = request.getParameter("naver_email");
 			System.out.println(email);
-	
+
 			int res = biz.tokenchk(email);
-			
+
 			System.out.println(res);
-			
-			if(res>0) {
-			
+
+			if (res > 0) {
+
 				HttpSession session = request.getSession();// 세션 객체 만들기
 
 				// session scope에 객체 담기
 				session.setAttribute("email", email); // 세션 생성
 				// 만료되는 시간 설정 (default : 30분)
 				session.setMaxInactiveInterval(10 * 60);
-				System.out.println("여기는 서블릿이에요"+email);
+				System.out.println("여기는 서블릿이에요" + email);
 				response.sendRedirect("index.jsp");
-	
+
 			} else {
-				
+
 				HttpSession session = request.getSession();// 세션 객체 만들기
 
 				// session scope에 객체 담기
 				session.setAttribute("email", email); // 세션 생성
-				response.sendRedirect("join_sns.jsp?email="+email);
-				
-				
-					
-				}
-			}else if(command.equals("idchk")){
-				
-				String mem_id = request.getParameter("mem_id");
-				int result = biz.idCheck(mem_id);
-				
-				//LoginDto dto = biz.idCheck(mem_id);
-				boolean idnotused = true;
-			
-				if(result>0){
-					idnotused = false;
-				}
-				System.out.println(idnotused);
-				
-				response.sendRedirect("join_idchk.jsp?idnotused="+idnotused);
-				//dispatch(request, response, "login_idchk.jsp?idnotused="+idnotused);
-				
-			}else if(command.equals("insertSns")) {
-				
-				String mem_id = request.getParameter("mem_id");
-				String mem_pw = request.getParameter("mem_pw");
-				String mem_name = request.getParameter("mem_name");
-				String mem_nickname = request.getParameter("mem_nickname");
-				String mem_addr = request.getParameter("mem_addr");
-				String mem_phone = request.getParameter("mem_phone");
-				String mem_email = request.getParameter("mem_email");
+				response.sendRedirect("join_sns.jsp?email=" + email);
 
-				LoginDto dto = new LoginDto();
-				dto.setMem_id(mem_id);
-				dto.setMem_pw(mem_pw);
-				dto.setMem_name(mem_name);
-				dto.setMem_nickname(mem_nickname);
-				dto.setMem_addr(mem_addr);
-				dto.setMem_phone(mem_phone);
-				dto.setMem_email(mem_email);
-				
-				int res = biz.insertMember(dto);
-				
-				if(res>0) {
-					jsResponse(response, "login.jsp", "회원가입 완료 ! 로그인 하러 가기");
-					
-					
-				}else{
-					jsResponse(response, "login.jsp", "회원가입에 실패하였습니다. 회원가입 내용을 확인하세요.");
-					
-				
-				}
+			}
+		} else if (command.equals("kakaologin")) {
+
+			String email = request.getParameter("kakao_email");
+			int res = biz.tokenchk(email);
+
+			if (res > 0) {
+
+				HttpSession session = request.getSession();// 세션 객체 만들기
+
+				// session scope에 객체 담기
+				session.setAttribute("email", email); // 세션 생성
+				// 만료되는 시간 설정 (default : 30분)
+				session.setMaxInactiveInterval(10 * 60);
+				System.out.println("여기는 서블릿이에요" + email);
+				response.sendRedirect("index.jsp");
+
+			} else {
+
+				HttpSession session = request.getSession();// 세션 객체 만들기
+
+				// session scope에 객체 담기
+				session.setAttribute("email", email); // 세션 생성
+				response.sendRedirect("join_sns.jsp?email=" + email);
+
+			}
 			
-			}	
-		
+			
+		}else if(command.equals("googlelogin")) {
+			String email = request.getParameter("google_email");
+			int res  = biz.tokenchk(email);
+			
+			if(res>0) {
+				HttpSession session = request.getSession(); 
+				session.setAttribute("email", email);
+				session.setMaxInactiveInterval(10*60);
+				response.sendRedirect("index.jsp");
+				
+				
+				
+			}else {
+				HttpSession session = request.getSession();
+				session.setAttribute("email", email);
+				response.sendRedirect("join_sns.jsp?email="+email);
+			}
+			
+			
+			
+			
+			
+			
+			
+		} else if (command.equals("idchk")) {
+
+			String mem_id = request.getParameter("mem_id");
+			int result = biz.idCheck(mem_id);
+
+			// LoginDto dto = biz.idCheck(mem_id);
+			boolean idnotused = true;
+
+			if (result > 0) {
+				idnotused = false;
+			}
+			System.out.println(idnotused);
+
+			response.sendRedirect("join_idchk.jsp?idnotused=" + idnotused);
+			// dispatch(request, response, "login_idchk.jsp?idnotused="+idnotused);
+
+		} else if (command.equals("insertSns")) {
+
+			String mem_id = request.getParameter("mem_id");
+			String mem_pw = request.getParameter("mem_pw");
+			String mem_name = request.getParameter("mem_name");
+			String mem_nickname = request.getParameter("mem_nickname");
+			String mem_addr = request.getParameter("mem_addr");
+			String mem_phone = request.getParameter("mem_phone");
+			String mem_email = request.getParameter("mem_email");
+
+			LoginDto dto = new LoginDto();
+			dto.setMem_id(mem_id);
+			dto.setMem_pw(mem_pw);
+			dto.setMem_name(mem_name);
+			dto.setMem_nickname(mem_nickname);
+			dto.setMem_addr(mem_addr);
+			dto.setMem_phone(mem_phone);
+			dto.setMem_email(mem_email);
+
+			int res = biz.insertMember(dto);
+
+			if (res > 0) {
+				jsResponse(response, "login.jsp", "회원가입 완료 ! 로그인 하러 가기");
+
+			} else {
+				jsResponse(response, "login.jsp", "회원가입에 실패하였습니다. 회원가입 내용을 확인하세요.");
+
+			}
+
 		}
 
-	
+	}
 
 	private void jsResponse(HttpServletResponse response, String url, String msg) throws IOException {
 		String s = "<script type='text/javascript'>" + "alert('" + msg + "');" + "location.href='" + url + "';"
