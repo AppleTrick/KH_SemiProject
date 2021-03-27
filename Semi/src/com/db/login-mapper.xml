@@ -80,5 +80,13 @@
   WHERE MEM_NO= #{mem_no}
   
   </update>
+  
+  <select id="tokenchk" resultType="int" parameterType="String" >
+  SELECT COUNT(*)
+  FROM LOGINBOARD
+  WHERE MEM_EMAIL = #{mem_email}
+  
+  
+  </select>
  
 </mapper>
