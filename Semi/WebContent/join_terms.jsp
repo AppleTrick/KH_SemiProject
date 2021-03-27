@@ -73,7 +73,14 @@
             
             <tr>
                 <th>주소</th>
-                <td><input type="text" name="mem_addr" required="required" onclick="idCheckProc()"></td>
+                
+                <td>
+                 <div class="d-flex justify-content-end">
+					<button type="button" class="btn btn-info" onClick="goPopup();">주소검색</button>
+				</div>
+				<input type="text" name="address" id="address" class="form-control" placeholder="도로명 주소를 입력해 주세요" required readonly />
+                
+                </td>
             </tr>
             
             <tr>
@@ -89,7 +96,21 @@
         </table>
     </form>
 
+<script type="text/javascript">
 
+function goPopup() {
+	// 주소검색을 수행할 팝업 페이지를 호출합니다.
+	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+	var pop = window.open("jusoPopup.jsp", "pop",
+			"width=570,height=420, scrollbars=yes, resizable=yes");
+}
+function jusoCallBack(roadFullAddr) {
+	var addressEl = document.querySelector("#address");
+	addressEl.value = roadFullAddr;
+}
+
+
+</script>
 
 
 
