@@ -39,5 +39,9 @@ public class LoginBiz {
 		return dao.deleteMember(mem_no);
 
 	}
+	
+	public int tokenchk(String mem_email) {
+		return dao.tokenchk(mem_email);
+	}
 
 }

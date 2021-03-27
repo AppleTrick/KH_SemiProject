@@ -47,7 +47,6 @@ public class LoginDao extends SqlMapConfig {
 		//LoginDto dto = new LoginDto();
 		int res = 0 ;
 		
-		
 		try {
 			
 			session = getSqlSessionFactory().openSession(true);
@@ -143,6 +142,31 @@ public class LoginDao extends SqlMapConfig {
 		return res;
 		
 	}
+	
+	
+	//sns login token check
+	public int tokenchk(String mem_email) {
 		
+		SqlSession session = null; 
+		//LoginDto dto = new LoginDto();
+		int res = 0 ; 
+		
+		try {
+			
+			session = getSqlSessionFactory().openSession(false);
+			res = session.selectOne("loginmapper.tokenchk",mem_email);
+			if(res>0) {
+				session.commit();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return res;
+		
+	}
 	
 	}
