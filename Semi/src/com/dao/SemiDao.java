@@ -82,5 +82,7 @@ public class SemiDao extends SqlMapConfig {
 		
 		return res;
 	}
+	
+	
 
 }

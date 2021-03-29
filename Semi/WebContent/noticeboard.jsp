@@ -95,7 +95,8 @@
     <div style="text-align: right; margin-right: 10px; margin-bottom: 10px;">
     <input type="button" class="btn" value="글작성" onclick="location.href='board.do?command=insertform'"/>
     </div>
-    <!-- pagination 시작 -->
+    
+       <!-- pagination-->
     <nav aria-label="pagination">
   <ul class="pagination justify-content-center" >
     <li class="page-item">
@@ -113,7 +114,8 @@
     </li>
   </ul>
 </nav>
-	<!-- pagination 끝-->
+	 <!-- pagination 끝-->
+	
     </div><!-- 카드 끝 -->
     		</div>
     	</div>

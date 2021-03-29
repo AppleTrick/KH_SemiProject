@@ -28,4 +28,16 @@ public class SemiBiz {
 		return dao.delete(seq);
 	}
 
+	public static SemiBiz getInstance() {
+		return null;
+	}
+
+	public List<SemiDto> selectAllLendingPossibleBook(int offset, int recordsPerPage) {
+		return null;
+	}
+
+	public Object getBookDao() {
+		return null;
+	}
+
 }
