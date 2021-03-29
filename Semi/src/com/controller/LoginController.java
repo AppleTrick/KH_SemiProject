@@ -43,15 +43,32 @@ public class LoginController extends HttpServlet {
 	    
 	    if(command.equals("login")) {
 	    	
-	    	String mem_id = request.getParameter("mem_id");
-	    	String mem_pw = request.getParameter("mem_pw");
+	    	String mem_id = null;
+	    	String mem_pw = null;
+	    	String email = null;
 	    	
 	    	System.out.println(mem_id);
 	    	System.out.println(mem_pw);
 	    	
-	    	LoginDto dto = biz.login(mem_id, mem_pw);
-	    	System.out.println(dto);
+	    	LoginDto dto = null;
+	    	System.out.println("로그인 email :"+email);
 	    	
+	    	
+	    	//sns로그인인 경우 email 값을 가져와서 비교한다. 
+	    	if(request.getParameter("email") != null) {
+	    		
+	    		email = request.getParameter("email");
+	    		
+	    		dto = biz.snslogin(email);
+	    	
+	    	//일반 로그인 
+	    	}else {
+	    		 mem_id = request.getParameter("mem_id");
+		    	 mem_pw = request.getParameter("mem_pw");
+		    	 
+		    	 dto= biz.login(mem_id, mem_pw);
+	    		
+	    	}
 	    	
 	    	
 	    	if(dto != null){
@@ -64,7 +81,7 @@ public class LoginController extends HttpServlet {
 				session.setMaxInactiveInterval(10*60);
 				
 				if(dto.getMem_role().equals("ADMIN")){
-					response.sendRedirect("index.jsp");
+					response.sendRedirect("index.jsp"); // admin 페이지 생기면 바꿔줄것 
 				}else if(dto.getMem_role().equals("USER")){
 					response.sendRedirect("index.jsp");
 				}

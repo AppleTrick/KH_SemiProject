@@ -57,14 +57,8 @@ public class SnsLoginController extends HttpServlet {
 
 			if (res > 0) {
 
-				HttpSession session = request.getSession();// 세션 객체 만들기
-
-				// session scope에 객체 담기
-				session.setAttribute("email", email); // 세션 생성
-				// 만료되는 시간 설정 (default : 30분)
-				session.setMaxInactiveInterval(10 * 60);
 				System.out.println("여기는 서블릿이에요" + email);
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("login.do?command=login&email="+email);
 
 			} else {
 
@@ -81,15 +75,9 @@ public class SnsLoginController extends HttpServlet {
 			int res = biz.tokenchk(email);
 
 			if (res > 0) {
-
-				HttpSession session = request.getSession();// 세션 객체 만들기
-
-				// session scope에 객체 담기
-				session.setAttribute("email", email); // 세션 생성
-				// 만료되는 시간 설정 (default : 30분)
-				session.setMaxInactiveInterval(10 * 60);
 				System.out.println("여기는 서블릿이에요" + email);
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("login.do?command=login&email="+email);
+				
 
 			} else {
 
@@ -107,12 +95,8 @@ public class SnsLoginController extends HttpServlet {
 			int res  = biz.tokenchk(email);
 			
 			if(res>0) {
-				HttpSession session = request.getSession(); 
-				session.setAttribute("email", email);
-				session.setMaxInactiveInterval(10*60);
-				response.sendRedirect("index.jsp");
-				
-				
+				System.out.println("여기는 서블릿이에요" + email);
+				response.sendRedirect("login.do?command=login&email="+email);
 				
 			}else {
 				HttpSession session = request.getSession();

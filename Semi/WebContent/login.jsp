@@ -44,7 +44,6 @@
 				<td><input type="password" name="mem_pw"></td>
 			</tr>
 			
-			
 			<tr>
 				
 				<td colspan="2" align="right">

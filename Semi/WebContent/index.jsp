@@ -1,3 +1,4 @@
+<%@page import="com.dto.LoginDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,10 +20,9 @@
 <body>
 <% 
 
-String email = session.getAttribute("email")+""; 
-System.out.println(email);
 
-
+LoginDto dto =(LoginDto)session.getAttribute("dto"); //컨트롤러에서 dto 받아와서 형변환 
+System.out.println("session 담겼을까요?"+dto);
 
 %>
 	

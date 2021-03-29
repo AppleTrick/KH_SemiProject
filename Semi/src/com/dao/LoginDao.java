@@ -40,6 +40,32 @@ public class LoginDao extends SqlMapConfig {
 		return dto;
 		
 	}
+	
+	public LoginDto snslogin(String mem_email) {
+		SqlSession session = null; 
+		LoginDto dto = new LoginDto();
+		
+		
+		
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			
+			dto = session.selectOne("loginmapper.snslogin",mem_email);
+			System.out.println(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return dto;
+		
+	}
+	
+	
+	
+	
 	//id  중복체크
 	public int idCheck(String mem_id) {
 		
