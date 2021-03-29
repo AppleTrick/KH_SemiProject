@@ -120,12 +120,6 @@ public class SnsLoginController extends HttpServlet {
 				response.sendRedirect("join_sns.jsp?email="+email);
 			}
 			
-			
-			
-			
-			
-			
-			
 		} else if (command.equals("idchk")) {
 
 			String mem_id = request.getParameter("mem_id");
