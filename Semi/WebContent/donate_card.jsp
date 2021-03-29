@@ -67,7 +67,7 @@
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
-                location.href="donate.do?command=pay";
+                location.href="donate.jsp";
                 alert(msg);
             }
         });
@@ -75,6 +75,5 @@
     </script>
 </head>
 <body>
-    <a href = "donate.jsp">취소(후원 메인으로 돌아가기)</a>
 </body>
 </html>
