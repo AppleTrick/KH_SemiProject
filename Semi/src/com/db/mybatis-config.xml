@@ -9,8 +9,8 @@
 	
 	
 	<typeAliases>
-	
 		<typeAlias type="com.dto.LoginDto" alias="LoginDto"/>
+		<typeAlias type="com.dto.DonateDto" alias="DonateDto"/>
 	</typeAliases>
 
  <environments default="development">
@@ -28,10 +28,7 @@
 
 <mappers>
     <mapper resource="com/db/login-mapper.xml"/>
-  </mappers>
-
-
-
-
+    <mapper resource="com/db/donate-mapper.xml"/>
+</mappers>
 
 </configuration>
