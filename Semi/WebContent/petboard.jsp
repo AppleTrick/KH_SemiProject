@@ -9,5 +9,13 @@
 <body>
     <a href = "petboard_adopt.jsp">입양게시글 상세(select)</a>
     <a href = "petboard_select.jsp">입양후기 게시글 상세</a>
+    
+    
+    
+    
+    
+    
+    
+    
 </body>
 </html>
