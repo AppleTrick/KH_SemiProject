@@ -4,13 +4,13 @@
 <configuration>
 
 	<properties resource="com/db/db.properties"></properties>
-	
+	<settings><setting name="jdbcTypeForNull" value="NULL" /></settings>
 	
 	
 	
 	<typeAliases>
-	
 		<typeAlias type="com.dto.LoginDto" alias="LoginDto"/>
+		<typeAlias type = "com.dto.SemiDto" alias="SemiDto"></typeAlias>
 	</typeAliases>
 
  <environments default="development">
@@ -26,12 +26,9 @@
   </environments>
 
 
-<mappers>
-    <mapper resource="com/db/login-mapper.xml"/>
-  </mappers>
-
-
-
-
+	<mappers>
+    	<mapper resource="com/db/login-mapper.xml"/>
+    	<mapper resource="com/db/board-mapper.xml"/>
+ 	</mappers>
 
 </configuration>

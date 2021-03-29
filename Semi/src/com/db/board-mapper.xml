@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardmapper">
+
+	<select id = "selectList" resultType="SemiDto">
+		SELECT ARTICLE_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT FROM NOTICEBOARD
+		ORDER BY ARTICLE_NO DESC
+	</select>
+	
+	<resultMap type="semiDto" id="semiMap">
+		<result property = "article_no" column = "ARTICLE_NO" />
+		<result property = "brd_no" column = "BRD_NO" />
+		<result property = "admin_writer" column = "ADMIN_WRITER"/>
+		<result property = "notice_title" column = "NOTICE_TITLE"/>
+		<result property = "notice_content" column = "NOTICE_CONTENT" />
+		<result property = "notice_regdate" column = "NOTICE_REGDATE" />
+		<result property = "notice_hit" column = "NOTICE_HIT" />
+	</resultMap>
+	
+	<select id = "selectOne" parameterType="int" resultMap="semiMap">
+		SELECT ARTICLE_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT FROM NOTICEBOARD WHERE ARTICLE_NO = #{article_no}
+	</select>
+
+	<insert id = "insert" parameterType="semiDto">
+		INSERT INTO NOTICEBOARD(ARTICLE_NO, BRD_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT)
+		VALUES(NOTICEBOARDSEQ.NEXTVAL, 2, '관리자', #{notice_title}, #{notice_content}, SYSDATE, 3)
+	</insert>
+	
+	<update id = "update" parameterType="semiDto">
+		UPDATE NOTICEBOARD SET NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content} WHERE ARTICLE_NO= #{article_no}
+	</update>
+	
+	<delete id="delete" parameterType="semiDto">
+		DELETE FROM NOTICEBOARD WHERE ARTICLE_NO = #{article_no}
+	</delete>
+
+</mapper>
