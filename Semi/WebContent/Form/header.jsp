@@ -15,8 +15,8 @@
 </head>
   <body>
   <%
-  	LoginDto dto = (LoginDto)session.getAttribute("dto");
-  	System.out.println("session 담겼을을까요?" + dto);	
+  	LoginDto dto1 = (LoginDto)session.getAttribute("dto");
+  	System.out.println("session 담겼을을까요?" + dto1);	
   %>
     <div>
       <!-- 네비게이션바 -->
@@ -74,7 +74,7 @@
                 </li>
                <!-- 회원 정보 -->
                <%
-               		if( dto != null ){
+               		if( dto1 != null ){
                %>
                 <li class="list-inline-item align-middle ms-2">
                   <a href="#">
