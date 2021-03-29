@@ -57,8 +57,8 @@ public class MovePage extends HttpServlet {
 			response.sendRedirect("match_pet.jsp");
 			
 		    // 
-		}else if(move.equals("")) {
-			
+		}else if(move.equals("noticeboard")) {
+			response.sendRedirect("noticeboard_index.jsp");
 		}else if(move.equals("")) {
 			
 		}else if(move.equals("")) {
