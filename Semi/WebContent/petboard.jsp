@@ -22,8 +22,8 @@
 				<div class="container">
 					<div class="top-content">
 						<label for="check1">전체보기</label> 
-						<label for="check2">입양대기 동물보기</label> 
-						<label for="check3">입양후기 동물</label>
+						<label for="check2">입양대기</label> 
+						<label for="check3">입양후기</label>
 					</div>
 		
 					<div class="photo-gallery">
