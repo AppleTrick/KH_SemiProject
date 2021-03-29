@@ -82,7 +82,7 @@ System.out.println(email);
                  <div class="d-flex justify-content-end">
 					<button type="button" class="btn btn-info" onClick="goPopup();">주소검색</button>
 				</div>
-				<input type="text" name="address" id="address" class="form-control" placeholder="도로명 주소를 입력해 주세요" required readonly />
+				<input type="text" name="mem_addr" id="address" class="form-control" placeholder="도로명 주소를 입력해 주세요" required readonly />
                 
                 </td>
                 
