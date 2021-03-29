@@ -67,7 +67,7 @@
                       <img src="resources/img/profile.jpg" alt="" style="transform: scale(1.5); width: 100%; position: absolute; left: 0;">
                     </div>
                   </a>
-                </li>
+                </li> 
               </ul>
             </div>
           </div>
