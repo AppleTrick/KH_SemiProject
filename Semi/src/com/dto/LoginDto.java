@@ -16,9 +16,16 @@ public class LoginDto {
 	private String mem_image;
 	
 	
+
+	
+	
+	
+
 	public LoginDto() {
 
 	}
+	
+	
 
 
 	public LoginDto(int mem_no, String mem_id, String mem_pw, String mem_name, String mem_nickname, String mem_phone,
@@ -146,6 +153,8 @@ public class LoginDto {
 		this.mem_image = mem_image;
 	}
 	
+	
+
 	
 	
 	

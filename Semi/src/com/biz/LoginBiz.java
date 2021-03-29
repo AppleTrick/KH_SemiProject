@@ -12,6 +12,15 @@ public class LoginBiz {
 		return dao.login(mem_id, mem_pw);
 
 	}
+	
+	public LoginDto snslogin(String mem_email) {
+
+		return dao.snslogin(mem_email);
+
+	}
+	
+	
+	
 
 	public int idCheck(String mem_id) {
 
@@ -38,6 +47,10 @@ public class LoginBiz {
 
 		return dao.deleteMember(mem_no);
 
+	}
+	
+	public int tokenchk(String mem_email) {
+		return dao.tokenchk(mem_email);
 	}
 
 }

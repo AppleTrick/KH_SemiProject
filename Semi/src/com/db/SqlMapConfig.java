@@ -16,7 +16,6 @@ public class SqlMapConfig {
 		
 		String resource = "com/db/mybatis-config.xml";
 		
-		
 		try {
 			InputStream inputStream = Resources.getResourceAsStream(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -26,10 +25,7 @@ public class SqlMapConfig {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
+
 		return sqlSessionFactory;
 	}
 

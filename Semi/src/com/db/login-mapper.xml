@@ -38,6 +38,17 @@
  
  </select>
  
+ <select id="snslogin" resultType="LoginDto" parameterType="String">
+ SELECT MEM_NO, MEM_ID, MEM_PW, MEM_NAME, MEM_NICKNAME , 
+ MEM_PHONE, MEM_ADDR, MEM_EMAIL, MEM_ENABLED, MEM_ROLE,MEM_IMAGE
+ FROM LOGINBOARD 
+ WHERE MEM_EMAIL = #{mem_email}
+ 
+ 
+ 
+ </select>
+ 
+ 
   
   <select id="idchk" resultType="int" parameterType="String">
   SELECT COUNT(*)
@@ -80,5 +91,13 @@
   WHERE MEM_NO= #{mem_no}
   
   </update>
+  
+  <select id="tokenchk" resultType="int" parameterType="String" >
+  SELECT COUNT(*)
+  FROM LOGINBOARD
+  WHERE MEM_EMAIL = #{mem_email}
+  
+  
+  </select>
  
 </mapper>

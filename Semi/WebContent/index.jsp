@@ -1,3 +1,4 @@
+<%@page import="com.dto.LoginDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,6 +18,16 @@
 
 </head>
 <body>
+<% 
+
+
+LoginDto dto =(LoginDto)session.getAttribute("dto"); //컨트롤러에서 dto 받아와서 형변환 
+System.out.println("session 담겼을까요?"+dto);
+
+%>
+	
+	
+	
 	<%@ include file="Form/header.jsp"%>
 	<!-- 바디부분 시작 -->
 	<div class="mt-4">
@@ -39,7 +50,7 @@
 											<img src="resources/img/profile.jpg" alt=""
 												style="transform: scale(1.5); width: 100%; position: absolute; left: 0;" />
 										</div>
-										<span class="font-weight-bold">이름</span>
+										<span class="font-weight-bold">제목</span>
 									</div>
 								</div>
 
@@ -57,9 +68,9 @@
 													<svg xmlns="http://www.w3.org/2000/svg" width="1.6em"
 														height="1.6em" fill="currentColor" class="bi bi-heart"
 														viewBox="0 0 16 16">
-                              <path
+                              								<path
 															d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                            </svg>
+                            						</svg>
 												</button>
 											</li>
 
@@ -68,9 +79,9 @@
 													<svg xmlns="http://www.w3.org/2000/svg" width="1.6em"
 														height="1.6em" fill="currentColor" class="bi bi-heart"
 														viewBox="0 0 16 16">
-                              <path
+                              							<path
 															d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                            </svg>
+                            						</svg>
 												</button>
 											</li>
 
@@ -79,9 +90,9 @@
 													<svg xmlns="http://www.w3.org/2000/svg" width="1.6em"
 														height="1.6em" fill="currentColor" class="bi bi-heart"
 														viewBox="0 0 16 16">
-                              <path
+                             							 <path
 															d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                            </svg>
+                            							</svg>
 												</button>
 											</li>
 										</ul>

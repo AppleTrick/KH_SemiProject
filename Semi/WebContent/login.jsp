@@ -44,7 +44,6 @@
 				<td><input type="password" name="mem_pw"></td>
 			</tr>
 			
-			
 			<tr>
 				
 				<td colspan="2" align="right">
@@ -65,22 +64,14 @@
 			//id값을 설정한 곳에 버튼을 자동생성한다
 			container : '#kakao-login-btn',
 			success : function(authObj) {
+				
 				//request함수를 통해 사용자 정보를 얻는다
 				Kakao.API.request({
 					url : '/v2/user/me',
 					success : function(res) {
-						console.log(res);
 
-						/* var id = res.id;
-						var email = res.kakao_account.email;
-						var name = res.properties.nickname;
-						var image = res.properties.profile_image;
-						var html = '<BR>' + email + '<BR>' + name;
-
-						html += '<BR><img src="'+image+'">';
-
-						$('body').append(html); */
-
+					location.href="sns.do?command=kakaologin&kakao_email="+res.kakao_account.email;
+						//window.close();
 					}
 				})
 
@@ -91,6 +82,8 @@
 				alert(JSON.stringify(err));
 				
 			}
+			
+			
 
 		});
 	</script>
@@ -130,6 +123,10 @@
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
+        
+        location.href="sns.do?command=googlelogin&google_email="+profile.getEmail();
+        
+        
       }
     	//로그아웃 함수
     	function signOut() {
