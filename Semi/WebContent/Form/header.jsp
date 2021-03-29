@@ -88,7 +88,7 @@
                 </li>
                 <!--로그아웃-->
                 <li class="list-inline-item align-middle ms-2">
-               	  <a href="#">
+               	  <a href="login.do?command=logout">
                		<div>
                			<button>로그아웃</button>
                		</div>

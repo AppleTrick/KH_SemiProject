@@ -92,6 +92,14 @@ public class LoginController extends HttpServlet {
 
 			}
 	    	
+	    	
+	    	
+	    }else if(command.equals("logout")){
+	    	HttpSession session = request.getSession(false);
+	    	session.invalidate();
+	    	response.sendRedirect("index.jsp");
+	    
+	    	
 	    }else if(command.equals("joinform")){
 			response.sendRedirect("join_terms.jsp");
 
