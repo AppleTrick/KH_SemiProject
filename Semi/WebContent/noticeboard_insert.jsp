@@ -31,7 +31,6 @@
       crossorigin="anonymous"
     />
 
-    <title>Notice Board Insert</title>
 </head>
 <body>
 	<%@ include file="Form/header.jsp" %>

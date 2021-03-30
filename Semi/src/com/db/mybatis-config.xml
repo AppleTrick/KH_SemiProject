@@ -11,6 +11,7 @@
 	<typeAliases>
 		<typeAlias type="com.dto.LoginDto" alias="LoginDto"/>
 		<typeAlias type = "com.dto.SemiDto" alias="SemiDto"></typeAlias>
+		<typeAlias type = "com.dto.PetDto" alias="PetDto"></typeAlias>
 	</typeAliases>
 
  <environments default="development">
@@ -29,6 +30,7 @@
 	<mappers>
     	<mapper resource="com/db/login-mapper.xml"/>
     	<mapper resource="com/db/board-mapper.xml"/>
+    	<mapper resource="com/db/pet-mapper.xml"/>
  	</mappers>
 
 </configuration>
