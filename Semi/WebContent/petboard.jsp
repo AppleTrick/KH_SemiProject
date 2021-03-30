@@ -22,10 +22,9 @@
 				<div class="container">
 					<div class="top-content">
 						<label for="check1">전체보기</label> 
-						<label for="check2">입양대기 동물보기</label> 
-						<label for="check3">입양후기 동물</label>
-						<input type="button" class="btn" value="글작성"  
-						onclick="location.href='pet.do?command=insertform'"/>
+						<label for="check2">입양대기</label> 
+						<label for="check3">입양후기</label>
+						<input type="button" class="btn" value="글작성" onclick="location.href='pet.do?command=insertform'"/>
 					</div>
 		
 					<div class="photo-gallery">

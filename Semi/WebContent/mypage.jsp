@@ -14,7 +14,7 @@
 <%
 		LoginDto dto =(LoginDto)session.getAttribute("dto"); //컨트롤러에서 dto 받아와서 형변환 
 		if(dto==null){
-			pageContext.forward("index.html");
+			pageContext.forward("index.jsp");
 		}
 %>
 
