@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="donatemapper">
+	<insert id="insert" parameterType="DonateDto">
+		INSERT INTO DONATE
+		VALUES(DONATESEQ.NEXTVAL, #{donate_name}, #{donate_phone}, #{donate_type}, #{donate_pay}, SYSDATE)
+	</insert>
+	<select id="selectOne" resultType="DonateDto">
+		SELECT DONATE_NO, DONATE_NAME, DONATE_PHONE, DONATE_TYPE, DONATE_PAY, DONATE_DATE
+		FROM DONATE
+		ORDER BY DONATE_NO DESC
+	</select>
+</mapper>

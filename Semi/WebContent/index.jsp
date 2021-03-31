@@ -25,9 +25,6 @@ LoginDto dto =(LoginDto)session.getAttribute("dto"); //컨트롤러에서 dto �
 System.out.println("session 담겼을까요?"+dto);
 
 %>
-	
-	
-	
 	<%@ include file="Form/header.jsp"%>
 	<!-- 바디부분 시작 -->
 	<div class="mt-4">

@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<jsp:forward page="board.do?command=list"></jsp:forward>
-
+	<jsp:forward page="pet.do?command=list"></jsp:forward>
 </body>
 </html>
