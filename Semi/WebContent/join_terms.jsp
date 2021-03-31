@@ -74,11 +74,11 @@
             <tr>
                 <th>주소</th>
                 
-                <td>
+                <td >
                  <div class="d-flex justify-content-end">
 					<button type="button" class="btn btn-info" onClick="goPopup();">주소검색</button>
 				</div>
-				<input type="text" name="mem_addr" id="address" class="form-control" placeholder="도로명 주소를 입력해 주세요" required readonly />
+				<input type="text" size=100 name="mem_addr" id="address" class="form-control" placeholder="도로명 주소를 입력해 주세요" required readonly />
                 
                 </td>
             </tr>

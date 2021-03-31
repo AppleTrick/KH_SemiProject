@@ -54,7 +54,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 <title>Insert title here</title>
 </head>
 <body>
-form name="form" id="form" method="post">
+<form name="form" id="form" method="post">
 
 	<input type="button" onClick="goPopup();" value="팝업_domainChk"/>
 	<div id="list"></div>

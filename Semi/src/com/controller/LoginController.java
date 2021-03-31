@@ -181,6 +181,7 @@ public class LoginController extends HttpServlet {
 			dto.setMem_email(mem_email);
 			
 			
+			
 			int res = biz.updateMember(dto);
 			
 			
