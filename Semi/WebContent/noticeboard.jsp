@@ -4,19 +4,17 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-  <style>
-  .btn{
-  background-color: #ff9999!important;}
-  .btn:hover, .btn:focus{
-  background-color: hotpink!important;}
-.btn:focus, .btn:active, .btn:hover, input:active, input:focus, nav:active, nav:focus, nav:hover{
-    box-shadow: none!important;
-    outline: none!important;
+<style>
+.btn:focus, .btn:active, .btn:hover, input:active, input:focus, nav:active,
+	nav:focus, nav:hover {
+	box-shadow: none !important;
+	outline: none !important;
 }
-#notice_list{
-	text-decoration: none!important;
+
+#notice_list a {
+	text-decoration: none;
 }
-  </style>
+</style>
 
 <!-- 부트스트랩 -->
     <!-- CSS only -->
@@ -81,7 +79,7 @@
 		
 		<tr>
     		<td style="text-align: center;"><%=dto.getArticle_no()%></td>
-    		<td class="text_underline"><a href="board.do?command=selectone&seq=<%=dto.getArticle_no() %>"><%= dto.getNotice_title()%></a></td>
+    		<td><a href="board.do?command=selectone&seq=<%=dto.getArticle_no() %>" style="text-decoration: none; color:black;"><%= dto.getNotice_title()%></a></td>
     		<td style="text-align: center;"><%= dto.getAdmin_writer()%></td>
     		<td style="text-align: center;"><%= dto.getNotice_regdate()%></td>
     		<td style="text-align: center;"><%= dto.getNotice_hit() %></td>
@@ -93,7 +91,7 @@
     </table>
     </div>
     <div style="text-align: right; margin-right: 10px; margin-bottom: 10px;">
-    <input type="button" class="btn" value="글작성" onclick="location.href='board.do?command=insertform'"/>
+    <input type="button" class="btn btn-primary" value="글작성" onclick="location.href='board.do?command=insertform'"/>
     </div>
     
        <!-- pagination-->
