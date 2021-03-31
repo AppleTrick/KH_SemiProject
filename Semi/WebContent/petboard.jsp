@@ -1,3 +1,5 @@
+<%@page import="com.dto.PetDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,6 +12,10 @@
 <body>
 
 	<%@ include file="Form/header.jsp"%>
+	
+	<%
+	List<PetDto> list = (List<PetDto>) request.getAttribute("list");
+	%>
 	<!-- 바디부분 시작 -->
 	<div class="mt-4">
 		<div class="container d-flex justify-content-center">
@@ -35,24 +41,35 @@
 							<img src="resources/TestImage/img01.jpg" />
 						</div>
 						-->
-						<div class="pic wait">
-							<img src="resources/TestImage/img01.jpg" />
-						</div>
-						<div class="pic wait">
-							<img src="resources/TestImage/img02.jpg" />
-						</div>
-						<div class="pic wait">
-							<img src="resources/TestImage/img03.jpg" />
-						</div>
+						
+<%
+	if(list == null || list.size() ==0){
+%>
+		<tr>
+			<td colspan="4">----글 없음-----</td>
+		</tr>
+<%
+	} else {
+		for (PetDto dto : list){
+%>
 						<div class="pic after">
+							<td> <%=dto.getPet_content()%></td>
+						</div>
+						<!-- 
+						<div class="pic wait">
 							<img src="resources/TestImage/img04.jpg" />
 						</div>
 						<div class="pic after">
 							<img src="resources/TestImage/img05.jpg" />
 						</div>
 						<div class="pic after">
-							<img src="resources/TestImage/img06.jpg" />
+							<img src="resources/TestImage/img06.jpg"/>
 						</div>
+						 -->
+						<%
+	}
+		}
+		%>
 					</div>
 				</div>
 

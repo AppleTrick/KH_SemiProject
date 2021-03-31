@@ -55,6 +55,21 @@ public class PetDao extends SqlMapConfig {
 		return res;
 	}
 	
+	public int insertWait(PetDto dto) {
+		
+		int res = 0;
+		
+		try {
+			SqlSession session = getSqlSessionFactory().openSession(true);
+			res = session.insert("petmapper.insertWait", dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
+	
 	public int update(PetDto dto) {
 		
 		int res=0;

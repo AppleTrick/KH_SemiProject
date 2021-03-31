@@ -33,10 +33,6 @@
 <body>
 	<!-- head 부분 -->
 	<%@ include file="Form/header.jsp" %>
-	
-    <a href = "petboard_insert.jsp">입양 후기 작성</a>
-    <a href = "petboard.jsp">작성 완료</a>
-    <a href = "petboard.jsp">목록으로</a>
 
 <jsp:useBean id="dto" class="com.dto.PetDto" scope="request"></jsp:useBean>
 

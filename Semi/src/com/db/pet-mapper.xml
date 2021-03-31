@@ -4,8 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="petmapper">
 
-	<select id = "selectList" resultType="PetDto">
-		SELECT ARTICLE_NO, MEM_WRITER, PET_TITLE, PET_CONTENT, PET_REGDATE, PET_HIT FROM PETBOARD
+	<select id = "selectList" parameterType="int" resultType="PetDto">
+		SELECT ARTICLE_NO, MEM_WRITER, PET_TITLE, PET_CONTENT, PET_REGDATE, PET_HIT 
+		FROM PETBOARD
+		WHERE BRD_NO = 2 OR BRD_NO = 3
 		ORDER BY ARTICLE_NO DESC
 	</select>
 	
@@ -24,8 +26,13 @@
 	</select>
 
 	<insert id = "insert" parameterType="petDto">
-		INSERT INTO PETBOARD(ARTICLE_NO, BRD_NO, MEM_WRITER, PET_TITLE, PET_CONTENT, PET_REGDATE, PET_HIT)
+		INSERT INTO PETBOARD
 		VALUES(PETBOARDSEQ.NEXTVAL, 2, '사용자', #{pet_title}, #{pet_content}, SYSDATE, 3)
+	</insert>
+	
+	<insert id = "insertWait" parameterType="petDto">
+		INSERT INTO PETBOARD
+		VALUES(PETBOARDSEQ.NEXTVAL, 3, '사용자', #{pet_title}, #{pet_content}, SYSDATE, 3)
 	</insert>
 	
 	<update id = "update" parameterType="petDto">
