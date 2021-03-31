@@ -96,7 +96,7 @@
                 <li class="list-inline-item align-middle ms-2">
                	  <a href="login.do?command=logout">
                		<div>
-               			<button>로그아웃</button>
+               			<button class="btn btn-primary" >로그아웃</button>
                		</div>
                	  </a>
                	</li>
@@ -106,7 +106,7 @@
                	<li class="list-inline-item align-middle ms-2">
                	  <a href="move.do?move=loginpage">
                		<div>
-               			<button>로그인</button>
+               			<button class="btn btn-danger">로그인</button>
                		</div>
                	  </a>
                	</li>

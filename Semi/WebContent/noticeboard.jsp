@@ -13,8 +13,8 @@
     box-shadow: none!important;
     outline: none!important;
 }
-#notice_list{
-	text-decoration: none!important;
+#notice_list a{
+	text-decoration: none;
 }
   </style>
 
@@ -81,7 +81,7 @@
 		
 		<tr>
     		<td style="text-align: center;"><%=dto.getArticle_no()%></td>
-    		<td class="text_underline"><a href="board.do?command=selectone&seq=<%=dto.getArticle_no() %>"><%= dto.getNotice_title()%></a></td>
+    		<td><a href="board.do?command=selectone&seq=<%=dto.getArticle_no() %>" style="text-decoration: none; color:black;"><%= dto.getNotice_title()%></a></td>
     		<td style="text-align: center;"><%= dto.getAdmin_writer()%></td>
     		<td style="text-align: center;"><%= dto.getNotice_regdate()%></td>
     		<td style="text-align: center;"><%= dto.getNotice_hit() %></td>
