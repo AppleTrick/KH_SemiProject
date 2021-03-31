@@ -15,6 +15,8 @@
 	
 	<%
 	List<PetDto> list = (List<PetDto>) request.getAttribute("list");
+	List<PetDto> list2 = (List<PetDto>) request.getAttribute("list2");
+	List<PetDto> list3 = (List<PetDto>) request.getAttribute("list3");
 	%>
 	<!-- 바디부분 시작 -->
 	<div class="mt-4">
@@ -43,22 +45,23 @@
 						-->
 						
 <%
-	if(list == null || list.size() ==0){
+	if(list2 == null || list2.size() ==0){
 %>
 		<tr>
 			<td colspan="4">----글 없음-----</td>
 		</tr>
 <%
 	} else {
-		for (PetDto dto : list){
+		for (PetDto dto : list3){
 %>
 						<div class="pic after">
 							<td> <%=dto.getPet_content()%></td>
 						</div>
-						<!-- 
+						<!--
 						<div class="pic wait">
-							<img src="resources/TestImage/img04.jpg" />
+							<td> <%=dto.getPet_title()%></td>
 						</div>
+						 
 						<div class="pic after">
 							<img src="resources/TestImage/img05.jpg" />
 						</div>
@@ -66,10 +69,8 @@
 							<img src="resources/TestImage/img06.jpg"/>
 						</div>
 						 -->
-						<%
-	}
-		}
-		%>
+<%}
+		} %>					
 					</div>
 				</div>
 

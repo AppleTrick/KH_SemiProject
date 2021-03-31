@@ -11,6 +11,21 @@
 		ORDER BY ARTICLE_NO DESC
 	</select>
 	
+	<select id = "select2" parameterType="int" resultType="PetDto">
+		SELECT ARTICLE_NO, MEM_WRITER, PET_TITLE, PET_CONTENT, PET_REGDATE, PET_HIT 
+		FROM PETBOARD
+		WHERE BRD_NO = 2
+		ORDER BY ARTICLE_NO DESC
+	</select>
+	
+	<select id = "select3" parameterType="int" resultType="PetDto">
+		SELECT ARTICLE_NO, MEM_WRITER, PET_TITLE, PET_CONTENT, PET_REGDATE, PET_HIT 
+		FROM PETBOARD
+		WHERE BRD_NO = 3
+		ORDER BY ARTICLE_NO DESC
+	</select>
+	
+	
 	<resultMap type="petDto" id="petMap">
 		<result property = "article_no" column = "ARTICLE_NO" />
 		<result property = "brd_no" column = "BRD_NO" />

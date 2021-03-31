@@ -12,6 +12,14 @@ public class PetBiz {
 		return dao.selectList();
 	}
 	
+	public List<PetDto> select2(){
+		return dao.selectList();
+	}
+	
+	public List<PetDto> select3(){
+		return dao.selectList();
+	}
+	
 	public PetDto selectOne(int seq) {
 		return dao.selectOne(seq);
 	}

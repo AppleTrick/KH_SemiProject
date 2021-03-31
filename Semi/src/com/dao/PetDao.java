@@ -27,6 +27,40 @@ public class PetDao extends SqlMapConfig {
 		return list;
 	}
 	
+	public List<PetDto> select2(){
+		SqlSession session = null;
+		List<PetDto> list = new ArrayList<PetDto>();
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			list = session.selectList("petmapper.select2");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+		
+		session.close();
+		}
+		
+		return list;
+	}
+	
+	public List<PetDto> select3(){
+		SqlSession session = null;
+		List<PetDto> list = new ArrayList<PetDto>();
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			list = session.selectList("petmapper.select3");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+		
+		session.close();
+		}
+		
+		return list;
+	}
+	
 	public PetDto selectOne(int seq) {
 		SqlSession session = null;
 		PetDto dto = new PetDto();

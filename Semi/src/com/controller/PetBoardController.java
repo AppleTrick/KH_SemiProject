@@ -34,6 +34,10 @@ public class PetBoardController extends HttpServlet {
 		if(command.equals("list")) {
 			List<PetDto> list = biz.selectList();
 			request.setAttribute("list", list);
+			List<PetDto> list2 = biz.select2();
+			request.setAttribute("list2", list2);
+			List<PetDto> list3 = biz.select3();
+			request.setAttribute("list3", list3);
 			dispatch(request, response, "petboard.jsp");
 			
 		}else if(command.equals("selectone")) {
