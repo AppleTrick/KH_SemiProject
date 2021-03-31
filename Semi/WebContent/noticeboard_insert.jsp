@@ -19,17 +19,16 @@
 .btn:hover, .btn:focus {
 	background-color: hotpink
 }
-
 .btn:focus, .btn:active, .btn:hover, input:active, input:focus {
 	box-shadow: none !important;
 	outline: none !important;
 }
-</style>
 
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-<link rel="stylesheet" href="resources/css/header.css">
-
+  </style>
+  
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="resources/css/header.css">  
+    
 
 <title>Notice Board Insert</title>
 </head>

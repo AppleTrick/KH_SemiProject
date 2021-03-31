@@ -5,7 +5,8 @@
 <mapper namespace="boardmapper">
 
 	<select id = "selectList" resultType="SemiDto">
-		SELECT ARTICLE_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT FROM NOTICEBOARD
+		SELECT ARTICLE_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT 
+		FROM NOTICEBOARD WHERE BRD_NO = '1'
 		ORDER BY ARTICLE_NO DESC
 	</select>
 	
@@ -25,7 +26,7 @@
 
 	<insert id = "insert" parameterType="semiDto">
 		INSERT INTO NOTICEBOARD(ARTICLE_NO, BRD_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT)
-		VALUES(NOTICEBOARDSEQ.NEXTVAL, 2, '관리자', #{notice_title}, #{notice_content}, SYSDATE, 3)
+		VALUES(NOTICEBOARDSEQ.NEXTVAL, 1, '관리자', #{notice_title}, #{notice_content}, SYSDATE, 3)
 	</insert>
 	
 	<update id = "update" parameterType="semiDto">

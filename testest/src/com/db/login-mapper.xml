@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="loginmapper">
+
+	<resultMap type="LoginDto" id="loginMap">
+	
+		<result property="mem_no" column="MEM_NO"/>
+		<result property="mem_id" column="MEM_ID"/>
+		<result property="mem_pw" column="MEM_PW"/>
+		<result property="mem_name" column="MEM_NAME"/>
+		<result property="mem_nickname" column="MEM_NICKNAME"/>
+		<result property="mem_phone" column="MEM_PHONE"/>
+		<result property="mem_addr" column="MEM_ADDR"/>
+		<result property="mem_email" column="MEM_EMAIL"/>
+		<result property="mem_enabled" column="MEM_ENABLED"/>
+		<result property="mem_role" column="MEM_ROLE"/>
+		<result property="mem_image" column="MEM_IMAGE"/>
+		
+	
+	
+	</resultMap>		
+
+
+
+
+
+ <select id="login" resultType="LoginDto">
+ SELECT MEM_NO, MEM_ID, MEM_PW, MEM_NAME, MEM_NICKNAME , 
+ MEM_PHONE, MEM_ADDR, MEM_EMAIL, MEM_ENABLED, MEM_ROLE,MEM_IMAGE
+ FROM LOGINBOARD 
+ WHERE MEM_ID = #{mem_id}
+ AND MEM_PW = #{mem_pw}
+ 
+ 
+ 
+ 
+ </select>
+ 
+  
+  <select id="idchk" resultType="int" parameterType="String">
+  SELECT COUNT(*)
+  FROM LOGINBOARD 
+  WHERE MEM_ID = #{mem_id}
+  
+  </select>
+  
+  
+  
+  <insert id="insertUser" parameterType="LoginDto">
+  	INSERT INTO LOGINBOARD(MEM_NO, MEM_ID, MEM_PW, MEM_NAME, MEM_NICKNAME, 
+ MEM_PHONE, MEM_ADDR, MEM_EMAIL, MEM_ENABLED, MEM_ROLE,MEM_IMAGE)
+  	VALUES(LOGINSEQ.NEXTVAL,#{mem_id},#{mem_pw},#{mem_name},#{mem_nickname},#{mem_phone},
+  	#{mem_addr},#{mem_email},'Y','USER',#{mem_image, jdbcType=VARCHAR})
+  
+  
+  </insert>
+  
+  <select id="selectUser" parameterType="int" resultMap="loginMap">
+  SELECT *
+  FROM LOGINBOARD 
+  WHERE MEM_NO = #{mem_no}
+  
+  
+  </select>
+  
+  <update id="updateMember" parameterType="LoginDto">
+  UPDATE LOGINBOARD
+  SET MEM_PW = #{mem_pw}, MEM_NAME = #{mem_name}, MEM_NICKNAME = #{mem_nickname}, 
+  MEM_PHONE = #{mem_phone}, MEM_ADDR = #{mem_addr}, MEM_EMAIL = #{mem_email}
+  WHERE MEM_NO = #{mem_no} 
+  
+  
+  </update>
+  
+  <update id="deleteUser" parameterType="int">
+  UPDATE LOGINBOARD
+  SET MEM_ENABLED='N'
+  WHERE MEM_NO= #{mem_no}
+  
+  </update>
+  
+  <select id="tokenchk" resultType="int" parameterType="String" >
+  SELECT COUNT(*)
+  FROM LOGINBOARD
+  WHERE MEM_EMAIL = #{mem_email}
+  
+  
+  </select>
+ 
+</mapper>

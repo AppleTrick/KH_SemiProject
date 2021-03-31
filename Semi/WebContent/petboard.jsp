@@ -1,3 +1,5 @@
+<%@page import="com.dto.PetDto"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +14,7 @@
 	
 
 	<%@ include file="Form/header.jsp"%>
+	
 	<!-- 바디부분 시작 -->
 	<div class="mt-4">
 		<div class="container d-flex justify-content-center">
@@ -29,6 +32,7 @@
 						<label for="check1">전체보기</label> 
 						<label for="check2">입양대기</label> 
 						<label for="check3">입양후기</label>
+						<input type="button" class="btn" value="글작성" onclick="location.href='pet.do?command=insertform'"/>
 					</div>
 					
 					
@@ -80,27 +84,6 @@
 						<div class="pic after">
 							<img src="resources/TestImage/cat3.jpg" data-original="cat3.jpg"/>
 						</div>
-						<div class="pic wait">
-							<img src="resources/TestImage/dog1.jpg" data-original="dog1.jpg"/>
-						</div>
-						<div class="pic wait">
-							<img src="resources/TestImage/dog2.jpg" data-original="dog2.jpg"/>
-						</div>
-						<div class="pic wait">
-							<img src="resources/TestImage/dog3.jpg" data-original="dog3.jpg"/>
-						</div>
-						<div class="pic after">
-							<img src="resources/TestImage/dog4.jpg" data-original="dog4.jpg"/>
-						</div>
-						<div class="pic after">
-							<img src="resources/TestImage/cat1.jpg" data-original="cat1.jpg"/>
-						</div>
-						<div class="pic after">
-							<img src="resources/TestImage/cat2.jpg" data-original="cat2.jpg"/>
-						</div>
-						<div class="pic after">
-							<img src="resources/TestImage/cat3.jpg" data-original="cat3.jpg"/>
-						</div>			
 					</div>
 				</div>
 			</div>
