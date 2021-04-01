@@ -48,13 +48,13 @@ public class NoticeBoardController extends HttpServlet {
 		}else if(command.equals("insertres")) {
 			//1. 보내준 값이 있으면 받기
 			String admin_writer = request.getParameter("admin_writer");
-			String notice_title = request.getParameter("notice_title");
-			String notice_content = request.getParameter("notice_content");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
 			//2. 1번 값을 담아서 리턴
 			SemiDto dto = new SemiDto();
 			dto.setAdmin_writer(admin_writer);
-			dto.setNotice_title(notice_title);
-			dto.setNotice_content(notice_content);
+			dto.setTitle(title);
+			dto.setContent(content);
 			
 			int res = biz.insert(dto);
 			
@@ -72,13 +72,13 @@ public class NoticeBoardController extends HttpServlet {
 		
 		}else if(command.equals("updateres")) {
 			int article_no = Integer.parseInt(request.getParameter("seq"));
-			String notice_title = request.getParameter("notice_title");
-			String notice_content = request.getParameter("notice_content");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
 			
 			SemiDto dto = new SemiDto();
 			dto.setArticle_no(article_no);
-			dto.setNotice_title(notice_title);
-			dto.setNotice_content(notice_content);
+			dto.setTitle(title);
+			dto.setContent(content);
 			
 			int res=biz.update(dto);
 			

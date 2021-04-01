@@ -52,13 +52,13 @@ public class PetBoardController extends HttpServlet {
 		}else if(command.equals("insertres")) {
 			//1. 보내준 값이 있으면 받기
 			String mem_writer = request.getParameter("mem_writer");
-			String pet_title = request.getParameter("pet_title");
-			String pet_content = request.getParameter("pet_content");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
 			//2. 1번 값을 담아서 리턴
 			PetDto dto = new PetDto();
 			dto.setMem_writer(mem_writer);
-			dto.setPet_title(pet_title);
-			dto.setPet_content(pet_content);
+			dto.setTitle(title);
+			dto.setContent(content);
 			
 			int res = biz.insert(dto);
 			
@@ -76,13 +76,13 @@ public class PetBoardController extends HttpServlet {
 		
 		}else if(command.equals("updateres")) {
 			int article_no = Integer.parseInt(request.getParameter("seq"));
-			String pet_title = request.getParameter("pet_title");
-			String pet_content = request.getParameter("pet_content");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
 			
 			PetDto dto = new PetDto();
 			dto.setArticle_no(article_no);
-			dto.setPet_title(pet_title);
-			dto.setPet_content(pet_content);
+			dto.setTitle(title);
+			dto.setContent(content);
 			
 			int res=biz.update(dto);
 			

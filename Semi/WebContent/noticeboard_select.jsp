@@ -46,7 +46,7 @@
 	SemiDto dto = dao.selectOne(seq);
 
 %>
-	<table class="table" id="notice_select">
+	<table class="table" id="select">
 	<col width="90px" />
     	<col width="700px"/>
     	<col width="120px"/>
@@ -57,11 +57,11 @@
 	</tr>
 	<tr>
 		<th style="text-align: center">제목</th>
-		<td><%=dto.getNotice_title() %></td>
+		<td><%=dto.getTitle() %></td>
 	</tr>
 	<tr>
 		<th style="text-align: center; height:350px;">내용</th>
-		<td><div><%=dto.getNotice_content() %></div></td>
+		<td><div><%=dto.getContent() %></div></td>
 
 	</table>
 	

@@ -7,24 +7,13 @@ public class SemiDto {
 	private int brd_no;
 	private int article_no;
 	private String admin_writer;
-	private String notice_title;
-	private String notice_content;
-	private Date notice_regdate;
-	private int notice_hit;
+	private String title;
+	private String content;
+	private Date regdate;
+	private int hit;
 	
 	public SemiDto() {
 		
-	}
-
-	public SemiDto(int brd_no, int article_no, String admin_writer, String notice_title, String notice_content,
-			Date notice_regdate, int notice_hit) {
-		this.brd_no = brd_no;
-		this.article_no = article_no;
-		this.admin_writer = admin_writer;
-		this.notice_title = notice_title;
-		this.notice_content = notice_content;
-		this.notice_regdate = notice_regdate;
-		this.notice_hit = notice_hit;
 	}
 
 	public int getBrd_no() {
@@ -51,38 +40,37 @@ public class SemiDto {
 		this.admin_writer = admin_writer;
 	}
 
-	public String getNotice_title() {
-		return notice_title;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setNotice_title(String notice_title) {
-		this.notice_title = notice_title;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getNotice_content() {
-		return notice_content;
+	public String getContent() {
+		return content;
 	}
 
-	public void setNotice_content(String notice_content) {
-		this.notice_content = notice_content;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	public Date getNotice_regdate() {
-		return notice_regdate;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setNotice_regdate(Date notice_regdate) {
-		this.notice_regdate = notice_regdate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
-	public int getNotice_hit() {
-		return notice_hit;
+	public int getHit() {
+		return hit;
 	}
 
-	public void setNotice_hit(int notice_hit) {
-		this.notice_hit = notice_hit;
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
-	
-	
+
 
 }
