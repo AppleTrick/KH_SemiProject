@@ -11,6 +11,13 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 
+
+
+
+
+
+
+
     function idCheckProc() {
         var chk = document.getElementsByName ("mem_id")[0].title;
         if(chk == 'n'){
@@ -22,12 +29,15 @@
     
          function idCheck(){
              var mem_id = document.getElementsByName("mem_id")[0].value; 
+             var popupX = (window.screen.width/2)-(200/2);
+             var popupY = (window.screen.height/2)-(300/2);
              
              if(mem_id==null|| mem_id.trim() == ""){
                  alert("id를 입력해 주세요 !");
                  
              }else {
-                 open("login.do?command=idchk&mem_id="+mem_id,"","width=200, height=200");
+            	 location.href="login.do?command=idchk&mem_id="+mem_id;
+                 open("login.do?command=idchk&mem_id="+mem_id,"","statusbar=no,width=300, height=200, left="+popupX+",top="+popupY);
                  
              }
              
@@ -74,11 +84,11 @@
             <tr>
                 <th>주소</th>
                 
-                <td>
+                <td >
                  <div class="d-flex justify-content-end">
 					<button type="button" class="btn btn-info" onClick="goPopup();">주소검색</button>
 				</div>
-				<input type="text" name="mem_addr" id="address" class="form-control" placeholder="도로명 주소를 입력해 주세요" required readonly />
+				<input type="text" size=100 name="mem_addr" id="address" class="form-control" placeholder="도로명 주소를 입력해 주세요" required readonly />
                 
                 </td>
             </tr>

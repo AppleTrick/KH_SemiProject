@@ -1,6 +1,8 @@
 <%@page import="com.dto.LoginDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +24,8 @@
   <body>
   <%
   	LoginDto dto1 = (LoginDto)session.getAttribute("dto");
-  	System.out.println("session 담겼을을까요?" + dto1);	
+  	
+  	
   %>
     <div>
       <!-- 네비게이션바 -->
@@ -82,17 +85,41 @@
                   </a>
                 </li>
                <!-- 회원 정보 -->
-               <%
-               		if( dto1 != null ){
-               %>
-                <li class="list-inline-item align-middle ms-2">
-                  <a href="#">
-                    <div class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center topbar-profile-photo" >
-                      <img src="resources/img/profile.jpg" alt="" style="transform: scale(1.5); width: 100%; position: absolute; left: 0;">
-                    </div>
-                  </a>
-                </li>
+               		<%
+					    if( dto1 != null ){
+					    	if(dto1.getMem_image() == null){
+					    	
+							%>		    		
+					    		<li class="list-inline-item align-middle ms-2">
+					            <a href="mypage.jsp">
+					                <div class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center topbar-profile-photo" >
+					                    <img src="resources/img/profile.jpg" alt="" style="transform: scale(1.5); width: 100%; position: absolute; left: 0;">
+					                </div>
+					            </a>
+					        </li>
+					    		
+					<%
+					    	}else{
+					%>
+					
+						<li class="list-inline-item align-middle ms-2">
+					            <a href="mypage.jsp">
+					                <div class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center topbar-profile-photo" >
+					                    <img src="./upload/<%=dto1.getMem_image() %>" alt="" style="transform: scale(1.5); width: 100%; position: absolute; left: 0;">
+					                </div>
+					            </a>
+					        </li>
+					        
+				<%
+					    	}			
+				%>
+					
+					
+					
+					
                 <!--로그아웃-->
+                	
+                
                 <li class="list-inline-item align-middle ms-2">
                	  <a href="login.do?command=logout">
                		<div>

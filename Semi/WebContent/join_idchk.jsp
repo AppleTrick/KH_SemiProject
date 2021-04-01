@@ -1,3 +1,4 @@
+<%@page import="com.dto.LoginDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -39,15 +40,14 @@
 
  
 <%
+
 String idnotused = request.getParameter("idnotused");
 
 %>   
 
 
 	<table border="1">
-		<tr>
-			<td><input type="text" name="id" readonly="readonly"></td>
-		</tr>
+		
 		<tr>
 			<td><%=idnotused.equals("true")?"id생성 가능" : "id가 이미 존재합니다" %></td>
 		</tr>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="filemapper">
+
+
+
+<update id="upload" parameterType="LoginDto">
+
+UPDATE LOGINBOARD
+SET MEM_IMAGE=#{mem_image}
+WHERE MEM_ID = #{mem_id}
+
+
+</update>
+
+</mapper>

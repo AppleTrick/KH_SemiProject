@@ -32,8 +32,12 @@
 	<mappers>
     	<mapper resource="com/db/login-mapper.xml"/>
     	<mapper resource="com/db/board-mapper.xml"/>
+
+    	<mapper resource="com/db/file-mapper.xml"/>
+
     	<mapper resource="com/db/pet-mapper.xml"/>
    	<mapper resource="com/db/donate-mapper.xml"/>
+
  	</mappers>
 
 </configuration>
