@@ -50,7 +50,7 @@
 
 %>    
     <h2 style="margin-bottom: 20px; margin-top: 20px; text-align: center">공지사항</h2>
-    <table class="table table-hover" id="notice_list">
+    <table class="table table-hover" id="list">
     	<col width="70px"/>
     	<col width="500px"/>
     	<col width="120px"/>
@@ -79,10 +79,10 @@
 		
 		<tr>
     		<td style="text-align: center;"><%=dto.getArticle_no()%></td>
-    		<td><a href="board.do?command=selectone&seq=<%=dto.getArticle_no() %>" style="text-decoration: none; color:black;"><%= dto.getNotice_title()%></a></td>
+    		<td><a href="board.do?command=selectone&seq=<%=dto.getArticle_no() %>" style="text-decoration: none; color:black;"><%= dto.getTitle()%></a></td>
     		<td style="text-align: center;"><%= dto.getAdmin_writer()%></td>
-    		<td style="text-align: center;"><%= dto.getNotice_regdate()%></td>
-    		<td style="text-align: center;"><%= dto.getNotice_hit() %></td>
+    		<td style="text-align: center;"><%= dto.getRegdate()%></td>
+    		<td style="text-align: center;"><%= dto.getHit() %></td>
     	</tr>
 <%
 		}

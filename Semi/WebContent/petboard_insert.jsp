@@ -53,11 +53,11 @@
 						<h5 style="margin-bottom: 20px; text-align: center">글 작성</h5>
 						<tr>						
 							<th class="text-center">제목</th>
-							<td><input type="text" class="form-control" id="title" name="pet_title" placeholder="제목을 입력해 주세요." value=""></td>
+							<td><input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해 주세요." value=""></td>
 						</tr>
 						<tr>
 							<th class="text-center">내용</th>
-								<td><textarea id="summernote" name="pet_content"></textarea>
+								<td><textarea id="summernote" name="content"></textarea>
 							</td>
 						</tr>
 					</table>			      

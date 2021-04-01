@@ -7,10 +7,10 @@ public class PetDto {
 	private int brd_no;
 	private int article_no;
 	private String mem_writer;
-	private String pet_title;
-	private String pet_content;
-	private Date pet_regdate;
-	private int pet_hit;
+	private String title;
+	private String content;
+	private Date regdate;
+	private int hit;
 	
 	public PetDto() {
 	}
@@ -39,36 +39,36 @@ public class PetDto {
 		this.mem_writer = mem_writer;
 	}
 
-	public String getPet_title() {
-		return pet_title;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setPet_title(String pet_title) {
-		this.pet_title = pet_title;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getPet_content() {
-		return pet_content;
+	public String getContent() {
+		return content;
 	}
 
-	public void setPet_content(String pet_content) {
-		this.pet_content = pet_content;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	public Date getPet_regdate() {
-		return pet_regdate;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setPet_regdate(Date pet_regdate) {
-		this.pet_regdate = pet_regdate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
-	public int getPet_hit() {
-		return pet_hit;
+	public int getHit() {
+		return hit;
 	}
 
-	public void setPet_hit(int pet_hit) {
-		this.pet_hit = pet_hit;
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
 	
 }
