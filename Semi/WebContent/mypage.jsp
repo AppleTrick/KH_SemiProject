@@ -29,6 +29,7 @@
 
 	<a href="login.do?command=updatform&mem_no=<%=dto.getMem_no()%>">개인정보 수정</a><br>
 	<a href="login.do?command=deleteuser&mem_no=<%=dto.getMem_no()%>">회원탈퇴</a><br>
+	<a href="index.jsp">메인화면으로</a>
 
 </body>
 </html>

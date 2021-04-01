@@ -11,6 +11,13 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 
+
+
+
+
+
+
+
     function idCheckProc() {
         var chk = document.getElementsByName ("mem_id")[0].title;
         if(chk == 'n'){
@@ -22,12 +29,15 @@
     
          function idCheck(){
              var mem_id = document.getElementsByName("mem_id")[0].value; 
+             var popupX = (window.screen.width/2)-(200/2);
+             var popupY = (window.screen.height/2)-(300/2);
              
              if(mem_id==null|| mem_id.trim() == ""){
                  alert("id를 입력해 주세요 !");
                  
              }else {
-                 open("login.do?command=idchk&mem_id="+mem_id,"","width=200, height=200");
+            	 location.href="login.do?command=idchk&mem_id="+mem_id;
+                 open("login.do?command=idchk&mem_id="+mem_id,"","statusbar=no,width=300, height=200, left="+popupX+",top="+popupY);
                  
              }
              

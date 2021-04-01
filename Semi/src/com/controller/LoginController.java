@@ -115,8 +115,7 @@ public class LoginController extends HttpServlet {
 			if(result>0){
 				idnotused = false;
 			}
-			System.out.println(idnotused);
-			
+		
 			response.sendRedirect("join_idchk.jsp?idnotused="+idnotused);
 			//dispatch(request, response, "login_idchk.jsp?idnotused="+idnotused);
 
