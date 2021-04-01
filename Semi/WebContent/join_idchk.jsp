@@ -12,18 +12,18 @@
     <script type="text/javascript">
 
         onload=function(){
-            var mem_id = opener.document.getElementsByName("mem_id")[0].value;
-            document.getElementsByName("id")[0].value=mem_id;
+            var mem_id = opener.document.getElementsByName("mem_id")[1].value;
+            document.getElementsByName("id")[1].value=mem_id;
             
         }
         
         function confirmId(bool){
             if(bool == "true"){
-                opener.document.getElementsByName("mem_id")[0].title = "y";
-                opener.document.getElementsByName("mem_pw")[0].focus(); 
+                opener.document.getElementsByName("mem_id")[1].title = "y";
+                opener.document.getElementsByName("mem_pw")[1].focus(); 
                 
             }else{
-                opener.document.getElementsByName("mem_id")[0].focus();
+                opener.document.getElementsByName("mem_id")[1].focus();
             }
             
             self.close();

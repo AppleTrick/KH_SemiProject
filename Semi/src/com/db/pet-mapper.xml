@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="petmapper">
+
+	<select id = "selectList" parameterType="int" resultType="PetDto">
+		SELECT ARTICLE_NO, MEM_WRITER, TITLE, CONTENT, REGDATE, HIT 
+		FROM ALL_BOARD
+		WHERE BRD_NO = 2 OR BRD_NO = 3
+		ORDER BY ARTICLE_NO DESC
+	</select>
+	
+	<select id = "select2" parameterType="int" resultType="PetDto">
+		SELECT ARTICLE_NO, MEM_WRITER, TITLE, CONTENT, REGDATE, HIT
+		FROM ALL_BOARD
+		WHERE BRD_NO = 2
+		ORDER BY ARTICLE_NO DESC
+	</select>
+	
+	<select id = "select3" parameterType="int" resultType="PetDto">
+		SELECT ARTICLE_NO, MEM_WRITER, TITLE, CONTENT, REGDATE, HIT
+		FROM ALL_BOARD
+		WHERE BRD_NO = 3
+		ORDER BY ARTICLE_NO DESC
+	</select>
+	
+	
+	<resultMap type="petDto" id="petMap">
+		<result property = "article_no" column = "ARTICLE_NO" />
+		<result property = "brd_no" column = "BRD_NO" />
+		<result property = "admin_writer" column = "ADMIN_WRITER"/>
+		<result property = "mem_writer" column = "MEM_WRITER"/>
+		<result property = "title" column = "TITLE"/>
+		<result property = "content" column = "CONTENT" />
+		<result property = "regdate" column = "REGDATE" />
+		<result property = "hit" column = "HIT" />
+	</resultMap>
+	
+	<select id = "selectOne" parameterType="int" resultMap="petMap">
+		SELECT ARTICLE_NO, MEM_WRITER, TITLE, CONTENT, REGDATE, HIT FROM ALL_BOARD WHERE ARTICLE_NO = #{article_no}
+	</select>
+
+	<insert id = "insert" parameterType="petDto">
+		INSERT INTO ALL_BOARD
+		VALUES(ALL_BOARDSEQ.NEXTVAL, 2, '관리자', '사용자', #{title}, #{content}, SYSDATE, 3)
+	</insert>
+	
+	<insert id = "insertWait" parameterType="petDto">
+		INSERT INTO ALL_BOARD
+		VALUES(ALL_BOARDSEQ.NEXTVAL, 3, '관리자', '사용자', #{title}, #{content}, SYSDATE, 3)
+	</insert>
+	
+	<update id = "update" parameterType="petDto">
+		UPDATE ALL_BOARD SET PET_TITLE = #{pet_title}, PET_CONTENT = #{pet_content} WHERE ARTICLE_NO= #{article_no}
+	</update>
+	
+	<delete id="delete" parameterType="petDto">
+		DELETE FROM ALL_BOARD WHERE ARTICLE_NO = #{article_no}
+	</delete>
+
+</mapper>

@@ -21,13 +21,16 @@
 	<div class="mt-4">
 		<div class="container d-flex justify-content-center">
 			<div class="col-9">
-				<div id="map" style="width: 100%; height: 50vh"></div>
-
+				<div class="mb-4">
+					<div id="map" style="width: 100%; height: 50vh">
+					</div>
+				</div>
 				<p>
-					<button onclick="hideMarkers()">병원 마커 감추기</button>
-					<button onclick="showMarkers()">병원 보이기</button>
-					<button onclick="hideMarkers1()">보호소 마커 감추기</button>
-					<button onclick="showMarkers1()">보호소 보이기</button>
+					<button class="btn btn-primary" onclick="showMarkers()">병원 보이기</button>
+					<button class="btn btn-primary" onclick="showMarkers1()">보호소 보이기</button>
+					<button class="btn btn-primary" onclick="hideMarkers()">병원 마커 감추기</button>
+					<button class="btn btn-primary" onclick="hideMarkers1()">보호소 마커 감추기</button>
+					
 				</p>
 				<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=dc1a9444cf387fa306e61aaf8a1eb0b9"></script>
 				<script src="resources/js/map.js"></script>

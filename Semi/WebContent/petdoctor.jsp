@@ -31,11 +31,11 @@
 					</div>
 				</div>
 
-				<table class="table table-striped">
+				<table class="table">
 					<tr class="bg-info">
-						<th class="bg-info" data-colname="name" data-order="desc">축종</th>
-						<th data-colname="disease" data-order="desc">질병명</th>
-						<th data-colname="Main_symptoms" data-order="desc">주요증상</th>
+						<th data-colname="name" data-order="desc" width="10%">축종</th>
+						<th data-colname="disease" data-order="desc" width="25%">질병명</th>
+						<th data-colname="Main_symptoms" data-order="desc" width="65%">주요증상</th>
 					</tr>
 
 					<tbody id="myTable"></tbody>

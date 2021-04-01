@@ -109,14 +109,14 @@
 						<h5 style="margin-bottom: 20px; text-align: center">공지 수정</h5>
 						<tr>						
 							<th class="text-center">제목</th>
-							<td><input type="text" class="form-control" id="title" name="notice_title" 
-							value="<%=dto.getNotice_title()%>"></td>
+							<td><input type="text" class="form-control" id="title" name="title" 
+							value="<%=dto.getTitle()%>"></td>
 						</tr>
 						<tr>
 							<th class="text-center">내용</th>
 							<td>
-								<textarea id="summernote" name="notice_content">
-								<%=dto.getNotice_content() %>
+								<textarea id="summernote" name="content">
+								<%=dto.getContent() %>
 								</textarea>
 							</td>
 						</tr>

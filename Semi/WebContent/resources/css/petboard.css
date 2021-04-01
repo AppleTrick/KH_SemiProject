@@ -3,25 +3,26 @@
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  /* border : 1px solid black; */
 }
 input {
   display: none;
 }
 
-.container {
+.contentBox {
   width: 100%;
   text-align: center;
 }
 
 .top-content {
   background-color: rgb(243, 243, 243);
-  width: 90%;
-  margin: 0 auto 20px auto;
+  width: 100%;
+  margin: 0 0 20px 0;
   height: 60px;
   display: flex;
   align-items: center;
-  border-radius: 5px;
-  box-shadow: 3px 3px 5px lightgray;
+  /* border-radius: 5px; */
+  /* box-shadow: 3px 3px 5px lightgray; */
 }
 label {
   display: inline-block;
@@ -36,13 +37,16 @@ label {
 label:hover {
   color: black;
 }
+
 .photo-gallery {
-  width: 90%;
+  width: 100%;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
 }
+
+/* 이미지 담아주는 div의 형태 구현 */
 .pic {
   position: relative;
   height: 230px;
@@ -50,6 +54,8 @@ label:hover {
   cursor: pointer;
   transition: 0.5s;
 }
+
+/* 이미지 크기 선택 */
 .pic img {
   width: 100%;
   height: 100%;
@@ -57,7 +63,11 @@ label:hover {
   transition: 0.5s;
   /* border-radius: 10px; */
 }
-.pic::before {
+
+
+
+/* 사진에 내용을 담아주는 부분 */
+/* .pic::before {
   content: "Photo Gallery";
   position: absolute;
   top: 50%;
@@ -73,6 +83,7 @@ label:hover {
   transition-delay: 0.2s;
   z-index: 1;
 }
+
 .pic:after {
   content: "";
   position: absolute;
@@ -84,6 +95,7 @@ label:hover {
   background-color: rgba(0, 0, 0, 0.4);
   transition: 0.3s;
 }
+
 .pic:hover::after {
   height: 100%;
 }
@@ -91,36 +103,70 @@ label:hover {
 .pic:hover::before {
   margin-top: 0;
   opacity: 1;
-}
+} */
 
-#check1:checked ~ .container .photo-gallery .pic {
+/* 사진에 내용을 담아주는 부분 끝 */
+
+#check1:checked ~ .contentBox .photo-gallery .pic {
   opacity: 1;
   transform: scale(1);
   position: relative;
   transition: 0.5s;
 }
-#check2:checked ~ .container .photo-gallery .wait {
+#check2:checked ~ .contentBox .photo-gallery .wait {
   opacity: 1;
   transform: scale(1);
   position: relative;
 }
 
-#check2:checked ~ .container .photo-gallery .after {
+#check2:checked ~ .contentBox .photo-gallery .after {
   opacity: 0;
   transform: scale(0);
   position: absolute;
   transition: 0s;
 }
 
-#check3:checked ~ .container .photo-gallery .after {
+#check3:checked ~ .contentBox .photo-gallery .after {
   opacity: 1;
   transform: scale(1);
   position: relative;
 }
 
-#check3:checked ~ .container .photo-gallery .wait {
+#check3:checked ~ .contentBox .photo-gallery .wait {
   opacity: 0;
   transform: scale(0);
   position: absolute;
   transition: 0s;
+}
+
+/* 검은창 띄우는 부분 */
+
+.modal1 {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s ease-out;
+}
+
+.modal1.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.full-img{
+    position: absolute;    
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.5);
+    transition: all 0.25s ease-out;
+}
+
+.full-img.open{
+    transform: translate(-50%,-50%) scale(1);
 }

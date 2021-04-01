@@ -1,12 +1,10 @@
-<%@page import="com.dto.SemiDto"%>
-<%@page import="com.dao.SemiDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Notice Board Insert</title>
+<title>Pet Board Review Insert</title>
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

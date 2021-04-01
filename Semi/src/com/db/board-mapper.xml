@@ -5,7 +5,8 @@
 <mapper namespace="boardmapper">
 
 	<select id = "selectList" resultType="SemiDto">
-		SELECT ARTICLE_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT FROM NOTICEBOARD
+		SELECT ARTICLE_NO, ADMIN_WRITER, MEM_WRITER, TITLE, CONTENT, REGDATE, HIT 
+		FROM ALL_BOARD WHERE BRD_NO = '1'
 		ORDER BY ARTICLE_NO DESC
 	</select>
 	
@@ -13,27 +14,28 @@
 		<result property = "article_no" column = "ARTICLE_NO" />
 		<result property = "brd_no" column = "BRD_NO" />
 		<result property = "admin_writer" column = "ADMIN_WRITER"/>
-		<result property = "notice_title" column = "NOTICE_TITLE"/>
-		<result property = "notice_content" column = "NOTICE_CONTENT" />
-		<result property = "notice_regdate" column = "NOTICE_REGDATE" />
-		<result property = "notice_hit" column = "NOTICE_HIT" />
+		<result property = "mem_writer" column = "MEM_WRITER"/>
+		<result property = "title" column = "TITLE"/>
+		<result property = "content" column = "CONTENT" />
+		<result property = "regdate" column = "REGDATE" />
+		<result property = "hit" column = "HIT" />
 	</resultMap>
 	
 	<select id = "selectOne" parameterType="int" resultMap="semiMap">
-		SELECT ARTICLE_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT FROM NOTICEBOARD WHERE ARTICLE_NO = #{article_no}
+		SELECT ARTICLE_NO, ADMIN_WRITER, TITLE, CONTENT, REGDATE, HIT FROM ALL_BOARD WHERE ARTICLE_NO = #{article_no}
 	</select>
 
 	<insert id = "insert" parameterType="semiDto">
-		INSERT INTO NOTICEBOARD(ARTICLE_NO, BRD_NO, ADMIN_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT)
-		VALUES(NOTICEBOARDSEQ.NEXTVAL, 2, '관리자', #{notice_title}, #{notice_content}, SYSDATE, 3)
+		INSERT INTO ALL_BOARD
+		VALUES(ALL_BOARDSEQ.NEXTVAL, 1, '관리자', '사용자', #{title}, #{content}, SYSDATE, 3)
 	</insert>
 	
 	<update id = "update" parameterType="semiDto">
-		UPDATE NOTICEBOARD SET NOTICE_TITLE = #{notice_title}, NOTICE_CONTENT = #{notice_content} WHERE ARTICLE_NO= #{article_no}
+		UPDATE ALL_BOARD SET TITLE = #{title}, CONTENT = #{content} WHERE ARTICLE_NO= #{article_no}
 	</update>
 	
 	<delete id="delete" parameterType="semiDto">
-		DELETE FROM NOTICEBOARD WHERE ARTICLE_NO = #{article_no}
+		DELETE FROM ALL_BOARD WHERE ARTICLE_NO = #{article_no}
 	</delete>
 
 </mapper>

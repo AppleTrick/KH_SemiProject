@@ -2,18 +2,17 @@ package com.dto;
 
 import java.sql.Date;
 
-public class SemiDto {
+public class PetDto {
 	
 	private int brd_no;
 	private int article_no;
-	private String admin_writer;
+	private String mem_writer;
 	private String title;
 	private String content;
 	private Date regdate;
 	private int hit;
 	
-	public SemiDto() {
-		
+	public PetDto() {
 	}
 
 	public int getBrd_no() {
@@ -32,12 +31,12 @@ public class SemiDto {
 		this.article_no = article_no;
 	}
 
-	public String getAdmin_writer() {
-		return admin_writer;
+	public String getMem_writer() {
+		return mem_writer;
 	}
 
-	public void setAdmin_writer(String admin_writer) {
-		this.admin_writer = admin_writer;
+	public void setMem_writer(String mem_writer) {
+		this.mem_writer = mem_writer;
 	}
 
 	public String getTitle() {
@@ -71,6 +70,5 @@ public class SemiDto {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-
-
+	
 }
