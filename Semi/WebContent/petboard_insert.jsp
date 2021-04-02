@@ -34,7 +34,7 @@
 	<!-- head 부분 -->
 	<%@ include file="Form/header.jsp" %>
 
-<jsp:useBean id="dto" class="com.dto.PetDto" scope="request"></jsp:useBean>
+<jsp:useBean id="dto" class="com.dto.BoardDto" scope="request"></jsp:useBean>
 
  <form action="pet.do" method="post">
  <input type="hidden" name="command" value="insertres"/>
@@ -51,6 +51,8 @@
 						<col style="width:*" />						
 						</colgroup>
 						<h5 style="margin-bottom: 20px; text-align: center">글 작성</h5>
+						
+						
 						<tr>
 							<th>작성자</th>
 							<td><input value="<%=dto.getMem_name()%>"></td>
