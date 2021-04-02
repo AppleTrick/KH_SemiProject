@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import com.biz.BoardBiz;
 import com.dto.BoardDto;
 import com.dto.SemiDto;
@@ -88,21 +90,25 @@ public class NoticeBoardController extends HttpServlet {
 			int res=biz.update(dto);
 			
 			if(res>0) {
-				response.sendRedirect("board.do?command=selectone&seq="+article_no);
+				response.sendRedirect("notice.do?command=selectone&article_no="+article_no);
 			}else {
-				response.sendRedirect("board.do?command=updateform.do&seq="+article_no);
+				response.sendRedirect("notice.do?command=updateform.do&article_no="+article_no);
 			}
 			
 		}else if(command.equals("delete")) {
-			int seq = Integer.parseInt(request.getParameter("seq"));
-			int res = biz.delete(seq);
+			int article_no = Integer.parseInt(request.getParameter("article_no"));
+			int res = biz.delete(article_no);
 			if(res>0) {
-				response.sendRedirect("board.do?command=list");
+				response.sendRedirect("notice.do?command=list");
 			}else {
-				response.sendRedirect("board.do?command=selectone&seq"+seq);
+				response.sendRedirect("notice.do?command=selectone&article_no"+article_no);
 			}
 		}
 	}
+	
+
+	
+	
 
 	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);

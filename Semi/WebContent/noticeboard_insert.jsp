@@ -5,6 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- include libraries(jQuery, bootstrap) -->
+	<!--  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resouces/bootstrap/js/bootstrap.js"></script>-->
 <meta charset="UTF-8">
 <title>Notice Board Insert</title>
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
@@ -95,11 +100,7 @@ LoginDto logindto = (LoginDto) session.getAttribute("dto"); //컨트롤러에서
 	</div>
 
 
-	<!-- include libraries(jQuery, bootstrap) -->
-	<!--  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="resouces/bootstrap/js/bootstrap.js"></script>-->
+	
 
 	<!-- include summernote css/js -->
 	<link
@@ -126,56 +127,114 @@ LoginDto logindto = (LoginDto) session.getAttribute("dto"); //컨트롤러에서
 		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 
+	
 
-	<!-- 
-<form method="post">
-  <textarea id="summernote" name="editordata"></textarea>
-</form>
- -->
+ <script>
+     $('#summernote').summernote(
+                {
+                    height : 700, // 에디터 높이
+                    minHeight : 500, // 최소 높이
+                    maxHeight : 700, // 최대 높이
+                    focus : true, // 에디터 로딩후 포커스를 맞출지 여부
+                    lang : "ko-KR", // 한글 설정
+                    placeholder : '글 내용을 입력해 주세요.', //placeholder 설정
+                    /* callbacks : { //여기 부분이 이미지를 첨부하는 부분
+                        onImageUpload : function(files) {
+                            uploadSummernoteImageFile(files[0], this);
+                        },
+                        onPaste : function(e) {
+                            var clipboardData = e.originalEvent.clipboardData;
+                            if (clipboardData && clipboardData.items
+                                    && clipboardData.items.length) {
+                                var item = clipboardData.items[0];
+                                if (item.kind === 'file'
+                                        && item.type.indexOf('image/') !== -1) {
+                                    e.preventDefault();
+                                }
+                            }
+                        }
+                    } */
+                });
 
-	<script>
-		$('#summernote').summernote(
-				{
-					height : 700, // 에디터 높이
-					minHeight : 500, // 최소 높이
-					maxHeight : 700, // 최대 높이
-					focus : true, // 에디터 로딩후 포커스를 맞출지 여부
-					lang : "ko-KR", // 한글 설정
-					placeholder : '글 내용을 입력해 주세요.', //placeholder 설정
-					callbacks : { //여기 부분이 이미지를 첨부하는 부분
-						onImageUpload : function(files) {
-							uploadSummernoteImageFile(files[0], this);
-						},
-						onPaste : function(e) {
-							var clipboardData = e.originalEvent.clipboardData;
-							if (clipboardData && clipboardData.items
-									&& clipboardData.items.length) {
-								var item = clipboardData.items[0];
-								if (item.kind === 'file'
-										&& item.type.indexOf('image/') !== -1) {
-									e.preventDefault();
-								}
-							}
-						}
-					}
-				});
+       
+        function uploadSummernoteImageFile(file, editor) {
+            data = new FormData();
+            data.append("file", file);
+            $.ajax({
+                data : data,
+                type : "POST",
+                url : "/uploadSummernoteImageFile",
+                contentType : false,
+                processData : false,
+                success : function(data) {
+                    //항상 업로드된 파일의 url이 있어야 한다.
+                    $(editor).summernote('insertImage', data.url);
+                }
+            });
+        }
+        
+        
+        
+        
+        
+        
 
-		//이미지 파일 업로드
-		function uploadSummernoteImageFile(file, editor) {
-			data = new FormData();
-			data.append("file", file);
-			$.ajax({
-				data : data,
-				type : "POST",
-				url : "/uploadSummernoteImageFile",
-				contentType : false,
-				processData : false,
-				success : function(data) {
-					//항상 업로드된 파일의 url이 있어야 한다.
-					$(editor).summernote('insertImage', data.url);
-				}
-			});
-		}
+       /*  
+        		//에디터에 이미지 출력하는 부분 
+        		$('#summernote').summernote(
+        				{
+        					height : 700, // 에디터 높이
+        					minHeight : 500, // 최소 높이
+        					maxHeight : 700, // 최대 높이
+        					focus : true, // 에디터 로딩후 포커스를 맞출지 여부
+        					lang : "ko-KR", // 한글 설정
+        					placeholder : '글 내용을 입력해 주세요.', //placeholder 설정
+        					callbacks : { //여기 부분이 이미지를 첨부하는 부분
+        						onImageUpload : function(files) {
+
+        						
+        							uploadSummernoteImageFile(files[0],this)
+        						
+        						},
+        						onPaste : function(e) {
+        							var clipboardData = e.originalEvent.clipboardData;
+        							if (clipboardData && clipboardData.items
+        									&& clipboardData.items.length) {
+        								var item = clipboardData.items[0];
+        								if (item.kind === 'file'
+        										&& item.type.indexOf('image/') !== -1) {
+        									e.preventDefault();
+        								}
+        							}
+        						}
+        					}
+        				});
+
+        		//이미지 파일 업로드
+        		function uploadSummernoteImageFile(file, editor) {
+        			data = new FormData();
+        			data.append("file", file);
+        			$.ajax({
+        				data : data,
+        				type : "POST",
+        				url : "./summernote_imageUpload.jsp",
+        				contentType : false,
+        				processData : false,
+        				success : function(data) {
+        					//항상 업로드된 파일의 url이 있어야 한다.
+        					$(editor).summernote('editor.insertImage', data.url);
+        				}
+        			});
+        		} */
+        
+        
+        
+        
+        
+        
+  
+
+	
 	</script>
 	</form>
 </body>
