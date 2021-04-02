@@ -37,12 +37,13 @@
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('로그인이 필요한 페이지입니다.')");
-		script.println("location.href='login'");
+		script.println("location.href='login.jsp'");
 		script.println("</script>");
 		
 
 		}
 	
+		
 	
 %>
 
@@ -51,7 +52,8 @@
     
   <%
   
-  
+  if (logindto.getMem_name().equals(dto.getMem_name())){
+	 
   %>
 	
 	
@@ -149,6 +151,18 @@ $(document).ready(function() {
 
 
 </form>
+
+<%
+  }else{
+	  PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('수정권한이 없습니다.')");
+		script.println("location.href='notice.do?command=list'");
+		script.println("</script>");
+	  
+  }
+
+%>
 
 
 <%-- 	<script type="text/javascript">

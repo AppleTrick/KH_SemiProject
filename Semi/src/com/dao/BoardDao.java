@@ -29,13 +29,13 @@ public class BoardDao extends SqlMapConfig {
 		return list;
 	}
 	
-	public BoardDto selectOne(int seq) {
+	public BoardDto selectOne(int article_no) {
 		SqlSession session = null;
 		BoardDto dto = new BoardDto();
 		
 		try {
 			session = getSqlSessionFactory().openSession(true);
-			dto = session.selectOne("boardmapper.selectOne", seq);
+			dto = session.selectOne("boardmapper.selectOne", article_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}session.close();

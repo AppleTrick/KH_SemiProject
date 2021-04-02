@@ -4,16 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Pet Board Insert</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<style>
-.btn {
-	background-color: #ff9999
-}
-.btn:hover, .btn:focus {
-	background-color: hotpink
+<title>Pet Board Insert 입양후기작성페이지</title>
+<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+  <style>
+  .btn{
+  background-color: #ff9999}
+  .btn:hover, .btn:focus{
+  background-color: hotpink}
+.btn:focus, .btn:active, .btn:hover, input:active, input:focus{
+    box-shadow: none!important;
+    outline: none!important;
 }
 .btn:focus, .btn:active, .btn:hover, input:active, input:focus {
 	box-shadow: none !important;
@@ -34,51 +36,51 @@
 </head>
 <body>
 	<!-- head 부분 -->
-	<%@ include file="Form/header.jsp"%>
+	<%@ include file="Form/header.jsp" %>
 
-	<jsp:useBean id="dto" class="com.dto.PetDto" scope="request"></jsp:useBean>
+<jsp:useBean id="dto" class="com.dto.BoardDto" scope="request"></jsp:useBean>
 
-	<form action="pet.do" method="post">
-		<input type="hidden" name="command" value="insertres" />
-		<div class="content-wrapper">
+<%
+LoginDto logindto = (LoginDto) session.getAttribute("dto"); //컨트롤러에서 dto 받아와서 형변환 
 
-			<!-- Main content -->
-			<div class="container justify-content-center">
-				<!-- 가로 폭 조절 -->
-				<div class="card">
-					<!-- 카드 시작 -->
-					<div class="card-body">
-						<div class="petboard">
-							<table class="table" id="sub_text">
-								<colgroup>
-									<col style="width: 100px" />
-									<col style="width: *" />
-								</colgroup>
-								<h5 style="margin-bottom: 20px; text-align: center">글 작성</h5>
-								<tr>
-									<th>작성자</th>
-									<td><input value="<%=dto.getMem_name()%>"></td>
-								</tr>
+%>
 
+ <form action="pet.do" method="post">
+<input type="hidden" name="command" value="insertres"/>
+<input type="hidden" name="brd_no" value="3">
+<input type="hidden" name="mem_no" value="<%=logindto.getMem_no()%>">
+  
+  
+  
+  
+  <div class="content-wrapper">
 
-								<tr>
-									<th class="text-center">제목</th>
-									<td><input type="text" class="form-control" id="title"
-										name="title" placeholder="제목을 입력해 주세요." value=""></td>
-								</tr>
-								<tr>
-									<th class="text-center">내용</th>
-									<td><textarea id="summernote" name="content"></textarea></td>
-								</tr>
-							</table>
-						</div>
-						<div style="text-align: right; margin-right: 10px;">
-							<input type="submit" class="btn" value="저장하기"> <input
-								type="button" class="btn" onclick="location.href='petboard.jsp'"
-								value="목록으로">
-						</div>
-					</div>
-					<!-- card-body-->
+    <!-- Main content -->
+    	<div class="container justify-content-center"> <!-- 가로 폭 조절 -->
+    	<div class="card"> <!-- 카드 시작 -->
+    		<div class="card-body">
+                <div class="petboard">
+				      <table class="table" id="sub_text">
+						<colgroup>			
+						<col style="width:100px" />
+						<col style="width:*" />						
+						</colgroup>
+						<h5 style="margin-bottom: 20px; text-align: center">글 작성</h5>
+						
+						<tr>						
+							<th class="text-center">제목</th>
+							<td><input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해 주세요." value=""></td>
+						</tr>
+						<tr>
+							<th class="text-center">내용</th>
+								<td><textarea id="summernote" name="content"></textarea>
+							</td>
+						</tr>
+					</table>			      
+			    </div>
+			    <div style="text-align: right; margin-right: 10px;">
+			    	<input type="submit" class="btn" value="저장하기">
+					<input type="button" class="btn" onclick="location.href='petboard.jsp'" value="목록으로">
 				</div>
 				<!-- card -->
 			</div>

@@ -38,6 +38,7 @@
 	      
 	      <!-- 항복 부분 -->
 	      <div class="navigation">
+	      	<a href="move.do?move=petboard">펫보드</a>
 	        <a href="move.do?move=noticeboard">공지사항</a>
 	        <a href="move.do?move=matchPet">얼굴인식</a>
 	        <a href="move.do?move=donation">기부페이지</a>
