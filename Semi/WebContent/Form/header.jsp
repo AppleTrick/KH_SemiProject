@@ -74,7 +74,8 @@
 	       	</a>
 	       	<%
 	       	}
-	       	%> 
+	       	%>
+	       	</div> 
     </header>
     <div class="upsite"></div>
 

@@ -88,6 +88,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- 모달창생성 -->
 	<div class="modal1">
 		<div class="full-img">
 			<div class="modalImg">
