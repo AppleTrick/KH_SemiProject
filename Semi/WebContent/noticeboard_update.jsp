@@ -1,3 +1,5 @@
+<%@page import="java.io.PrintWriter"%>
+<%@page import="org.apache.commons.collections.bag.SynchronizedSortedBag"%>
 <%@page import="com.dto.LoginDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -29,18 +31,31 @@
 <%@ include file="Form/header.jsp"%>
 
 
+<%
+	LoginDto logindto = (LoginDto) session.getAttribute("dto"); //컨트롤러에서 dto 받아와서 형변환 
+		if (logindto == null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인이 필요한 페이지입니다.')");
+		script.println("location.href='login'");
+		script.println("</script>");
+		
 
+		}
+	
+	
+%>
 
 
     <jsp:useBean id="dto" class="com.dto.BoardDto" scope="request"></jsp:useBean>
     
-    <%
-LoginDto logindto = (LoginDto) session.getAttribute("dto"); //컨트롤러에서 dto 받아와서 형변환 
-	if(logindto.getMem_name() != dto.getMem_name()){
-		
-	}
+  <%
+  
+  
+  %>
+	
+	
 
-%>
 
 
 
@@ -48,7 +63,7 @@ LoginDto logindto = (LoginDto) session.getAttribute("dto"); //컨트롤러에서
 <form action="notice.do" method="post">
  <input type="hidden" name="command" value="updateres"/>
  <input type="hidden" name="article_no" value="<%=dto.getArticle_no() %>"/>
- <input type="hidden" name="mem_no" value="<%=logindto.getMem_no()%>">
+ <input type="hidden" name="mem_no" value="<%=logindto.getMem_name()%>">
  
   <div class="content-wrapper">
 
@@ -126,7 +141,34 @@ $(document).ready(function() {
 	});
 });
 
+
 </script>
+
+
+
+
+
 </form>
+
+
+<%-- 	<script type="text/javascript">
+	
+	
+		
+	<%if (logindto.getMem_name().equals(dto.getMem_name())) {
+	System.out.println("로그인한 멤버 네임 " + logindto.getMem_name());
+	System.out.println("게시판 작성 멤버 네임 " + dto.getMem_name());
+	%>
+		
+	<%
+	} else {
+	%>
+		alert("수정 권한이 없습니다");
+	<%
+		}
+	%>
+	</script>	 --%>
+
+
 </body>
 </html>

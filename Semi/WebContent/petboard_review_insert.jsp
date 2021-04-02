@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Pet Board Review Insert</title>
+<title>Pet Board Review Insert 입양후기 글작성페이지</title>
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
