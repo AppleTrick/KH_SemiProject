@@ -51,6 +51,12 @@
 						<col style="width:*" />						
 						</colgroup>
 						<h5 style="margin-bottom: 20px; text-align: center">글 작성</h5>
+						<tr>
+							<th>작성자</th>
+							<td><input value="<%=dto.getMem_name()%>"></td>
+						</tr>
+						
+						
 						<tr>						
 							<th class="text-center">제목</th>
 							<td><input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해 주세요." value=""></td>

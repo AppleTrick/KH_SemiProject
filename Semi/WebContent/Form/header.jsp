@@ -84,7 +84,7 @@
 					</svg>
                   </a>
                 </li>
-               <!-- 회원 정보 -->
+               <!-- 회원 정보 & 프로필사진 -->
                		<%
 					    if( dto1 != null ){
 					    	if(dto1.getMem_image() == null){

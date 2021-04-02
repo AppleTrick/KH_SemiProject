@@ -1,3 +1,5 @@
+<%@page import="com.biz.LoginBiz"%>
+<%@page import="com.dto.BoardDto"%>
 <%@page import="com.dto.SemiDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -46,7 +48,8 @@
         <div class="noticeboard_list">
     
 <%
-	List<SemiDto> list = (List<SemiDto>) request.getAttribute("list");
+	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+	
 
 %>    
     <h2 style="margin-bottom: 20px; margin-top: 20px; text-align: center">공지사항</h2>
@@ -74,24 +77,30 @@
 		</tr>
 <%
 	} else {
-		for (SemiDto dto : list){
+		
+		
+		//getBrd_no() ==1 : 공지글만 보기
+		for (BoardDto dto : list){
+			if(dto.getBrd_no()==1){
+			
 %>
 		
 		<tr>
     		<td style="text-align: center;"><%=dto.getArticle_no()%></td>
-    		<td><a href="board.do?command=selectone&seq=<%=dto.getArticle_no() %>" style="text-decoration: none; color:black;"><%= dto.getTitle()%></a></td>
-    		<td style="text-align: center;"><%= dto.getAdmin_writer()%></td>
+    		<td><a href="notice.do?command=selectone&article_no=<%=dto.getArticle_no() %>" style="text-decoration: none; color:black;"><%= dto.getTitle()%></a></td>
+    		<td style="text-align: center;"><%= dto.getMem_name() %></td>
     		<td style="text-align: center;"><%= dto.getRegdate()%></td>
     		<td style="text-align: center;"><%= dto.getHit() %></td>
     	</tr>
 <%
+			}
 		}
 	}
 	%>
     </table>
     </div>
     <div style="text-align: right; margin-right: 10px; margin-bottom: 10px;">
-    <input type="button" class="btn btn-primary" value="글작성" onclick="location.href='board.do?command=insertform'"/>
+    <input type="button" class="btn btn-primary" value="글작성" onclick="location.href='notice.do?command=insertform'"/>
     </div>
     
        <!-- pagination-->

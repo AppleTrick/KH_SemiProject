@@ -38,10 +38,20 @@
 	<div class="mt-4">
 		<div class="container d-flex justify-content-center">
 			<div class="col-9">
-				<jsp:useBean id="dto" class="com.dto.SemiDto" scope="request"></jsp:useBean>
+				<jsp:useBean id="dto" class="com.dto.BoardDto" scope="request"></jsp:useBean>
 
-				<form action="board.do" method="post">
+<%
+LoginDto logindto = (LoginDto) session.getAttribute("dto"); //컨트롤러에서 dto 받아와서 형변환 
+
+%>
+
+
+
+				<form action="notice.do" method="post">
 					<input type="hidden" name="command" value="insertres" />
+					<input type="hidden" name="brd_no" value="1">
+					<input type="hidden" name="mem_no" value="<%=logindto.getMem_no()%>">
+					
 					<div class="content-wrapper">
 
 						<!-- Main content -->
@@ -56,24 +66,20 @@
 												<col style="width: 100px" />
 												<col style="width: *" />
 											</colgroup>
-											<h5 style="margin-bottom: 20px; text-align: center">공지
-												작성</h5>
+											<h5 style="margin-bottom: 20px; text-align: center">공지작성</h5>
 											<tr>
 												<th class="text-center">제목</th>
-												<td><input type="text" class="form-control" id="title"
-													name="title" placeholder="제목을 입력해 주세요." value=""></td>
+												<td><input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해 주세요." ></td>
 											</tr>
 											<tr>
 												<th class="text-center">내용</th>
-												<td><textarea id="summernote" name="content"></textarea>
-												</td>
+												<td><textarea id="summernote" name="content"></textarea></td>
 											</tr>
 										</table>
 									</div>
 									<div style="text-align: right; margin-right: 10px;">
-										<input type="submit" class="btn" value="저장하기"> <input
-											type="button" class="btn"
-											onclick="location.href='noticeboard.jsp'" value="목록으로">
+										<input type="submit" class="btn" value="저장하기"> 
+										<input type="button" class="btn" onclick="location.href='noticeboard.jsp'" value="목록으로">
 									</div>
 								</div>
 								<!-- card-body-->
@@ -82,6 +88,7 @@
 						</div>
 						<!-- container -->
 					</div>
+				</form>
 					<!-- main content -->
 			</div>
 		</div>

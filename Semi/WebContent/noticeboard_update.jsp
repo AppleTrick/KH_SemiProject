@@ -1,3 +1,4 @@
+<%@page import="com.dto.LoginDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -89,11 +90,24 @@
     </div>
 <!-- header 끝 -->    
 
-    <jsp:useBean id="dto" class="com.dto.SemiDto" scope="request"></jsp:useBean>
+
+
+
+    <jsp:useBean id="dto" class="com.dto.BoardDto" scope="request"></jsp:useBean>
     
-<form action="board.do" method="post">
+    <%
+LoginDto logindto = (LoginDto) session.getAttribute("dto"); //컨트롤러에서 dto 받아와서 형변환 
+	if(logindto.getMem_name() != dto.getMem_name()){
+		
+	}
+
+%>
+    
+<form action="notice.do" method="post">
  <input type="hidden" name="command" value="updateres"/>
- <input type="hidden" name="seq" value="<%=dto.getArticle_no() %>"/>
+ <input type="hidden" name="article_no" value="<%=dto.getArticle_no() %>"/>
+ <input type="hidden" name="mem_no" value="<%=logindto.getMem_no()%>">
+ 
   <div class="content-wrapper">
 
     <!-- Main content -->
@@ -124,7 +138,7 @@
 			    </div>
 			    <div style="text-align: right; margin-right: 10px;">
 			    	<input type="submit" class="btn" value="수정완료"/>
-					<input type="button" class="btn" onclick="location.href='board.do?command=list'" value="목록으로">
+					<input type="button" class="btn" onclick="location.href='notice.do?command=list'" value="목록으로">
 				</div>
 				</div><!-- card-body-->
               </div> <!-- card -->

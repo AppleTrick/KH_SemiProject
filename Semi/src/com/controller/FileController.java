@@ -55,7 +55,7 @@ public class FileController extends HttpServlet {
 	    	
 	    	
 	    	
-	    	String realFolder = "upload";
+	    	String realFolder = "upload";//선언만 한것임 
 	    	String filename = request.getParameter("filename");
 	    	int maxSize = 1024 * 1024 * 5;
 	    	String encType = "UTF-8";
@@ -107,12 +107,8 @@ public class FileController extends HttpServlet {
 			}
 	    	
 	    	
-	    	
-	    	
-	    	
-	    	
 	    }
-		
+	
 	
 	}
 	

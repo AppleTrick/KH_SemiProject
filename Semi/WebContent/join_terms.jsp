@@ -16,8 +16,6 @@
 
 
 
-
-
     function idCheckProc() {
         var chk = document.getElementsByName ("mem_id")[0].title;
         if(chk == 'n'){

@@ -4,38 +4,48 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardmapper">
 
-	<select id = "selectList" resultType="SemiDto">
-		SELECT ARTICLE_NO, ADMIN_WRITER, MEM_WRITER, TITLE, CONTENT, REGDATE, HIT 
-		FROM ALL_BOARD WHERE BRD_NO = '1'
+	<resultMap type="BoardDto" id="BoardMap">
+		<result property="article_no" column="ARTICLE_NO" />
+		<result property="brd_no" column="BRD_NO" />
+		<result property="admin_writer" column="ADMIN_WRITER" />
+		<result property="mem_writer" column="MEM_WRITER" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="regdate" column="REGDATE" />
+		<result property="hit" column="HIT" />
+	</resultMap>
+
+
+
+	<select id="selectList" resultType="BoardDto">
+		SELECT ARTICLE_NO, BRD_NO, MEM_NO, TITLE, CONTENT, REGDATE,HIT, IMAGE,MEM_NAME
+		FROM ALL_BOARD JOIN LOGINBOARD
+		USING (MEM_NO)
 		ORDER BY ARTICLE_NO DESC
 	</select>
 	
-	<resultMap type="semiDto" id="semiMap">
-		<result property = "article_no" column = "ARTICLE_NO" />
-		<result property = "brd_no" column = "BRD_NO" />
-		<result property = "admin_writer" column = "ADMIN_WRITER"/>
-		<result property = "mem_writer" column = "MEM_WRITER"/>
-		<result property = "title" column = "TITLE"/>
-		<result property = "content" column = "CONTENT" />
-		<result property = "regdate" column = "REGDATE" />
-		<result property = "hit" column = "HIT" />
-	</resultMap>
-	
-	<select id = "selectOne" parameterType="int" resultMap="semiMap">
-		SELECT ARTICLE_NO, ADMIN_WRITER, TITLE, CONTENT, REGDATE, HIT FROM ALL_BOARD WHERE ARTICLE_NO = #{article_no}
+	<select id="selectOne" resultType="BoardDto" >
+		SELECT ARTICLE_NO, BRD_NO, MEM_NO, TITLE, CONTENT, REGDATE,HIT, IMAGE ,MEM_NAME
+		FROM ALL_BOARD JOIN LOGINBOARD
+		USING (MEM_NO)
+		WHERE ARTICLE_NO = #{article_no}
 	</select>
 
-	<insert id = "insert" parameterType="semiDto">
+	<insert id="insert" parameterType="BoardDto">
+	
 		INSERT INTO ALL_BOARD
-		VALUES(ALL_BOARDSEQ.NEXTVAL, 1, '관리자', '사용자', #{title}, #{content}, SYSDATE, 3)
+		VALUES(ALL_BOARDSEQ.NEXTVAL,#{brd_no}, #{mem_no},#{title},#{content},SYSDATE,#{hit},#{image})
 	</insert>
-	
-	<update id = "update" parameterType="semiDto">
-		UPDATE ALL_BOARD SET TITLE = #{title}, CONTENT = #{content} WHERE ARTICLE_NO= #{article_no}
+
+	<update id="update" parameterType="BoardDto">
+		UPDATE ALL_BOARD 
+		SET TITLE = #{title}, CONTENT = #{content} 
+		WHERE ARTICLE_NO= #{article_no}
 	</update>
-	
-	<delete id="delete" parameterType="semiDto">
-		DELETE FROM ALL_BOARD WHERE ARTICLE_NO = #{article_no}
+
+	<delete id="delete" parameterType="BoardDto">
+		DELETE FROM ALL_BOARD 
+		WHERE ARTICLE_NO = #{article_no}
 	</delete>
 
 </mapper>
