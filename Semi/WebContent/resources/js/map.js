@@ -128,12 +128,12 @@ async function makeMaps() {
   map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
   // 마커 이미지의 이미지 주소입니다
-  var imageSrc = "https://www.flaticon.com/svg/vstatic/svg/829/829229.svg?token=exp=1616643003~hmac=4cb2b13a040245ec23ac538afc4e0bd7";
+  var imageSrc = "resources/img/hospital.png";
   // 마커 이미지의 이미지 크기 입니다
   var imageSize = new kakao.maps.Size(32, 32);
 
   // 마커 이미지의 이미지 주소입니다
-  var imageSrc1 = "https://www.flaticon.com/svg/vstatic/svg/2716/2716271.svg?token=exp=1616643183~hmac=1afca814a5319ac649c7522bc15ec87a";
+  var imageSrc1 = "resources/img/shield.png";
 
 
   // 병원
