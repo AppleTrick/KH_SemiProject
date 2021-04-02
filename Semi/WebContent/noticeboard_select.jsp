@@ -67,7 +67,7 @@
 	<tr>
 		<th style="text-align: center; height:350px;">내용</th>
 		<td><div><%=dto.getContent() %></div></td>
-
+	</tr>
 	</table>
 	
 	<div style="text-align: right; margin-right: 10px; margin-bottom: 10px;">

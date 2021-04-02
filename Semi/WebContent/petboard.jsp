@@ -1,3 +1,4 @@
+<%@page import="com.biz.BoardBiz"%>
 <%@page import="com.dto.BoardDto"%>
 <%@page import="com.dto.PetDto"%>
 <%@page import="java.util.List"%>
@@ -12,6 +13,14 @@
 <script src="resources/js/petboard.js"></script>  
 </head>
 <body>
+
+<%
+	//로그인 세션 불러옵니다...
+	LoginDto logindto = (LoginDto)session.getAttribute("dto");
+	
+
+	
+%>
 	
 
 	<%@ include file="Form/header.jsp"%>
@@ -126,18 +135,20 @@
 %>    
     <h2 style="margin-bottom: 20px; margin-top: 20px; text-align: center">PET BOARD</h2>
     <table class="table table-hover" id="list">
-    	<col width="70px"/>
-    	<col width="500px"/>
-    	<col width="120px"/>
-    	<col width="120px"/>
-    	<col width="70px"/>
+    	<col width="100px"/>
+    	<col width="100px"/>
+    	<col width="100px"/>
+    	<col width="100px"/>
+    	<col width="100px"/>
+    	<col width="100px"/>
     <thead>
 		<tr>
-			<th scope="col" class="" style="text-align: center;">번호</th>
+			<th scope="col" class="" style="text-align: center;">글번호</th>
 			<th scope="col" class="">제목</th>
 			<th scope="col" class="" style="text-align: center;">작성자</th>
 			<th scope="col" class="" style="text-align: center;">날짜</th>
 			<th scope="col" class="" style="text-align: center;">조회수</th>
+			<th scope="col" class="" style="text-align: center;">사진(이미지)</th>
 		</tr>
 	</thead>
 
@@ -151,9 +162,10 @@
 	} else {
 		
 		
-		//getBrd_no() ==2 :입양 대기, ==3 : 입양후기게시판 -> 2&&3 이니까 전체보기
+		//getBrd_no() :2 =입양 대기, :3 = 입양 후기게시판 
+		//전체페이지를 불러오는 코드
 		for (BoardDto dto : list){
-			if(dto.getBrd_no()==2){
+			if(dto.getBrd_no()==2 || dto.getBrd_no()==3){
 			
 %>
 		
@@ -163,6 +175,8 @@
     		<td style="text-align: center;"><%= dto.getMem_name() %></td>
     		<td style="text-align: center;"><%= dto.getRegdate()%></td>
     		<td style="text-align: center;"><%= dto.getHit() %></td>
+    		<td style="text-align: center;"><%= dto.getImage() %></td>
+    		
     	</tr>
 <%
 			}

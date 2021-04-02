@@ -27,11 +27,11 @@
 <body>
 <%@ include file="Form/header.jsp"%>
 
-<jsp:useBean id="dto" class="com.dto.PetDto" scope="request"></jsp:useBean>
+<jsp:useBean id="dto" class="com.dto.BoardDto" scope="request"></jsp:useBean>
     
 <form action="pet.do" method="post">
  <input type="hidden" name="command" value="updateres"/>
- <input type="hidden" name="seq" value="<%=dto.getArticle_no() %>"/>
+ <input type="hidden" name="article_no" value="<%=dto.getArticle_no() %>"/>
   <div class="content-wrapper">
 
     <!-- Main content -->
@@ -44,17 +44,17 @@
 						<col style="width:100px" />
 						<col style="width:*" />						
 						</colgroup>
-						<h5 style="margin-bottom: 20px; text-align: center">공지 수정</h5>
+						<h5 style="margin-bottom: 20px; text-align: center">입양후기글 수정</h5>
 						<tr>						
 							<th class="text-center">제목</th>
-							<td><input type="text" class="form-control" id="title" name="pet_title" 
-							value="<%=dto.getPet_title()%>"></td>
+							<td><input type="text" class="form-control" id="title" name="title" 
+							value="<%=dto.getTitle() %>"></td>
 						</tr>
 						<tr>
 							<th class="text-center">내용</th>
 							<td>
-								<textarea id="summernote" name="pet_content">
-								<%=dto.getPet_content() %>
+								<textarea id="summernote" name="content">
+								<%=dto.getContent() %>
 								</textarea>
 							</td>
 						</tr>
