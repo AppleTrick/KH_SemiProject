@@ -1,18 +1,63 @@
-.topbar-profile-photo {
-    width: 32px;
-    height: 32px;
-    position: relative;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-.link-menu {
-    color: black;
-}
 
 body{
 	overflow-y:scroll;
 }
 
-* {
-	font-family: "Poppins", sans-serif;
-	font-size: 14px;
+header {
+  z-index: 3;
+  position: fixed;
+  background: rgb(255,255,255);
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s ease;
+}
+
+header.sticky{
+  background: #3a6cf4;
+  padding: 10px 200px;
+}
+
+header .brand{
+  font-size: 1.8em;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+header .navigation{
+  position: relative;
+}
+header .navigation a {
+  color: black;
+  font-size: 1em;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 30px; 
+}
+
+header .navigation a:hover{
+  color: #3a6cf4;
+}
+
+header.sticky .navigation a:hover{
+  color:#000;
+}
+
+.upsite{
+	width: 100%;
+	height: 75px;
 }

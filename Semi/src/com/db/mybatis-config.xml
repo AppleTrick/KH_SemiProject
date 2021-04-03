@@ -4,36 +4,38 @@
 <configuration>
 
 	<properties resource="com/db/db.properties"></properties>
-	<settings><setting name="jdbcTypeForNull" value="NULL" /></settings>
-	
-	
-	
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+
+
 	<typeAliases>
-		<typeAlias type="com.dto.LoginDto" alias="LoginDto"/>
-		<typeAlias type = "com.dto.SemiDto" alias="SemiDto"></typeAlias>
-		<typeAlias type = "com.dto.PetDto" alias="PetDto"></typeAlias>
-		<typeAlias type="com.dto.DonateDto" alias="DonateDto"/>
+		<typeAlias type="com.dto.LoginDto" alias="LoginDto" />
+		<typeAlias type="com.dto.BoardDto" alias="BoardDto" />
+		<typeAlias type="com.dto.DonateDto" alias="DonateDto" />
 
 	</typeAliases>
 
- <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="POOLED">
-        <property name="driver" value="${driver}"/>
-        <property name="url" value="${url}"/>
-        <property name="username" value="${username}"/>
-        <property name="password" value="${password}"/>
-      </dataSource>
-    </environment>
-  </environments>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
 
 
 	<mappers>
-    	<mapper resource="com/db/login-mapper.xml"/>
-    	<mapper resource="com/db/board-mapper.xml"/>
-    	<mapper resource="com/db/pet-mapper.xml"/>
-   	<mapper resource="com/db/donate-mapper.xml"/>
- 	</mappers>
+		<mapper resource="com/db/login-mapper.xml" />
+		<mapper resource="com/db/board-mapper.xml" />
+		<mapper resource="com/db/file-mapper.xml" />
+		<mapper resource="com/db/donate-mapper.xml" />
+
+	</mappers>
 
 </configuration>

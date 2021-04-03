@@ -2,6 +2,7 @@ window.onload = function() {
 	const modal = document.querySelector(".modal1");
 	const previews = document.querySelectorAll(".photo-gallery img");
 	const original = document.querySelector(".full-img");
+	const thisImg = document.querySelector(".thisImg");
 
 
 	console.log(modal);
@@ -10,16 +11,23 @@ window.onload = function() {
 
 	previews.forEach(preview => {
 		preview.addEventListener('click', () => {
-			
-			console.log("클릭");
 
 			// modal 과 origianl 에 open class 를 추가한다.
 			modal.classList.add("open");
 			original.classList.add("open");
+			
+			
+			if(preview.hasAttribute('chk')){
+				document.getElementById('apply').style.display="none";
+				console.log("작동");
+			} else{
+				document.getElementById('apply').style.display="inline";
+				console.log("오작동");
+			}
 
 			// 오리지날 속성을 가지고 오고 클릭한 이미지의 를 오리지날 속성 이미지로 변경한다.
 			const originalSrc = preview.getAttribute("data-original");
-			original.src = `resources/TestImage/${originalSrc}`;
+			thisImg.src = `resources/TestImage/${originalSrc}`;
 		})
 	})
 

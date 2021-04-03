@@ -2,35 +2,37 @@
 <%@page import="com.dao.SemiDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Notice Board Insert</title>
-<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="resources/css/header.css">
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		.btn {
+			background-color: #ff9999
+		}
+		
+		.btn:hover, .btn:focus {
+			background-color: hotpink
+		}
+		
+		.btn:focus, .btn:active, .btn:hover, input:active, input:focus {
+			box-shadow: none !important;
+			outline: none !important;
+		}
+	</style>
+	<!-- 썸머노트 부트스트랩 파일 CDN -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
-<style>
-.btn {
-	background-color: #ff9999
-}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-.btn:hover, .btn:focus {
-	background-color: hotpink
-}
-.btn:focus, .btn:active, .btn:hover, input:active, input:focus {
-	box-shadow: none !important;
-	outline: none !important;
-}
-
-  </style>
-  
-  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="resources/css/header.css">  
-    
-
-<title>Notice Board Insert</title>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+	<title>Notice Board Insert</title>
 </head>
 <body>
 	<%@ include file="Form/header.jsp"%>
@@ -38,138 +40,93 @@
 	<div class="mt-4">
 		<div class="container d-flex justify-content-center">
 			<div class="col-9">
-				<jsp:useBean id="dto" class="com.dto.SemiDto" scope="request"></jsp:useBean>
+				<jsp:useBean id="dto" class="com.dto.BoardDto" scope="request"></jsp:useBean>
 
-				<form action="board.do" method="post">
-					<input type="hidden" name="command" value="insertres" />
-					<div class="content-wrapper">
+				<%
+					LoginDto logindto = (LoginDto) session.getAttribute("dto"); //컨트롤러에서 dto 받아와서 형변환 
+				%>
 
-						<!-- Main content -->
-						<div class="container justify-content-center">
-							<!-- 가로 폭 조절 -->
+
+
+				<form action="notice.do" method="post">
+					<input type="hidden" name="command" value="insertres" /> 
+					<input type="hidden" name="brd_no" value="1"> 
+					<input type="hidden" name="mem_no" value="<%=logindto.getMem_no()%>">
+
+					<div class="content-wrapper">						
+						<div class="container justify-content-center">						
 							<div class="card">
-								<!-- 카드 시작 -->
 								<div class="card-body">
-									<div class="noticeboard">
+								
+									<div class="noticeboard">									
 										<table class="table" id="sub_text">
 											<colgroup>
 												<col style="width: 100px" />
 												<col style="width: *" />
 											</colgroup>
-											<h5 style="margin-bottom: 20px; text-align: center">공지
-												작성</h5>
+											<h5 style="margin-bottom: 20px; text-align: center">공지작성</h5>
 											<tr>
 												<th class="text-center">제목</th>
-												<td><input type="text" class="form-control" id="title"
-													name="title" placeholder="제목을 입력해 주세요." value=""></td>
+												<td>
+													<input type="text" class="form-control" id="title"	name="title" placeholder="제목을 입력해 주세요.">
+												</td>
 											</tr>
 											<tr>
 												<th class="text-center">내용</th>
-												<td><textarea id="summernote" name="content"></textarea>
-												</td>
+												<!-- 썸머노트 호출 -->
+												<td><textarea id="summernote" name="content"></textarea></td>
 											</tr>
 										</table>
 									</div>
 									<div style="text-align: right; margin-right: 10px;">
-										<input type="submit" class="btn" value="저장하기"> <input
-											type="button" class="btn"
-											onclick="location.href='noticeboard.jsp'" value="목록으로">
+										<input type="submit" class="btn" value="저장하기"> 
+										<input type="button" class="btn" value="목록으로" onclick="location.href='noticeboard.jsp'">
 									</div>
 								</div>
-								<!-- card-body-->
 							</div>
-							<!-- card -->
 						</div>
-						<!-- container -->
 					</div>
-					<!-- main content -->
+				</form>
 			</div>
 		</div>
 	</div>
 
-
-	<!-- include libraries(jQuery, bootstrap) -->
-	<!--  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="resouces/bootstrap/js/bootstrap.js"></script>-->
-
-	<!-- include summernote css/js -->
-	<link
-		href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-		rel="stylesheet">
-	<script
-		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-	<!-- 
-	<script src="resources/js/summernote/summernote-lite.js"></script>
-	 -->
-	<script src="resources/js/summernote/lang/summernote-ko-KR.js"></script>
-	<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
-
-
-
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-		crossorigin="anonymous"></script>
-	<link
-		href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
-		rel="stylesheet">
-	<script
-		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
-
-
-	<!-- 
-<form method="post">
-  <textarea id="summernote" name="editordata"></textarea>
-</form>
- -->
-
 	<script>
-		$('#summernote').summernote(
-				{
-					height : 700, // 에디터 높이
-					minHeight : 500, // 최소 높이
-					maxHeight : 700, // 최대 높이
-					focus : true, // 에디터 로딩후 포커스를 맞출지 여부
-					lang : "ko-KR", // 한글 설정
-					placeholder : '글 내용을 입력해 주세요.', //placeholder 설정
-					callbacks : { //여기 부분이 이미지를 첨부하는 부분
-						onImageUpload : function(files) {
-							uploadSummernoteImageFile(files[0], this);
-						},
-						onPaste : function(e) {
-							var clipboardData = e.originalEvent.clipboardData;
-							if (clipboardData && clipboardData.items
-									&& clipboardData.items.length) {
-								var item = clipboardData.items[0];
-								if (item.kind === 'file'
-										&& item.type.indexOf('image/') !== -1) {
-									e.preventDefault();
-								}
-							}
-						}
-					}
-				});
+		$('#summernote').summernote({
+			height : 700, // 에디터 높이
+			minHeight : 500, // 최소 높이
+			maxHeight : 700, // 최대 높이
+			focus : true, // 에디터 로딩후 포커스를 맞출지 여부
+			lang : "ko-KR", // 한글 설정
+			placeholder : '글 내용을 입력해 주세요.', //placeholder 설정
+			callbacks: {
+			    onImageUpload: function(files) {
+		            sendFile(files[0]);
+			    }
+			  }
+		});
 
-		//이미지 파일 업로드
-		function uploadSummernoteImageFile(file, editor) {
-			data = new FormData();
-			data.append("file", file);
-			$.ajax({
-				data : data,
-				type : "POST",
-				url : "/uploadSummernoteImageFile",
-				contentType : false,
-				processData : false,
-				success : function(data) {
-					//항상 업로드된 파일의 url이 있어야 한다.
-					$(editor).summernote('insertImage', data.url);
-				}
-			});
-		}
+	
+	function sendFile(file) {
+		var form_data = new FormData();
+	       form_data.append('file', file);
+	       $.ajax({
+	         data: form_data,
+	         type: "post",
+	         url: './BoardFileInsert.do',
+	         cache: false,
+	         contentType: false,
+	         /* enctype: 'multipart/form-data', */
+	         processData: false,
+	         success: function(img_name) {
+	        	 console.log(img_name.url);
+	        	 var image = $('<img>').attr('src', img_name.url);
+	        	 console.log(image);
+	             $('#summernote').summernote("insertNode", image[0])
+	         }
+	       });
+	    }
+		
 	</script>
-	</form>
 </body>
 </html>

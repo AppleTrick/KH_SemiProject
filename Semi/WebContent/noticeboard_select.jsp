@@ -1,3 +1,6 @@
+<%@page import="com.dto.BoardDto"%>
+<%@page import="com.biz.BoardBiz"%>
+<%@page import="com.dao.BoardDao"%>
 <%@page import="com.dto.SemiDto"%>
 <%@page import="com.dao.SemiDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -40,11 +43,13 @@
         <div class="card"><!-- 카드 시작 -->
         <div class="noticeboard_list">	
 <%
-	int seq = Integer.parseInt(request.getParameter("seq"));
+	LoginDto logindto = (LoginDto) session.getAttribute("dto"); //컨트롤러에서 dto 받아와서 형변환 
 
-	SemiDao dao = new SemiDao();
-	SemiDto dto = dao.selectOne(seq);
+	int article_no = Integer.parseInt(request.getParameter("article_no"));
 
+	BoardBiz biz = new BoardBiz();
+	BoardDto dto = biz.selectOne(article_no);
+	
 %>
 	<table class="table" id="select">
 	<col width="90px" />
@@ -53,7 +58,7 @@
     	<col width="120px"/>
 	<tr>
 		<th style="text-align: center">작성자</th>
-		<td><%=dto.getAdmin_writer() %></td>
+		<td><%=dto.getMem_name() %></td>
 	</tr>
 	<tr>
 		<th style="text-align: center">제목</th>
@@ -62,13 +67,13 @@
 	<tr>
 		<th style="text-align: center; height:350px;">내용</th>
 		<td><div><%=dto.getContent() %></div></td>
-
+	</tr>
 	</table>
 	
 	<div style="text-align: right; margin-right: 10px; margin-bottom: 10px;">
-	<input type="button" class="btn" value="목록으로" onclick="location.href='board.do?command=list'" >
-	<input type="button" class="btn" value="수정" onclick="location.href='board.do?command=updateform&seq=<%=seq %>'"/>
-	<input type="button" class="btn" value="삭제" onclick="location.href='board.do?command=delete&seq=<%=seq %>'"/>
+	<input type="button" class="btn" value="목록으로" onclick="location.href='notice.do?command=list'" >
+	<input type="button" class="btn" value="수정" onclick="location.href='notice.do?command=updateform&article_no=<%=article_no %>'"/>
+	<input type="button" class="btn" value="삭제" onclick="location.href='notice.do?command=delete&article_no=<%=article_no %>'"/>
 	 </div>
 	 </div>
     </div><!-- 카드 끝 -->

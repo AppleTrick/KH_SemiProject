@@ -115,8 +115,7 @@ public class LoginController extends HttpServlet {
 			if(result>0){
 				idnotused = false;
 			}
-			System.out.println(idnotused);
-			
+		
 			response.sendRedirect("join_idchk.jsp?idnotused="+idnotused);
 			//dispatch(request, response, "login_idchk.jsp?idnotused="+idnotused);
 
@@ -179,6 +178,7 @@ public class LoginController extends HttpServlet {
 			dto.setMem_phone(mem_phone);
 			dto.setMem_addr(mem_addr);
 			dto.setMem_email(mem_email);
+			
 			
 			
 			int res = biz.updateMember(dto);

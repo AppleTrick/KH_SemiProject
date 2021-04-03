@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.biz.SemiBiz;
+import com.biz.BoardBiz;
+import com.dto.BoardDto;
 import com.dto.SemiDto;
 
-@WebServlet("/board.do")
+@WebServlet("/notice.do")
 public class NoticeBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,16 +30,16 @@ public class NoticeBoardController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		String command = request.getParameter("command");
-		SemiBiz biz = new SemiBiz();
+		BoardBiz biz = new BoardBiz();
 		
 		if(command.equals("list")) {
-			List<SemiDto> list = biz.selectList();
+			List<BoardDto> list = biz.selectList();
 			request.setAttribute("list", list);
 			dispatch(request, response, "noticeboard.jsp");
 			
 		}else if(command.equals("selectone")) {
-			int seq = Integer.parseInt(request.getParameter("seq"));
-			SemiDto dto = biz.selectOne(seq);
+			int article_no = Integer.parseInt(request.getParameter("article_no"));
+			BoardDto dto = biz.selectOne(article_no);
 			request.setAttribute("dto", dto);
 			dispatch(request, response, "noticeboard_select.jsp");
 		
@@ -47,35 +48,39 @@ public class NoticeBoardController extends HttpServlet {
 		
 		}else if(command.equals("insertres")) {
 			//1. 보내준 값이 있으면 받기
-			String admin_writer = request.getParameter("admin_writer");
+			//String mem_name = request.getParameter("mem_name");
+			int brd_no = Integer.parseInt(request.getParameter("brd_no"));
+			int mem_no = Integer.parseInt(request.getParameter("mem_no"));
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			//2. 1번 값을 담아서 리턴
-			SemiDto dto = new SemiDto();
-			dto.setAdmin_writer(admin_writer);
+			BoardDto dto = new BoardDto();
+			//dto.setMem_name(mem_name);
+			dto.setMem_no(mem_no);
+			dto.setBrd_no(brd_no);
 			dto.setTitle(title);
 			dto.setContent(content);
 			
 			int res = biz.insert(dto);
 			
 			if(res>0) {
-				response.sendRedirect("board.do?command=list");
+				response.sendRedirect("notice.do?command=list");
 			}else {
-				response.sendRedirect("board.do?command=insertform");
+				response.sendRedirect("notice.do?command=insertform");
 			}
 		
 		}else if(command.equals("updateform")) {
-			int seq = Integer.parseInt(request.getParameter("seq"));
-			SemiDto dto = biz.selectOne(seq);
+			int article_no = Integer.parseInt(request.getParameter("article_no"));
+			BoardDto dto = biz.selectOne(article_no);
 			request.setAttribute("dto", dto);
 			dispatch(request, response, "noticeboard_update.jsp");
 		
 		}else if(command.equals("updateres")) {
-			int article_no = Integer.parseInt(request.getParameter("seq"));
+			int article_no = Integer.parseInt(request.getParameter("article_no"));
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			
-			SemiDto dto = new SemiDto();
+			BoardDto dto = new BoardDto();
 			dto.setArticle_no(article_no);
 			dto.setTitle(title);
 			dto.setContent(content);
@@ -83,21 +88,25 @@ public class NoticeBoardController extends HttpServlet {
 			int res=biz.update(dto);
 			
 			if(res>0) {
-				response.sendRedirect("board.do?command=selectone&seq="+article_no);
+				response.sendRedirect("notice.do?command=selectone&article_no="+article_no);
 			}else {
-				response.sendRedirect("board.do?command=updateform.do&seq="+article_no);
+				response.sendRedirect("notice.do?command=updateform.do&article_no="+article_no);
 			}
 			
 		}else if(command.equals("delete")) {
-			int seq = Integer.parseInt(request.getParameter("seq"));
-			int res = biz.delete(seq);
+			int article_no = Integer.parseInt(request.getParameter("article_no"));
+			int res = biz.delete(article_no);
 			if(res>0) {
-				response.sendRedirect("board.do?command=list");
+				response.sendRedirect("notice.do?command=list");
 			}else {
-				response.sendRedirect("board.do?command=selectone&seq"+seq);
+				response.sendRedirect("notice.do?command=selectone&article_no"+article_no);
 			}
 		}
 	}
+	
+
+	
+	
 
 	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);

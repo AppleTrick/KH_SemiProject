@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-	<jsp:forward page="board.do?command=list"></jsp:forward>
+	<jsp:forward page="notice.do?command=list"></jsp:forward>
 
 </body>
 </html>

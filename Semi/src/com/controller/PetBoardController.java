@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.biz.BoardBiz;
 import com.biz.PetBiz;
+import com.dto.BoardDto;
 import com.dto.PetDto;
 
 @WebServlet("/pet.do")
@@ -29,21 +31,18 @@ public class PetBoardController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		String command = request.getParameter("command");
-		PetBiz biz = new PetBiz();
+		BoardBiz biz = new BoardBiz();
 		
 		if(command.equals("list")) {
-			List<PetDto> list = biz.selectList();
+			List<BoardDto> list = biz.selectList();
 			request.setAttribute("list", list);
-			List<PetDto> list2 = biz.select2();
-			request.setAttribute("list2", list2);
-			List<PetDto> list3 = biz.select3();
-			request.setAttribute("list3", list3);
 			dispatch(request, response, "petboard.jsp");
 			
 		}else if(command.equals("selectone")) {
-			int seq = Integer.parseInt(request.getParameter("seq"));
-			PetDto dto = biz.selectOne(seq);
+			int article_no = Integer.parseInt(request.getParameter("article_no"));
+			BoardDto dto = biz.selectOne(article_no);
 			request.setAttribute("dto", dto);
+			
 			dispatch(request, response, "petboard_select.jsp");
 		
 		}else if(command.equals("insertform")) {
@@ -51,12 +50,15 @@ public class PetBoardController extends HttpServlet {
 		
 		}else if(command.equals("insertres")) {
 			//1. 보내준 값이 있으면 받기
-			String mem_writer = request.getParameter("mem_writer");
+			int brd_no = Integer.parseInt(request.getParameter("brd_no"));
+			int mem_no = Integer.parseInt(request.getParameter("mem_no"));
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			//2. 1번 값을 담아서 리턴
-			PetDto dto = new PetDto();
-			dto.setMem_writer(mem_writer);
+			BoardDto dto = new BoardDto();
+			//dto.setMem_name(mem_name);
+			dto.setMem_no(mem_no);
+			dto.setBrd_no(brd_no);
 			dto.setTitle(title);
 			dto.setContent(content);
 			
@@ -69,17 +71,17 @@ public class PetBoardController extends HttpServlet {
 			}
 		
 		}else if(command.equals("updateform")) {
-			int seq = Integer.parseInt(request.getParameter("seq"));
-			PetDto dto = biz.selectOne(seq);
+			int article_no = Integer.parseInt(request.getParameter("article_no"));
+			BoardDto dto = biz.selectOne(article_no);
 			request.setAttribute("dto", dto);
 			dispatch(request, response, "petboard_update.jsp");
 		
 		}else if(command.equals("updateres")) {
-			int article_no = Integer.parseInt(request.getParameter("seq"));
+			int article_no = Integer.parseInt(request.getParameter("article_no"));
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			
-			PetDto dto = new PetDto();
+			BoardDto dto = new BoardDto();
 			dto.setArticle_no(article_no);
 			dto.setTitle(title);
 			dto.setContent(content);
@@ -87,18 +89,19 @@ public class PetBoardController extends HttpServlet {
 			int res=biz.update(dto);
 			
 			if(res>0) {
-				response.sendRedirect("pet.do?command=selectone&seq="+article_no);
+				response.sendRedirect("pet.do?command=selectone&article_no="+article_no);
 			}else {
-				response.sendRedirect("pet.do?command=updateform.do&seq="+article_no);
+				response.sendRedirect("pet.do?command=updateform.do&article_no="+article_no);
 			}
 			
 		}else if(command.equals("delete")) {
-			int seq = Integer.parseInt(request.getParameter("seq"));
-			int res = biz.delete(seq);
+			int article_no = Integer.parseInt(request.getParameter("article_no"));
+
+			int res = biz.delete(article_no);
 			if(res>0) {
 				response.sendRedirect("pet.do?command=list");
 			}else {
-				response.sendRedirect("pet.do?command=selectone&seq"+seq);
+				response.sendRedirect("pet.do?command=selectone&article_no"+article_no);
 			}
 		}
 	}
