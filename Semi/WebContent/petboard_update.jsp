@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,7 +28,25 @@
 <body>
 <%@ include file="Form/header.jsp"%>
 
+<%
+	LoginDto logindto = (LoginDto) session.getAttribute("dto"); //컨트롤러에서 dto 받아와서 형변환 
+		if (logindto == null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인이 필요한 페이지입니다.')");
+		script.println("location.href='login.jsp'");
+		script.println("</script>");
+		
+		}
+	
+%>
+
 <jsp:useBean id="dto" class="com.dto.BoardDto" scope="request"></jsp:useBean>
+<%
+  
+  if (logindto.getMem_name().equals(dto.getMem_name())){
+	 
+  %>
     
 <form action="pet.do" method="post">
  <input type="hidden" name="command" value="updateres"/>
@@ -110,5 +129,16 @@ $(document).ready(function() {
 
 </script>
 </form>
+<%
+  }else{
+	  PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('수정권한이 없습니다.')");
+		script.println("location.href='pet.do?command=list'");
+		script.println("</script>");
+	  
+  }
+
+%>
 </body>
 </html>

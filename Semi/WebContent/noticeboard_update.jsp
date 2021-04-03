@@ -39,14 +39,10 @@
 		script.println("alert('로그인이 필요한 페이지입니다.')");
 		script.println("location.href='login.jsp'");
 		script.println("</script>");
-		
 
 		}
 	
-		
-	
 %>
-
 
     <jsp:useBean id="dto" class="com.dto.BoardDto" scope="request"></jsp:useBean>
     
