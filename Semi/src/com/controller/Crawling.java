@@ -18,7 +18,7 @@ import org.jsoup.select.Elements;
 public class Crawling {
 	
 	public List<String> CatCrawling(String savePath) throws IOException {
-		
+
 		List<String> successList = new ArrayList<String>();
 
 		// 크롤링할 웹 주소
@@ -82,23 +82,25 @@ public class Crawling {
 		File finishDir = new File(finishPath);
 		File[] finishFileList = finishDir.listFiles();
 
+		int num = 0;
 		// 값을 리턴해주기위해 successList에 저장
-		for (int i = 0; i < finishFileList.length; i++) {
 			for (File finishFile : finishFileList) {
 				if (finishFile.isFile()) {
 					String fileName = finishFile.getName();
-					String all = fileName + "@" + contentList.get(i);
+					String all = fileName + "@" + contentList.get(num);
 					successList.add(all);
+					num++;
 				}
 			}
-		}
-		
+
 		for (int i = 0; i < successList.size(); i++) {
 			System.out.println(successList.get(i));
 			System.out.println();
 		}
 		return successList;
 	}
+
+
 	public List<String> DokCrawling(String savePath) throws IOException {
 
 		List<String> successList = new ArrayList<String>();
@@ -155,6 +157,9 @@ public class Crawling {
 			// db에 저장된 값과 중복되지 않게 특정 문자 치환
 			String name = url.replaceAll("/", "-").replaceAll("https:", "%");
 			System.out.println(name);
+			if (name.contains("png")) {
+				continue;
+			}
 			// 파일 저장 경로
 			File file = new File(savePath+"dok\\"+name);
 			ImageIO.write(jpg, "jpg", file);
@@ -163,22 +168,22 @@ public class Crawling {
 		String finishPath = savePath+"dok\\";
 		File finishDir = new File(finishPath);
 		File[] finishFileList = finishDir.listFiles();
-
+		
+		int num = 0;
 		// 값을 리턴해주기위해 successList에 저장
-		for (int i = 0; i < finishFileList.length; i++) {
-			for (File finishFile : finishFileList) {
-				if (finishFile.isFile()) {
-					String fileName = finishFile.getName();
-					String all = fileName + "@" + contentList.get(i);
-					successList.add(all);
-				}
+		for (File finishFile : finishFileList) {
+			if (finishFile.isFile()) {
+				String fileName = finishFile.getName();
+				String all = fileName + "@" + contentList.get(num);
+				successList.add(all);
+				num++;
 			}
 		}
 		for (int i = 0; i < successList.size(); i++) {
 			System.out.println(successList.get(i));
 			System.out.println();
 		}
-		
+
 		return successList;
 	}
 }

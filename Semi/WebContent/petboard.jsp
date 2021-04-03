@@ -183,6 +183,7 @@
 		}
 	}
 	%>
+	<input type="button" class="btn" value="크롤링해주기(입양대기)"onclick="location.href='crawling.do?command=animal&mem_no=<%=logindto.getMem_no()%>&brd_no=2'"/>
     </table>
 	
 	
