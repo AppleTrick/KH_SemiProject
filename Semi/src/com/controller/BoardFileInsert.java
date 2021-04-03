@@ -75,6 +75,7 @@ public class BoardFileInsert extends HttpServlet {
 			
 			JSONObject jobj = new JSONObject();
 			jobj.put("url", uploadPath);
+			jobj.put("fileName", fileName);
 			
 			response.setContentType("application/json"); // 데이터 타입을 json으로 설정하기 위한 세팅
 			System.out.println("jobj.toJSONString()은 ? : " + jobj.toJSONString());

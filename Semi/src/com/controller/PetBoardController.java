@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONObject;
 
 import com.biz.BoardBiz;
 import com.biz.PetBiz;
@@ -54,6 +57,7 @@ public class PetBoardController extends HttpServlet {
 			int mem_no = Integer.parseInt(request.getParameter("mem_no"));
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
+			String image = request.getParameter("image");
 			//2. 1번 값을 담아서 리턴
 			BoardDto dto = new BoardDto();
 			//dto.setMem_name(mem_name);
@@ -61,6 +65,7 @@ public class PetBoardController extends HttpServlet {
 			dto.setBrd_no(brd_no);
 			dto.setTitle(title);
 			dto.setContent(content);
+			dto.setImage(image);
 			
 			int res = biz.insert(dto);
 			
@@ -71,8 +76,8 @@ public class PetBoardController extends HttpServlet {
 			}
 		
 		}else if(command.equals("updateform")) {
-			int article_no = Integer.parseInt(request.getParameter("article_no"));
-			BoardDto dto = biz.selectOne(article_no);
+			int ArticleNo = Integer.parseInt(request.getParameter("ArticleNo"));
+			BoardDto dto = biz.selectOne(ArticleNo);
 			request.setAttribute("dto", dto);
 			dispatch(request, response, "petboard_update.jsp");
 		
@@ -95,14 +100,25 @@ public class PetBoardController extends HttpServlet {
 			}
 			
 		}else if(command.equals("delete")) {
-			int article_no = Integer.parseInt(request.getParameter("article_no"));
+			int ArticleNo = Integer.parseInt(request.getParameter("ArticleNo"));
 
-			int res = biz.delete(article_no);
+			int res = biz.delete(ArticleNo);
 			if(res>0) {
 				response.sendRedirect("pet.do?command=list");
 			}else {
-				response.sendRedirect("pet.do?command=selectone&article_no"+article_no);
+				response.sendRedirect("pet.do?command=selectone&article_no"+ArticleNo);
 			}
+		}else if(command.equals("titleContent")) {
+			int ArticleNo = Integer.parseInt(request.getParameter("ArticleNo"));
+			System.out.println(ArticleNo);
+			BoardDto dto = biz.selectOne(ArticleNo);
+			String title = dto.getTitle();
+			String content = dto.getContent();
+			
+			JSONObject jobj = new JSONObject();
+			jobj.put("title", title);
+			jobj.put("content", content);
+			response.getWriter().print(jobj.toJSONString());
 		}
 	}
 

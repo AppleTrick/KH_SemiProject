@@ -16,11 +16,13 @@
 
 <%
 	//로그인 세션 불러옵니다...
-	LoginDto logindto = (LoginDto)session.getAttribute("dto");
-	
-
-	
+	LoginDto logindto = (LoginDto)session.getAttribute("dto");	
 %>
+
+<%
+	// 리스트를 불러옵니다.
+	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+%>  
 	
 
 	<%@ include file="Form/header.jsp"%>
@@ -43,56 +45,63 @@
 						<label for="check1">전체보기</label> 
 						<label for="check2">입양대기</label> 
 						<label for="check3">입양후기</label>
-						<input type="button" class="btn" value="글작성" onclick="location.href='pet.do?command=insertform'"/>
-					</div>
-					
-					
+						<input type="button" class="btn" value="입양 후기 글작성" onclick="location.href='pet.do?command=insertform'"/>
+						<input type="button" class="btn" value="크롤링해주기(입양대기)"onclick=""/>
+					</div>		
+
 					<!-- 글게시물  -->
 					<div class="photo-gallery">
+						<%
+							if(list == null || list.size() ==0){
+						%>
+							<div>
+								<h1>글없음</h1>
+							</div>
+						<%
+							} else {			
+								//getBrd_no() :2 =입양 대기, :3 = 입양 후기게시판 
+								//전체페이지를 불러오는 코드
+								for (BoardDto dto : list){
+									if(dto.getBrd_no()==2){
+									
+						%>
+								<!-- dto.getBrd_no()==2 일경우(입양대기)	 -->
+								
+								<div class="pic wait">
+									<img src="savefile/<%= dto.getImage() %>" data-original="<%= dto.getImage() %>" articleNo="<%=dto.getArticle_no() %>" chk="stop"/>
+								</div>			    	
+			    	
+						    	
+						<%
+									}else if(dto.getBrd_no()==3){
+						%>
+								<!-- dto.getBrd_no()==3 일경우(입양후기)	 -->	
+									<div class="pic after">
+										<img src="savefile/<%= dto.getImage() %>" data-original="<%= dto.getImage() %>" articleNo="<%=dto.getArticle_no() %>" />
+									</div>			
+
+						<%				
+									}
+								}
+							}
+						%>
 
 						<!--  아래 같은 형식으로 계속 출력 시킬것!-->
 						<!-- img의 chk 과 div 클래스의 pic wait 인 경우 입양대기 -->
 						<!-- div 클래스의 pic after 인 경우 입양후기 -->
-
-						<div class="pic wait">
+						
+						
+						
+						<!-- 
+						<div class="pic wait"> 입양 대기형식
 							<img src="resources/TestImage/dog1.jpg" data-original="dog1.jpg" chk="stop"/>
 						</div>
-						<div class="pic wait">
-							<img src="resources/TestImage/dog2.jpg" data-original="dog2.jpg" chk="stop"/>
-						</div>
-						<div class="pic wait">
-							<img src="resources/TestImage/dog3.jpg" data-original="dog3.jpg" chk="stop"/>
-						</div>
-						<div class="pic after">
+
+						<div class="pic after"> 입양 후기 형식
 							<img src="resources/TestImage/dog4.jpg" data-original="dog4.jpg" />
 						</div>
-						<div class="pic after">
-							<img src="resources/TestImage/cat1.jpg" data-original="cat1.jpg" />
-						</div>
-						<div class="pic after">
-							<img src="resources/TestImage/cat2.jpg" data-original="cat2.jpg" />
-						</div>
-						<div class="pic after">
-							<img src="resources/TestImage/cat3.jpg" data-original="cat3.jpg" />
-						</div>
-						<div class="pic wait">
-							<img src="resources/TestImage/dog1.jpg" data-original="dog1.jpg" chk="stop"/>
-						</div>
-						<div class="pic wait">
-							<img src="resources/TestImage/dog2.jpg" data-original="dog2.jpg" chk="stop"/>
-						</div>
-						<div class="pic after">
-							<img src="resources/TestImage/dog4.jpg" data-original="dog4.jpg"/>
-						</div>
-						<div class="pic after">
-							<img src="resources/TestImage/cat1.jpg" data-original="cat1.jpg"/>
-						</div>
-						<div class="pic after">
-							<img src="resources/TestImage/cat2.jpg" data-original="cat2.jpg"/>
-						</div>
-						<div class="pic after">
-							<img src="resources/TestImage/cat3.jpg" data-original="cat3.jpg"/>
-						</div>
+						-->
+
 					</div>
 				</div>
 			</div>
@@ -107,85 +116,23 @@
 			</div>
 			<div class="modalText">
 				<div class="modal-text-title">
-					<span>제목</span>
+					<span id="title">제목</span>
 				</div>
 				<div class="modal-text-content">
-					<span> 내용 부분 </span>
+					<span id="content"> 내용 부분 </span>
 				</div>
 
 				<!-- onclick 부분 href 해주시면 됩니다. -->
 				<div class="wrap">
-					<input type="button" value="삭제하기" class="modal-button" onclick="">
-					<input type="button" value="수정하기" class="modal-button" onclick="">
+					<input type="hidden" value="" id="TextArticleNo">
+					<input type="button" value="삭제하기" class="modal-button" onclick="deleteData()">
+					<input type="button" value="수정하기" class="modal-button" onclick="updateData()">
 					<input type="button" value="입양신청하러가기" class="modal-button"
 						id="apply" onclick="">
 				</div>
 			</div>
 		</div>
-	</div>
-  
-	 
-	
-	
-	
-<%
-	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
-	
-
-%>    
-    <h2 style="margin-bottom: 20px; margin-top: 20px; text-align: center">PET BOARD</h2>
-    <table class="table table-hover" id="list">
-    	<col width="100px"/>
-    	<col width="100px"/>
-    	<col width="100px"/>
-    	<col width="100px"/>
-    	<col width="100px"/>
-    	<col width="100px"/>
-    <thead>
-		<tr>
-			<th scope="col" class="" style="text-align: center;">글번호</th>
-			<th scope="col" class="">제목</th>
-			<th scope="col" class="" style="text-align: center;">작성자</th>
-			<th scope="col" class="" style="text-align: center;">날짜</th>
-			<th scope="col" class="" style="text-align: center;">조회수</th>
-			<th scope="col" class="" style="text-align: center;">사진(이미지)</th>
-		</tr>
-	</thead>
-
-<%
-	if(list == null || list.size() ==0){
-%>
-		<tr>
-			<td colspan="4">----글 없음-----</td>
-		</tr>
-<%
-	} else {
-		
-		
-		//getBrd_no() :2 =입양 대기, :3 = 입양 후기게시판 
-		//전체페이지를 불러오는 코드
-		for (BoardDto dto : list){
-			if(dto.getBrd_no()==2 || dto.getBrd_no()==3){
-			
-%>
-		
-		<tr>
-    		<td style="text-align: center;"><%=dto.getArticle_no()%></td>
-    		<td><a href="pet.do?command=selectone&article_no=<%=dto.getArticle_no() %>" style="text-decoration: none; color:black;"><%= dto.getTitle()%></a></td>
-    		<td style="text-align: center;"><%= dto.getMem_name() %></td>
-    		<td style="text-align: center;"><%= dto.getRegdate()%></td>
-    		<td style="text-align: center;"><%= dto.getHit() %></td>
-    		<td style="text-align: center;"><%= dto.getImage() %></td>
-    		
-    	</tr>
-<%
-			}
-		}
-	}
-	%>
-    </table>
-	
-	
+	</div>	
 	
 </body>
 </html>
