@@ -102,7 +102,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script>
 		$('#summernote').summernote({
 			height : 700, // 에디터 높이

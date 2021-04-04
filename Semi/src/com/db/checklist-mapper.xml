@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="checklist">
+	
+	<resultMap type="ChecklistDto" id="ChecklistMap">
+		<result property="mem_no" column="MEM_NO" />
+		<result property="q1name" column="Q1NAME"/>
+		<result property="q2call" column="Q2CALL"/>
+		<result property="q3dar" column="Q3ADR"/>
+		<result property="q4marriage" column="Q4MARRIAGE"/>
+		<result property="q5job" column="Q5JOB"/>
+		<result property="q6pet" column="Q6PET"/>
+		<result property="q7pet2" column="Q7PET2"/>
+		<result property="q8fam" column="Q8fam"/>
+		<result property="q9why" column="Q9WHY"/>
+		<result property="q10baby" column="Q10BABY"/>
+		<result property="q11etc" column="Q11ETC"/>
+	</resultMap>
+
+	<insert id = "insert" parameterType="ChecklistDto">
+		INSERT INTO CHECKLISTBOARD VALUES
+		(1, #{q1name}, #{q2call}, #{q3adr}, #{q4marriage}, #{q5job}, #{q6pet},
+		#{q7pet2}, #{q8fam}, #{q9why}, #{q10baby}, #{q11etc})
+	</insert>
+</mapper>
