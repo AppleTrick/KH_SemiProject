@@ -31,7 +31,7 @@ public class CrawlingController extends HttpServlet {
 	@SuppressWarnings("unlikely-arg-type")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html charset=UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 
 		// 서버 실행시 파일 경로
 		String rootPath = request.getSession().getServletContext().getRealPath("/") ;
@@ -174,7 +174,7 @@ public class CrawlingController extends HttpServlet {
 					}
 				}
 			}
-			dispatch(request, response, "petboard.jsp");
+			dispatch(request, response, "pet.do?command=list");
 		}
 	}
 	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {

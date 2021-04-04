@@ -16,7 +16,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class Crawling {
-	
+
 	public List<String> CatCrawling(String savePath) throws IOException {
 
 		List<String> successList = new ArrayList<String>();
@@ -64,7 +64,7 @@ public class Crawling {
 		Element element = doc.select("ul.animal_list01").get(0);
 		// 이미지가 있는 태그
 		Elements img = element.select("img");
-
+		List<String> listImg = new ArrayList<String>();
 		for (Element e : img) {
 			// 크롤링할 이미지 경로
 			String url = crawlingImg+e.getElementsByAttribute("src").attr("src");
@@ -76,23 +76,14 @@ public class Crawling {
 			// 파일 저장 경로
 			File file = new File(savePath+"cat\\"+name);
 			ImageIO.write(jpg, "jpg", file);
-		}
-
-		String finishPath = savePath+"cat\\";
-		File finishDir = new File(finishPath);
-		File[] finishFileList = finishDir.listFiles();
-
-		int num = 0;
-		// 값을 리턴해주기위해 successList에 저장
-			for (File finishFile : finishFileList) {
-				if (finishFile.isFile()) {
-					String fileName = finishFile.getName();
-					String all = fileName + "@" + contentList.get(num);
-					successList.add(all);
-					num++;
-				}
+			if (name.contains("jpg")) {
+				listImg.add(name);
 			}
-
+		}
+		for (int i = 0; i < listImg.size(); i++) {
+			String all = listImg.get(i) + "@" + contentList.get(i);
+			successList.add(all);
+		}
 		for (int i = 0; i < successList.size(); i++) {
 			System.out.println(successList.get(i));
 			System.out.println();
@@ -148,7 +139,7 @@ public class Crawling {
 		Element element = doc.select("ul.animal_list01").get(0);
 		// 이미지가 있는 태그
 		Elements img = element.select("img");
-
+		List<String> listImg = new ArrayList<String>();
 		for (Element e : img) {
 			// 크롤링할 이미지 경로
 			String url = crawlingImg+e.getElementsByAttribute("src").attr("src");
@@ -157,28 +148,18 @@ public class Crawling {
 			// db에 저장된 값과 중복되지 않게 특정 문자 치환
 			String name = url.replaceAll("/", "-").replaceAll("https:", "%");
 			System.out.println(name);
-			if (name.contains("png")) {
-				continue;
-			}
 			// 파일 저장 경로
 			File file = new File(savePath+"dok\\"+name);
 			ImageIO.write(jpg, "jpg", file);
-		}
-
-		String finishPath = savePath+"dok\\";
-		File finishDir = new File(finishPath);
-		File[] finishFileList = finishDir.listFiles();
-		
-		int num = 0;
-		// 값을 리턴해주기위해 successList에 저장
-		for (File finishFile : finishFileList) {
-			if (finishFile.isFile()) {
-				String fileName = finishFile.getName();
-				String all = fileName + "@" + contentList.get(num);
-				successList.add(all);
-				num++;
+			if (name.contains("jpg")) {
+				listImg.add(name);
 			}
 		}
+		for (int i = 0; i < listImg.size(); i++) {
+			String all = listImg.get(i) + "@" + contentList.get(i);
+			successList.add(all);
+		}
+
 		for (int i = 0; i < successList.size(); i++) {
 			System.out.println(successList.get(i));
 			System.out.println();
