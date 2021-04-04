@@ -94,7 +94,7 @@ public class PetBoardController extends HttpServlet {
 			int res=biz.update(dto);
 			
 			if(res>0) {
-				response.sendRedirect("pet.do?command=selectone&article_no="+article_no);
+				response.sendRedirect("pet.do?command=list");
 			}else {
 				response.sendRedirect("pet.do?command=updateform.do&article_no="+article_no);
 			}
