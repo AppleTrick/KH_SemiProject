@@ -13,6 +13,7 @@
 		<typeAlias type = "com.dto.SemiDto" alias="SemiDto"></typeAlias>
 		<typeAlias type = "com.dto.PetDto" alias="PetDto"></typeAlias>
 		<typeAlias type="com.dto.DonateDto" alias="DonateDto"/>
+		<typeAlias type="com.dto.ChecklistDto" alias="ChecklistDto"/>
 
 	</typeAliases>
 
@@ -33,7 +34,8 @@
     	<mapper resource="com/db/login-mapper.xml"/>
     	<mapper resource="com/db/board-mapper.xml"/>
     	<mapper resource="com/db/pet-mapper.xml"/>
-   	<mapper resource="com/db/donate-mapper.xml"/>
+ 	  	<mapper resource="com/db/donate-mapper.xml"/>
+ 	  	<mapper resource="com/db/checklist-mapper.xml"/>	
  	</mappers>
 
 </configuration>

@@ -87,12 +87,7 @@
 		</div>
 	</div>
 
-
-	<!-- include libraries(jQuery, bootstrap) -->
-	<!--  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="resouces/bootstrap/js/bootstrap.js"></script>-->
+	</form>
 
 	<!-- include summernote css/js -->
 	<link
@@ -135,7 +130,7 @@
 					focus : true, // 에디터 로딩후 포커스를 맞출지 여부
 					lang : "ko-KR", // 한글 설정
 					placeholder : '글 내용을 입력해 주세요.', //placeholder 설정
-					callbacks : { //여기 부분이 이미지를 첨부하는 부분
+					/*callbacks : { //여기 부분이 이미지를 첨부하는 부분
 						onImageUpload : function(files) {
 							uploadSummernoteImageFile(files[0], this);
 						},
@@ -150,7 +145,7 @@
 								}
 							}
 						}
-					}
+					}*/
 				});
 
 		//이미지 파일 업로드
@@ -170,6 +165,6 @@
 			});
 		}
 	</script>
-	</form>
+
 </body>
 </html>
