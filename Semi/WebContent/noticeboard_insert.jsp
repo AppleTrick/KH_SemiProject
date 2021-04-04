@@ -56,7 +56,13 @@
 
 						}
 					
+					if(logindto.getMem_role().equals("ADMIN")){
+						
+					
+					
 				%>
+				
+			
 
 
 
@@ -99,6 +105,20 @@
 						</div>
 					</div>
 				</form>
+<%
+					}else{
+						PrintWriter script = response.getWriter();
+						script.println("<script>");
+						script.println("alert('공지글 작성 권한이 없습니다.')");
+						script.println("location.href='notice.do?command=list'");
+						script.println("</script>");
+	
+					}
+
+
+%>				
+				
+				
 			</div>
 		</div>
 	</div>
