@@ -71,10 +71,20 @@ public class Crawling {
 			URL imgUrl = new URL(url);
 			BufferedImage jpg = ImageIO.read(imgUrl);
 			// db에 저장된 값과 중복되지 않게 특정 문자 치환
-			String name = url.replaceAll("/", "-").replaceAll("https:", "%");
+			String name = url.replaceAll("/", "-").replaceAll("https:", "cat");
 			System.out.println(name);
+			if (name.contains("png")) {
+				continue;
+			}
 			// 파일 저장 경로
-			File file = new File(savePath+"cat\\"+name);
+			File file = new File(savePath+name);
+			try {
+				if (!file.exists()) {
+					file.mkdirs();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 			ImageIO.write(jpg, "jpg", file);
 			if (name.contains("jpg")) {
 				listImg.add(name);
@@ -146,10 +156,20 @@ public class Crawling {
 			URL imgUrl = new URL(url);
 			BufferedImage jpg = ImageIO.read(imgUrl);
 			// db에 저장된 값과 중복되지 않게 특정 문자 치환
-			String name = url.replaceAll("/", "-").replaceAll("https:", "%");
+			String name = url.replaceAll("/", "-").replaceAll("https:", "dok");
 			System.out.println(name);
+			if (name.contains("png")) {
+				continue;
+			}
 			// 파일 저장 경로
-			File file = new File(savePath+"dok\\"+name);
+			File file = new File(savePath+name);
+			try {
+				if (!file.exists() ) {
+					file.mkdirs();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 			ImageIO.write(jpg, "jpg", file);
 			if (name.contains("jpg")) {
 				listImg.add(name);

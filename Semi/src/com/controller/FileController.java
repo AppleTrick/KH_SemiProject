@@ -54,17 +54,20 @@ public class FileController extends HttpServlet {
 	    	
 	    	
 	    	
-	    	
+	    	// 폴더명
 	    	String realFolder = "upload";//선언만 한것임 
 	    	String filename = request.getParameter("filename");
 	    	int maxSize = 1024 * 1024 * 5;
 	    	String encType = "UTF-8";
+	    	// 이 폴더 경로에 저장
 	    	String savefile = "upload";
 	    	ServletContext scontext = getServletContext();
 	    	realFolder = scontext.getRealPath(savefile);
+	    	// 폴더명을 저장
 	    	File folder = new File(realFolder);
 
 	    	try {
+	    		// 폴더를 만듬
 	    		if(!folder.exists()){
 	    			folder.mkdir();
 	    		}
