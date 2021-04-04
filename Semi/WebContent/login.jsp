@@ -1,3 +1,4 @@
+<%@page import="com.dto.LoginDto"%>
 <%@page import="java.math.BigInteger"%>
 <%@page import="java.security.SecureRandom"%>
 <%@page import="java.net.URLEncoder"%>
@@ -17,7 +18,87 @@
 	<!-- 네이버 -->
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 	<!-- 구글 -->
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  	<script src="https://apis.google.com/js/api:client.js"></script>
+  	
+  	<!-- GOOGLE LOGIN -->
+	<script>
+	  var googleUser = {};
+	  var startApp = function() {
+	    gapi.load('auth2', function(){
+	      
+	      auth2 = gapi.auth2.init({
+	        client_id: '393709466900-djrtjsb8etgtriiljfdqd58gp07vf6iu.apps.googleusercontent.com',
+	        cookiepolicy: 'single_host_origin',
+	        // Request scopes in addition to 'profile' and 'email'
+	        scope: 'profile email'
+	      });
+	      attachSignin(document.getElementById('customBtn'));
+	    });
+	  };
+	
+	  function attachSignin(element) {
+	    console.log(element.id);
+	    auth2.attachClickHandler(element, {},
+	        function(googleUser) {
+	          location.href="sns.do?command=googlelogin&google_email="+googleUser.getBasicProfile().getEmail() + "&google_name="+googleUser.getBasicProfile().getName();
+	        }, function(error) {
+	          alert(JSON.stringify(error, undefined, 2));
+	        });
+	  }
+	</script>
+	
+	<style type="text/css">
+    #customBtn {
+      margin-left: 10px;
+      display: inline-block;
+      background: white;
+      color: #444;
+      width: 100px;
+      border-radius: 5px;
+      box-shadow: 1px 1px 1px grey;
+      white-space: nowrap;
+    }
+    #customBtn:hover {
+      cursor: pointer;
+    }
+    span.label {
+      font-family: serif;
+      font-weight: normal;
+    }
+    span.icon {
+      background: url('resources/LoginImage/g-normal.png') transparent 5px 50% no-repeat;
+      display: inline-block;
+      vertical-align: middle;
+      width: 36px;
+      height: 36px;
+    }
+    span.buttonText {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 14px;
+      font-weight: bold;
+      /* Use the Roboto font that is loaded in the <head> */
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+   <!--  <script>
+    //등록된 계정 정보를 가져오는 메소드?
+     function onSignIn(googleUser) {
+    //function onSignIn() {
+    	//var auth2 = gapi.auth2.getAuthInstance();
+        var profile = googleUser.getBasicProfile();
+        var id_token = googleUser.getAuthResponse().id_token;
+        /* console.log("ID Token: " + id_token); */      
+        location.href="sns.do?command=googlelogin&google_email="+profile.getEmail();
+     }
+    //로그아웃 함수
+    function signOut() {
+		gapi.auth2.getAuthInstance().disconnect();
+	}
+    </script> -->
+    
 	<!-- login css -->
 	<link rel="stylesheet" href="resources/css/loginpage.css" />
 	
@@ -29,27 +110,63 @@
             alert("id 중복체크를 해주세요!");
             document.getElementsByName("mem_id")[1].focus();
         	}
-       
    	}
     
     function idCheck(){
         var mem_id = document.getElementsByName("mem_id")[1].value; 
-        
         if(mem_id==null|| mem_id.trim() == ""){
             alert("id를 입력해 주세요 !");
-            
         }else {
             open("login.do?command=idchk&mem_id="+mem_id,"","width=200, height=200");
-            
         }
-        
     }
     
-   </script>
+    function goPopup() {
+    	// 주소검색을 수행할 팝업 페이지를 호출합니다.
+    	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+    	var pop = window.open("jusoPopup.jsp", "pop",
+    			"width=570,height=420, scrollbars=yes, resizable=yes");
+    }
+    
+    function jusoCallBack(roadFullAddr) {
+    	var addressEl = document.querySelector("#address");
+    	addressEl.value = roadFullAddr;
+    }
+
+    function toggleForm(){
+        container = document.querySelector('.container');
+        section = document.querySelector('section');
+
+        container.classList.toggle('active');
+        section.classList.toggle('active');
+    }
+    
+    <%
+	LoginDto logindto;
+	String email = "";
+	String name = "";
+	if(request.getAttribute("loginDto")!=null ){
+		logindto = (LoginDto) request.getAttribute("loginDto");
+		if(logindto.getMem_name() != null){
+			name = logindto.getMem_name();
+		}		
+		email = logindto.getMem_email();
+	%>
+		window.onload = function(){
+			toggleForm();
+		}
+	<%
+	}
+	%>
+	
+    
+    
+  	</script>
 
 	<title>Insert title here</title>
 </head>
-<body>    
+<body> 
+
     <section>
     <!-- 로그인 부분 -->
         <div class="container">
@@ -66,7 +183,7 @@
                         <input type="text" placeholder="Username" name="mem_id">
                         <input type="password" placeholder="PassWord" name="mem_pw">
                         <input type="submit" value="Login">
-                        <p class="signup"> 아이디가 없으신가요? <a href="#" onclick="toggleForm();">회원가입</a></p>
+                        <p class="signup"> 아이디가 없으신가요? <a onclick="toggleForm();">회원가입</a></p>
                         
                         <div class="SNSButton">
                         	<!-- 카카오 버튼 -->
@@ -79,7 +196,14 @@
 							<div id="naver_id_login" class="SNSbuttons"></div>				
 							
 							<!-- 구글 버튼 -->
-							<div class="g-signin2 SNSbuttons" data-onsuccess="onSignIn" heigth="50"></div>	
+							<div id="gSignInWrapper">
+							   <div id="customBtn" class="customGPlusSignIn">
+							     <span class="icon"></span>
+							     <span class="buttonText">Google</span>
+							   </div>
+							 </div>
+							<script>startApp();</script>
+							<!-- <div class="g-signin2 SNSbuttons" data-onsuccess="onSignIn" heigth="50"></div>	 -->
                         </div>
                     </form>
                 </div>
@@ -94,15 +218,15 @@
                         	<input type="text" name="mem_id" required="required" title="n" placeholder="ID"><input type="button" value="중복확인" onclick="idCheck();" class="checkButton">
                        	</div>                      
                         <input type="password" placeholder="Create Password" name="mem_pw" required="required" onclick="idCheckProc();">
-                        <input type="text" placeholder="Username" name="mem_name" required="required" onclick="idCheckProc()">
+                        <input type="text" placeholder="Username" name="mem_name" required="required" onclick="idCheckProc()" value="<%=name %>">
                         <input type="text" placeholder="Nickname" name="mem_nickname" required="required" onclick="idCheckProc()">
                         <input type="text" placeholder="PhoneNumber" name="mem_phone" required="required" onclick="idCheckProc()">
                         <div>
                         	<input type="text" name="mem_addr" id="address" class="form-control" placeholder="도로명 주소를 입력해 주세요" required readonly><input type="button" class="btn btn-info checkButton" onClick="goPopup();" value="검색">
                         </div>       
-                        <input type="text" placeholder="Email" name="mem_email" required="required" onclick="idCheckProc()">
+                        <input type="text" placeholder="Email" name="mem_email" required="required" onclick="idCheckProc()" value="<%=email %>">
                         <input type="submit" value="Sign up">
-                        <p class="signup"> 아이디가 있으신가요? <a href="#" onclick="toggleForm();">로그인</a></p>
+                        <p class="signup"> 아이디가 있으신가요? <a onclick="toggleForm();">로그인</a></p>
                     </form>
                 </div>
                 <div class="imgBx">
@@ -114,30 +238,7 @@
         
     </section>
     
-    <script type="text/javascript">
-	    function goPopup() {
-	    	// 주소검색을 수행할 팝업 페이지를 호출합니다.
-	    	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-	    	var pop = window.open("jusoPopup.jsp", "pop",
-	    			"width=570,height=420, scrollbars=yes, resizable=yes");
-	    }
-	    function jusoCallBack(roadFullAddr) {
-	    	var addressEl = document.querySelector("#address");
-	    	addressEl.value = roadFullAddr;
-	    }
-    </script>
-	
-	<!-- 로그인 양식 -->
-	<script>
-        function toggleForm(){
-            container = document.querySelector('.container');
-            section = document.querySelector('section');
-
-            container.classList.toggle('active');
-            section.classList.toggle('active');
-        }
-
-    </script>
+    
 	<!-- KAKAO LOGIN -->		
      <script type="text/javascript">
 		Kakao.init('90c04b9f0318b89033c0670c0eec9a87');
@@ -152,7 +253,7 @@
 					url : '/v2/user/me',
 					success : function(res) {
 
-					location.href="sns.do?command=kakaologin&kakao_email="+res.kakao_account.email;
+					location.href="sns.do?command=kakaologin&kakao_email="+res.kakao_account.email+"";
 						//window.close();
 					}
 				})
@@ -176,30 +277,6 @@
 		naver_id_login.setPopup(); // 팝업 설정
 		naver_id_login.init_naver_id_login();
   	</script>	
-	<!-- GOOGLE LOGIN -->
 	
-    <script>
-	    //등록된 계정 정보를 가져오는 메소드?
-	     function onSignIn(googleUser) {
-	    // Useful data for your client-side scripts:
-	        var profile = googleUser.getBasicProfile();
-	        /* console.log("ID: " + profile.getId());  */
-	   	// Don't send this directly to your server!
-	        /* console.log('Full Name: ' + profile.getName());
-	        console.log('Given Name: ' + profile.getGivenName());
-	        console.log('Family Name: ' + profile.getFamilyName());
-	        console.log("Image URL: " + profile.getImageUrl());
-	        console.log("Email: " + profile.getEmail());//보통 이 정보를 가지고 디비에 등록해서 사용하면 된다?  */
-	
-	    // The ID token you need to pass to your backend:
-	        var id_token = googleUser.getAuthResponse().id_token;
-	        /* console.log("ID Token: " + id_token); */      
-	        location.href="sns.do?command=googlelogin&google_email="+profile.getEmail();
-	     }
-	    //로그아웃 함수
-	    function signOut() {
-			gapi.auth2.getAuthInstance().disconnect();
-		}
-    </script>
 </body>
 </html>

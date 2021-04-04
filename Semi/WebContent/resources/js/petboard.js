@@ -18,7 +18,7 @@ function start(){
 	console.log(original);
 
 	previews.forEach(preview => {
-		preview.addEventListener('click', async function(){
+		preview.addEventListener('click', function(){
 			// modal 과 origianl 에 open class 를 추가한다.
 			modal.classList.add("open");
 			original.classList.add("open");
@@ -27,7 +27,7 @@ function start(){
 			console.log(ArticleNo);
 			document.getElementById('TextArticleNo').value=ArticleNo;
 			
-			await requestData(ArticleNo);
+			requestData(ArticleNo);
 			
 			
 			if(preview.hasAttribute('chk')){

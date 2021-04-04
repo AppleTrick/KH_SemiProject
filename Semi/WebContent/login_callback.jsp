@@ -36,7 +36,8 @@
 			console.log(naver_id_login.getProfileData('age'));
 
 			opener.location.href = "sns.do?command=naverlogin&naver_email="
-					+ naver_id_login.getProfileData('email');
+					+ naver_id_login.getProfileData('email') + "&naver_name="
+					+ naver_id_login.getProfileData('name');
 			window.close();
 		}
 
