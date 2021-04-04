@@ -27,7 +27,7 @@ public class DonateController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html charset=UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		String command = request.getParameter("command");
 		
@@ -61,12 +61,25 @@ public class DonateController extends HttpServlet {
 			int donate_pay = Integer.parseInt(request.getParameter("donate_pay"));
 			System.out.println(donate_pay);
 			
+			String msg = "잘못 입력하셨습니다. 다시 입력해주세요";
+			String url = "donate.jsp";
+			
 			request.setAttribute("donate_name", donate_name);
 			request.setAttribute("donate_phone", donate_phone);
 			request.setAttribute("donate_type", donate_type);
 			request.setAttribute("donate_pay", donate_pay);
 			
-			dispatch(request, response, "donate_card.jsp");
+			if (donate_name == null) {
+				jsResponse(response, url, msg);
+			} else if (donate_phone == null) {
+				jsResponse(response, url, msg);
+			} else if (donate_type.equals("선택")) {
+				jsResponse(response, url, msg);
+			} else if (donate_pay == 0) {
+				jsResponse(response, url, msg);
+			} else {
+				dispatch(request, response, "donate_card.jsp");
+			}
 			// 결제 내역 확인
 		} else if (command.equals("donatemain")) {
 			
@@ -85,6 +98,14 @@ public class DonateController extends HttpServlet {
 	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
+	}
+	private void jsResponse(HttpServletResponse response, String url, String msg) throws IOException {
+		String s= "<script type='text/javascript'>"
+				+ "alert('"+msg+"');"
+				+"location.href='"+url+"';"
+				+"</script>";
+		
+		response.getWriter().print(s);
 	}
 
 }

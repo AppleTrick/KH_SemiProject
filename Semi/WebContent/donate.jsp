@@ -27,14 +27,14 @@
 						<tr>
 							<th>결제방법</th>
 							<td><select name="donate_type">
-									<option>선택</option>
+									<option value="선택">선택</option>
 									<option value="kakaopay">카카오페이</option>
 							</select></td>
 						</tr>
 						<tr>
 							<th>결제금액</th>
 							<td><select name="donate_pay">
-									<option>선택</option>
+									<option value="0">선택</option>
 									<option value="10000">10000원</option>
 									<option value="20000">20000원</option>
 									<option value="30000">30000원</option>
