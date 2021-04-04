@@ -1,12 +1,15 @@
 package com.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 
 import com.biz.LoginBiz;
 import com.dto.LoginDto;
@@ -49,6 +52,7 @@ public class SnsLoginController extends HttpServlet {
 
 		if (command.equals("naverlogin")) {
 			String email = request.getParameter("naver_email");
+			String name = request.getParameter("naver_name");
 			System.out.println(email);
 
 			int res = biz.tokenchk(email);
@@ -62,15 +66,18 @@ public class SnsLoginController extends HttpServlet {
 
 			} else {
 
-				HttpSession session = request.getSession();// 세션 객체 만들기
+				//HttpSession session = request.getSession();// 세션 객체 만들기
 
 				// session scope에 객체 담기
-				session.setAttribute("email", email); // 세션 생성
-				response.sendRedirect("join_sns.jsp?email=" + email);
+				//session.setAttribute("email", email); // 세션 생성
+				LoginDto dto = new LoginDto();
+				dto.setMem_email(email);
+				dto.setMem_name(name);
+				request.setAttribute("loginDto", dto);
+				dispatch(request, response, "login.jsp");
 
 			}
 		} else if (command.equals("kakaologin")) {
-
 			String email = request.getParameter("kakao_email");
 			int res = biz.tokenchk(email);
 
@@ -81,27 +88,37 @@ public class SnsLoginController extends HttpServlet {
 
 			} else {
 
-				HttpSession session = request.getSession();// 세션 객체 만들기
+				//HttpSession session = request.getSession();// 세션 객체 만들기
 
 				// session scope에 객체 담기
-				session.setAttribute("email", email); // 세션 생성
-				response.sendRedirect("join_sns.jsp?email=" + email);
+				//session.setAttribute("email", email); // 세션 생성
+				
+				LoginDto dto = new LoginDto();
+				dto.setMem_email(email);
+				request.setAttribute("loginDto", dto);
+				dispatch(request, response, "login.jsp");
 
 			}
 			
 			
 		}else if(command.equals("googlelogin")) {
 			String email = request.getParameter("google_email");
+			String name = request.getParameter("google_name");
+			System.out.println("구글 로그인 실행");
 			int res  = biz.tokenchk(email);
 			
 			if(res>0) {
+				System.out.println("실패");
 				System.out.println("여기는 서블릿이에요" + email);
 				response.sendRedirect("login.do?command=login&email="+email);
 				
 			}else {
-				HttpSession session = request.getSession();
-				session.setAttribute("email", email);
-				response.sendRedirect("join_sns.jsp?email="+email);
+				System.out.println("실행");
+				LoginDto dto = new LoginDto();
+				dto.setMem_email(email);
+				dto.setMem_name(name);
+				request.setAttribute("loginDto", dto);
+				dispatch(request, response, "login.jsp");
 			}
 			
 		} else if (command.equals("idchk")) {
@@ -158,6 +175,11 @@ public class SnsLoginController extends HttpServlet {
 				+ "</script>";
 
 		response.getWriter().print(s);
+	}
+	
+	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
+		RequestDispatcher dispatch = request.getRequestDispatcher(path);
+		dispatch.forward(request, response);
 	}
 
 }

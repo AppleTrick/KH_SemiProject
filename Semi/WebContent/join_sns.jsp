@@ -16,19 +16,17 @@
        
    }
     
-         function idCheck(){
-             var mem_id = document.getElementsByName("mem_id")[0].value; 
-             
-             if(mem_id==null|| mem_id.trim() == ""){
-                 alert("id를 입력해 주세요 !");
-                 
-             }else {
-                 open("login.do?command=idchk&mem_id="+mem_id,"","width=200, height=200");
-                 
-             }
-             
-         }
-    
+   function idCheck(){
+       var mem_id = document.getElementsByName("mem_id")[0].value; 
+       
+       if(mem_id==null|| mem_id.trim() == ""){
+           alert("id를 입력해 주세요 !");
+           
+       }else {
+           open("login.do?command=idchk&mem_id="+mem_id,"","width=200, height=200");
+       }
+   }
+
    </script>
 </head>
 <body>
