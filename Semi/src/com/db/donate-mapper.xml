@@ -12,4 +12,19 @@
 		FROM DONATE
 		ORDER BY DONATE_NO DESC
 	</select>
+	<select id="paginglist" parameterType="map" resultType="DonateDto">
+	<![CDATA[
+		SELECT B.DONATE_NO, B.DONATE_NAME, B.DONATE_PHONE, B.DONATE_PAY, B.DONATE_DATE FROM
+		(SELECT ROWNUM AS RNUM, A.DONATE_NO, A.DONATE_NAME, A.DONATE_PHONE, A.DONATE_PAY, A.DONATE_DATE FROM
+		(SELECT DONATE_NO, DONATE_NAME, DONATE_PHONE, DONATE_PAY, DONATE_DATE FROM DONATE
+		WHERE DONATE_PHONE = #{donate_phone}
+		ORDER BY DONATE_NO DESC) A
+		WHERE ROWNUM <= #{endRow}) B
+		WHERE B.RNUM > #{startRow}
+		]]>
+	</select>
+	<select id="count" resultType="String">
+		SELECT COUNT(*) FROM DONATE
+		WHERE DONATE_PHONE = #{donate_phone}
+	</select>
 </mapper>

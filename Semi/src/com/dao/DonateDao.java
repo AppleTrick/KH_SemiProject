@@ -42,4 +42,45 @@ public class DonateDao extends SqlMapConfig {
 		}
 		return list;
 	}
+	
+	public List<DonateDto> pagingList(int startRow, int endRow, String donate_phone) {
+		
+		List<DonateDto> list = new ArrayList<DonateDto>();
+		endRow += startRow;
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		map.put("donate_phone", donate_phone);
+		
+		System.out.println("dao"+map);
+		
+		try(SqlSession session = getSqlSessionFactory().openSession(true);){
+			list = session.selectList(namespace+"paginglist", map);
+			System.out.println("dao"+list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+	
+	public String getTotalCount(String donate_phone){
+		String total = null;
+
+		SqlSession session = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			total = session.selectOne(namespace+"count", donate_phone);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		System.out.println(total);
+
+		return total;
+	}
 }

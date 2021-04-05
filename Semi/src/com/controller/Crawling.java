@@ -43,9 +43,9 @@ public class Crawling {
 		int count = 1;
 		// 5개 1세트를 만듬
 		while (ie1.hasNext()) {
-			val += ie1.next().text() + "\n";
+			val += ie1.next().text() + "<br>\n";
 			if (count % 5 == 0) {
-				contentList.add(val);
+				contentList.add(val+"<br>");
 				val = "";
 			}
 			count++;
@@ -128,9 +128,9 @@ public class Crawling {
 		int count = 1;
 		// 5개 1세트를 만듬
 		while (ie1.hasNext()) {
-			val += ie1.next().text() + "\n";
+			val += ie1.next().text() + "<br>\n";
 			if (count % 5 == 0) {
-				contentList.add(val);
+				contentList.add(val+"<br>");
 				val = "";
 			}
 			count++;

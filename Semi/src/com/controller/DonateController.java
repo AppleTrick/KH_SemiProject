@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.biz.DonateBiz;
+import com.dto.BoardDto;
 import com.dto.DonateDto;
+import com.dto.PagingDto;
 
 @WebServlet("/donate.do")
 public class DonateController extends HttpServlet {
@@ -49,7 +51,6 @@ public class DonateController extends HttpServlet {
 			
 			int res = biz.insertDonate(dto);
 			if (res > 0) {
-				dispatch(request, response, "donate_account.jsp");
 			} else {
 				dispatch(request, response, "donate.jsp");
 			}
@@ -81,14 +82,34 @@ public class DonateController extends HttpServlet {
 				dispatch(request, response, "donate_card.jsp");
 			}
 			// 결제 내역 확인
-		} else if (command.equals("donatemain")) {
+		} else if (command.equals("donatemain")) {	
+//			List<DonateDto> list = biz.selectList();
+//			System.out.println(list);
+//			
+//			request.setAttribute("list", list);
+//			
+//			dispatch(request, response, "donate_account.jsp");
+			String donate_phone = request.getParameter("donate_phone");
 			
+			int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 			
-			List<DonateDto> list = biz.selectList();
-			System.out.println(list);
+			int totalCount = Integer.parseInt(biz.getTotalCount(donate_phone));
 			
+			PagingDto paging = new PagingDto();
+			paging.setPageNo(pageNum);
+			paging.setPageSize(10);
+			paging.setTotalCount(totalCount);
+			
+			pageNum = (pageNum - 1) * 10;// 1 이면 0, 2이면 10, 3이면 20...
+			
+			// 어디부터 어디까지 가져올 건지 쓰는것 -> 쿼리 안쪽에서 계산해줌
+			List<DonateDto> list = biz.pagingList(pageNum, paging.getPageSize(), donate_phone);
+			System.out.println("controller"+list);
+			System.out.println("controller"+totalCount);
 			request.setAttribute("list", list);
-			
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("totalCount", totalCount);
+			request.setAttribute("donate_phone", donate_phone);
 			dispatch(request, response, "donate_account.jsp");
 			// 홈으로 이동
 		} else if (command.equals("main")) {
