@@ -39,7 +39,7 @@
 
 	<update id="update" parameterType="BoardDto">
 		UPDATE ALL_BOARD 
-		SET TITLE = #{title}, CONTENT = #{content} 
+		SET TITLE = #{title}, CONTENT = #{content}
 		WHERE ARTICLE_NO= #{article_no}
 	</update>
 
@@ -47,5 +47,22 @@
 		DELETE FROM ALL_BOARD 
 		WHERE ARTICLE_NO = #{article_no}
 	</delete>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM ALL_BOARD
+		WHERE BRD_NO = 1
+	</select>
+	
+	<select id="paginglist" parameterType="map" resultType="BoardDto">
+		<![CDATA[
+		SELECT B.ARTICLE_NO, B.MEM_NO, B.TITLE, B.REGDATE, B.HIT, B.MEM_NAME FROM 
+		(SELECT ROWNUM AS RNUM, A.ARTICLE_NO, A.MEM_NO, A.TITLE, A.REGDATE, A.HIT, A.MEM_NAME FROM
+		(SELECT ARTICLE_NO, MEM_NO, TITLE, REGDATE, HIT, MEM_NAME FROM ALL_BOARD JOIN LOGINBOARD USING(MEM_NO)
+		WHERE BRD_NO = 1
+		ORDER BY ARTICLE_NO DESC) A
+		WHERE ROWNUM <= #{endRow}) B
+		WHERE B.RNUM > #{startRow}
+		]]>
+	</select>
 
 </mapper>

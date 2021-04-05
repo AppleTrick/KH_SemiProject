@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.biz.BoardBiz;
+import com.biz.PagingBiz;
 import com.dto.BoardDto;
+import com.dto.PagingDto;
 import com.dto.SemiDto;
 
 @WebServlet("/notice.do")
@@ -31,10 +33,29 @@ public class NoticeBoardController extends HttpServlet {
 		
 		String command = request.getParameter("command");
 		BoardBiz biz = new BoardBiz();
+		PagingBiz biz1 = new PagingBiz();
 		
 		if(command.equals("list")) {
-			List<BoardDto> list = biz.selectList();
+//			List<BoardDto> list = biz.selectList();
+//			request.setAttribute("list", list);
+//			dispatch(request, response, "noticeboard.jsp");
+			int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			int totalCount = biz1.getTotalCount();
+			
+			PagingDto paging = new PagingDto();
+			paging.setPageNo(pageNum);
+			paging.setPageSize(10);
+			paging.setTotalCount(totalCount);
+			
+			pageNum = (pageNum - 1) * 10;// 1 이면 0, 2이면 10, 3이면 20...
+			
+			// 어디부터 어디까지 가져올 건지 쓰는것 -> 쿼리 안쪽에서 계산해줌
+			List<BoardDto> list = biz1.pagingList(pageNum, paging.getPageSize());
+			System.out.println("controller"+list);
 			request.setAttribute("list", list);
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("totalCount", totalCount);
 			dispatch(request, response, "noticeboard.jsp");
 			
 		}else if(command.equals("selectone")) {

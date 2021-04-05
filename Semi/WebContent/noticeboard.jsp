@@ -1,9 +1,13 @@
+<%@page import="com.dto.PagingDto"%>
 <%@page import="com.biz.LoginBiz"%>
 <%@page import="com.dto.BoardDto"%>
 <%@page import="com.dto.SemiDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <style>
@@ -37,6 +41,30 @@
 
 </head>
 <body>
+<%
+	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+	int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+	int totalCount = Integer.parseInt(request.getAttribute("totalCount") + "");
+
+	PagingDto paging = new PagingDto();
+	paging.setPageNo(pageNum);
+	paging.setPageSize(10);
+	paging.setTotalCount(totalCount);
+%>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			var pageNum = <%=pageNum - 1%>;
+			
+			if(pageNum >= 10){
+				pageNum %= 10;
+			}
+			
+			$(".pagination>a").eq(pageNum).addClass("on");
+			
+		})
+	</script>
   <!-- 헤더부분 추가 -->
 	<%@ include file="Form/header.jsp" %>
 	
@@ -48,7 +76,7 @@
         <div class="noticeboard_list">
     
 <%
-	List<BoardDto> list = (List<BoardDto>) request.getAttribute("list");
+
 	
 
 %>    
@@ -81,7 +109,6 @@
 		
 		//getBrd_no() ==1 : 공지글만 보기
 		for (BoardDto dto : list){
-			if(dto.getBrd_no()==1){
 			
 %>
 		
@@ -93,7 +120,6 @@
     		<td style="text-align: center;"><%= dto.getHit() %></td>
     	</tr>
 <%
-			}
 		}
 	}
 	%>
@@ -104,23 +130,29 @@
     </div>
     
        <!-- pagination-->
-    <nav aria-label="pagination">
-  <ul class="pagination justify-content-center" >
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+	<div class="pagination">
+		<input type="button" onclick="pageMove(<%=paging.getFirstPageNo()%>)"
+			value="◀"> <input type="button"
+			onclick="pageMove(<%=paging.getPrevPageNo()%>)" value="◁">
+
+		<%
+			for (int i = paging.getStartPageNo(); i <= paging.getEndPageNo(); i++) {
+		%>
+		<a onclick="pageMove(<%=i%>)"><%=i%></a>
+		<%
+			}
+		%>
+
+		<input type="button" onclick="pageMove(<%=paging.getNextPageNo()%>)"
+			value="▷"> <input type="button"
+			onclick="pageMove(<%=paging.getFinalPageNo()%>)" value="▶">
+	</div>
+
+	<script>
+			function pageMove(page){
+				location.href='notice.do?command=list&page='+page
+			}
+		</script>
 	 <!-- pagination 끝-->
 	
     </div><!-- 카드 끝 -->
