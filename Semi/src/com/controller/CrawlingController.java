@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.biz.BoardBiz;
 import com.dto.BoardDto;
 
-import oracle.net.aso.i;
-
 @WebServlet("/crawling.do")
 public class CrawlingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

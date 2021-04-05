@@ -114,7 +114,11 @@ public class DonateController extends HttpServlet {
 			// 홈으로 이동
 		} else if (command.equals("main")) {
 			dispatch(request, response, "index.jsp");
-		}
+		}else if (command.equals("강아지상")) {
+            dispatch(request, response, "match_test_dok.jsp");
+        } else if (command.equals("고양이상")) {
+            dispatch(request, response, "match_test_cat.jsp");
+        }
 	}
 	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);

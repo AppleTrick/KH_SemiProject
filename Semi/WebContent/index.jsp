@@ -25,18 +25,18 @@ System.out.println("session 담겼을까요?"+dto);
         <div class="slide slide2" id="slide"></div>
         
       	<div class="content">
-        	<h2>Hello I'm<br /><span>Jacob Stevens</span></h2>
+        	<h2>함께해요<br /><span>맛있는 밥 후원하기</span></h2>
         <div class="animated-text">
-          <h3>Web Disigner</h3>
-          <h3>Web Developer</h3>
-          <h3>Motion Graphic Designer</h3>
+          <h3>랜선보호자가 되고싶다면?</h3>
+          <h3>굶주림에 지친아이들을 돕고싶다면?</h3>
+          <h3>유기견 보호소에 힘이되고 싶다면?</h3>
         </div>
-        <a href="#" class="btn1">See My Works</a>
-        <div class="media-icons">
+        <a href="move.do?move=donation" class="btn1">후원하기</a>
+       <!--  <div class="media-icons">
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
-        </div>
+        </div> -->
       </div>
     </section>
     
@@ -52,7 +52,7 @@ System.out.println("session 담겼을까요?"+dto);
     <!-- about 부분 시작 -->
     <section class="about" id="about">
       <div class="title">
-        <h2 class="section-title">About Me</h2>
+        <h2 class="section-title">About Us</h2>
       </div>
       <div class="content">
         <div class="column col-left">
@@ -61,9 +61,36 @@ System.out.println("session 담겼을까요?"+dto);
           </div>
         </div>
         <div class="column col-right">
-          <h2 class="content-title">안녕하세요</h2>
-          <p class="paragraph-text">In this video, you will learn how to design A <br><br> Complete Responsive Personal Portfolio Website Using HTML, CSS, and Vanilla Javascript</p>
-          <a href="" class="btn">See More</a>
+          <h2 class="content-title">ANIMALNATION</h2>
+          <p class="paragraph-text" style="font-size: 14pt;">
+          오늘날 전세계적으로 700억여 마리의 동물들이 인간에 의해 태어나고 죽음에 이르고 있습니다. <br>
+          그리고 국내에서는 매년 십만 마리 이상 하루에 약 200마리의 반려동물들이 길거리에 버려지고 있습니다. <br>
+          이 중 새 보호자를 찾거나 원래 집으로 돌아가는 경우도 있지만 대부분은 자연사하거나 안락사 됩니다. <br>
+          인간에 의해 상처받고 고통받는 것에 책임을 느끼고 작은 보탬이 되고자 애니멀네이션을 설립하였습니다. <br>
+
+		</p>
+	   </div>
+      </div>
+    </section>
+	<!-- about 부분 종료 -->
+	<!-- about 부분 시작 -->
+    <section class="about1" id="about">
+      <div class="title1">
+        <h2 class="section-title1">About Us</h2>
+      </div>
+      <div class="content">        
+        <div class="column col-right">
+          <h2 class="content-title1">ANIMALNATION</h2>
+          <p class="paragraph-text1" style="font-size: 14pt;">
+          애니멀네이션은 흩어져있는 보호소의 정보를 모아 한눈에 보여주어 중간다리의 역할을 하는 플랫폼입니다.<br> 
+		  저희는 잊혀져 가는 유기동물들의 입양을 도와주고, 운영비용이 모자란 보호소에 후원금을 전달 합니다. <br>
+		  여러분들의 소중한 마음이 모여 올바른 반려동물 문화가 자리잡게 될 것입니다.<br>
+		</p>
+	   </div>
+	   <div class="column col-left">
+          <div class="img-card">
+            <img src="resources/indexResources/cat.jpg" alt="">
+          </div>
         </div>
       </div>
     </section>
@@ -176,7 +203,7 @@ System.out.println("session 담겼을까요?"+dto);
 	<!-- our team 부분 -->
 	<section class="work" id="work">
       <div class="title reveal">
-        <h2 class="section-title">My Work</h2>
+        <h2 class="section-title">DEVELOPERS</h2>
       </div>
       <div class="content">
         <div class="card reveal">

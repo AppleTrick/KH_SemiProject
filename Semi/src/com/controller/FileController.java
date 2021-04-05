@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,8 +52,9 @@ public class FileController extends HttpServlet {
 	    if(command.equals("upload")) {
 	    	
 	    	String mem_id = request.getParameter("mem_id");
+	    	int mem_no = Integer.parseInt(request.getParameter("mem_no"));
 	    	
-	    	
+	    	System.out.println("memno 왔나요~~~?"+mem_no);
 	    	
 	    	// 폴더명
 	    	String realFolder = "upload";//선언만 한것임 
@@ -82,10 +84,10 @@ public class FileController extends HttpServlet {
 
 	    	String fullpath = realFolder + "\\" + filename;
 	    	
-	    	
 	    	LoginDto dto = new LoginDto();
 	    	dto.setMem_id(mem_id);
 	    	dto.setMem_image(filename);
+	    	
 	    	
 	    	
 	    	int res = biz.updateProfile(dto);
@@ -100,7 +102,10 @@ public class FileController extends HttpServlet {
 	    	
 	    	
 	    	if(res>0) {
-				jsResponse(response, "mypage.jsp", "개인정보 수정이 완료되었습니다.");
+	    		
+	    		dispatch(request, response, "login.do?command=updatform&mem_no="+mem_no);
+	    		
+				//jsResponse(response, "login.do?command=updatform&mem_no="+mem_no, "개인정보 수정이 완료되었습니다.");
 				
 				
 			}else{
@@ -122,6 +127,11 @@ public class FileController extends HttpServlet {
 				+"</script>";
 		
 		response.getWriter().print(s);
+	}
+	
+	private void dispatch(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
+		RequestDispatcher dispatch = request.getRequestDispatcher(path);
+		dispatch.forward(request, response);
 	}
 	
 	
