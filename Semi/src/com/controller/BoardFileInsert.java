@@ -70,7 +70,7 @@ public class BoardFileInsert extends HttpServlet {
 		// 응답해주는 값
 		PrintWriter out = response.getWriter();
 		// 파일저장
-		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxPostSize, "euc-kr", new DefaultFileRenamePolicy());
+		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxPostSize, "UTF-8", new DefaultFileRenamePolicy());
 		Enumeration<?> files =multi.getFileNames();
 		String formName=(String)files.nextElement();
 		String fileName=multi.getFilesystemName(formName); // 파일의 이름 얻기
@@ -83,7 +83,7 @@ public class BoardFileInsert extends HttpServlet {
 			// 파일이 업로드 되지 않았을때 
 			out.print("파일 업로드 되지 않았음"); 
 		} else { // 파일이 업로드 되었을때 
-			fileName=new String(fileName.getBytes("8859_1"),"UTF-8");
+			//fileName=new String(fileName.getBytes("8859_1"),"UTF-8");
 			String uploadPath = "savefile\\" + fileName;
 			
 			System.out.println("savefile\\" + fileName);
