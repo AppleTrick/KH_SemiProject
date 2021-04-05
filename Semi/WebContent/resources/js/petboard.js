@@ -31,11 +31,11 @@ function start(){
 			
 			
 			if(preview.hasAttribute('chk')){
-				document.getElementById('apply').style.display="none";
-				console.log("작동");
-			} else{
 				document.getElementById('apply').style.display="inline";
 				console.log("오작동");
+			} else{
+				document.getElementById('apply').style.display="none";
+				console.log("작동");
 			}
 
 			// 오리지날 속성을 가지고 오고 클릭한 이미지의 를 오리지날 속성 이미지로 변경한다.
