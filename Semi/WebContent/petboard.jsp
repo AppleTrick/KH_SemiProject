@@ -28,6 +28,7 @@
 	<%@ include file="Form/header.jsp"%>
 	
 
+
 	<!-- 바디부분 시작 -->
 	<div class="mt-4">
 		<div class="container d-flex justify-content-center">
@@ -46,7 +47,14 @@
 						<label for="check2">입양대기</label> 
 						<label for="check3">입양후기</label>
 						<input type="button" class="btn" value="입양 후기 글작성" onclick="location.href='pet.do?command=insertform'"/>
+<%
+						if((logindto != null) && (logindto.getMem_role().equals("ADMIN"))){
+%>
 						<input type="button" class="btn" value="크롤링해주기(입양대기)" onclick="location.href='crawling.do?command=animal&mem_no=<%=logindto.getMem_no()%>&brd_no=2'"/>
+<%
+						}
+%>	
+					
 					</div>		
 
 					<!-- 글게시물  -->
