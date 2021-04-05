@@ -7,7 +7,7 @@
 <html>
 <head>
  
-	<link rel="stylesheet" href="resources/css/header.css">
+	
 	<script type="text/javascript" src="resources/js/header.js"></script>
 	<link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
@@ -17,6 +17,7 @@
 	<link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+	<link rel="stylesheet" href="resources/css/header.css">
 	
 	<!--  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -45,39 +46,65 @@
 	        <a href="move.do?move=donation">기부페이지</a>
 	        <a href="move.do?move=map">지도페이지이동</a>
 	        <a href="move.do?move=doctor">펫닥터페이지</a>
-	        <%
-			if( dto1 != null ){
-				if(dto1.getMem_image() == null){			    	
+
+			
+
+			<%
+			if (dto1 != null) {
+				if (dto1.getMem_image() == null) {
 			%>
-			<div style="display : inline;">
-				<a href="mypage.jsp">
-	        		<img src="resources/img/profile.jpg"  width="32px" height="32px;" style="border-radius: 50%; overflow: hidden;" >
-	        	</a>
-			</div>
+				<div class="action1">
+					<div class="profile" onclick="menuToggle()">
+						<img src="resources/img/profile.jpg" alt="">
+					</div>
+					<div class="menu">
+						<h7>
+							<%=dto1.getMem_name()%> 님<br>
+							<span>환영합니다.</span>
+						</h7>
+						<ul class="list-group">
+							<li><img src="resources/img/edit.png" alt=""><a href="login.do?command=updatform&mem_no=<%=dto1.getMem_no()%>">Edit profile</a></li>
+							<li><img src="resources/img/log-out.png" alt=""><a href="login.do?command=logout">Logout</a></li>
+						</ul>
+					</div>
+				</div>
 	        					    		
 			<%
 			    }else{
 			%>
-	       	<a href="mypage.jsp">
-	            <img src="./upload/<%=dto1.getMem_image() %>"  width="32px" height="32px;" style="border-radius: 50%; overflow: hidden;">
-	        </a>
+				<div class="action1">
+					<div class="profile" onclick="menuToggle()">
+						<img src="./upload/<%=dto1.getMem_image() %>" alt="">
+					</div>
+					<div class="menu">
+						<h7>
+							<%=dto1.getMem_name()%> 님<br>
+							<span>환영합니다.</span>
+						</h7>
+						<ul class="list-group">
+							<li><img src="resources/img/edit.png" alt=""><a href="login.do?command=updatform&mem_no=<%=dto1.getMem_no()%>">Edit profile</a></li>
+							<li><img src="resources/img/log-out.png" alt=""><a href="login.do?command=logout">Logout</a></li>
+						</ul>
+					</div>
+				</div>
 			<%
 				}			
-			%>
-		   	<a href="login.do?command=logout">
-		   		<button>로그아웃</button>
-		   	</a>
-	       	<%
-	       	} else {
+       		} else {
 	      	%>
 	       	<a href="move.do?move=loginpage">
 	       		<button>로그인</button> 
 	       	</a>
 	       	<%
-	       	}
+       		}
 	       	%>
 	       	</div> 
     </header>
     <div class="upsite"></div>
   </body>
+  <script type="text/javascript">
+	  function menuToggle(){
+	      const toggleMenu = document.querySelector('.menu');
+	      toggleMenu.classList.toggle('active');
+	  }
+  </script>
 </html>

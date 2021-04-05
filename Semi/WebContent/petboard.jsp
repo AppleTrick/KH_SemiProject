@@ -76,7 +76,7 @@
 								<!-- dto.getBrd_no()==2 일경우(입양대기)	 -->
 								
 								<div class="pic wait">
-									<img src="resources/saveFile/cat/<%= dto.getImage() %>" data-original="<%= dto.getImage() %>" articleNo="<%=dto.getArticle_no() %>" chk="stop"/>
+									<img src="resources/saveFile/<%= dto.getImage() %>" data-original="<%= dto.getImage() %>" articleNo="<%=dto.getArticle_no() %>" chk="stop"/>
 								</div>			    	
 			    	
 						    	
@@ -135,8 +135,7 @@
 					<input type="hidden" value="" id="TextArticleNo">
 					<input type="button" value="삭제하기" class="modal-button" onclick="deleteData()">
 					<input type="button" value="수정하기" class="modal-button" onclick="updateData()">
-					<input type="button" value="입양신청하러가기" class="modal-button"
-						id="apply" onclick="">
+					<input type="button" value="입양신청하러가기" class="modal-button" id="apply" onclick="applyData()">
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
@@ -48,27 +49,41 @@ public class BoardFileInsert extends HttpServlet {
 	
 	public void profileUpload(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		// 이미지를 업로드할 경로
-		
+		// 이미지를 업로드할 경로		
 		String saveDirectory = request.getSession().getServletContext().getRealPath("/savefile");
+		
+		// 파일 저장 경로
+		File file = new File(saveDirectory);
+		try {
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
 		
 		System.out.println(saveDirectory);
 
 		// 크기
 		int maxPostSize = 10 * 1024 * 1024;
 		
+		// 응답해주는 값
 		PrintWriter out = response.getWriter();
-		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxPostSize, "euc-kr", new DefaultFileRenamePolicy());
+		// 파일저장
+		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxPostSize, "UTF-8", new DefaultFileRenamePolicy());
 		Enumeration<?> files =multi.getFileNames();
 		String formName=(String)files.nextElement();
 		String fileName=multi.getFilesystemName(formName); // 파일의 이름 얻기
+		
+		
+		
 		
 		
 		if(fileName == null) { 
 			// 파일이 업로드 되지 않았을때 
 			out.print("파일 업로드 되지 않았음"); 
 		} else { // 파일이 업로드 되었을때 
-			fileName=new String(fileName.getBytes("8859_1"),"UTF-8");
+			//fileName=new String(fileName.getBytes("8859_1"),"UTF-8");
 			String uploadPath = "savefile\\" + fileName;
 			
 			System.out.println("savefile\\" + fileName);

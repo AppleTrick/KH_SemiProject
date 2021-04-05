@@ -29,21 +29,27 @@ function start(){
 			
 			requestData(ArticleNo);
 			
+			const originalSrc = preview.getAttribute("data-original");
+			
 			
 			if(preview.hasAttribute('chk')){
+				// 입양대기일 경우 입양신청 버튼 on / 이미지 경로 수정
 				document.getElementById('apply').style.display="inline";
-				console.log("오작동");
+				thisImg.src = `resources/saveFile/${originalSrc}`;
 			} else{
+				// 입양후기일 경우 입양신청 버튼 off / 이미지 경로 수정
 				document.getElementById('apply').style.display="none";
-				console.log("작동");
+				thisImg.src = `savefile/${originalSrc}`;
 			}
 
 			// 오리지날 속성을 가지고 오고 클릭한 이미지의 를 오리지날 속성 이미지로 변경한다.
-			const originalSrc = preview.getAttribute("data-original");
-			thisImg.src = `savefile/${originalSrc}`;
+			
+			
 		})
 	})
-
+	
+	
+	//흑백 화면 삭제시 class remove 작동
 	modal.addEventListener("click", (e) => {
 		if (e.target.classList.contains('modal1')) {
 			modal.classList.remove("open");
@@ -52,8 +58,8 @@ function start(){
 	})
 }
 
+// 누른 이미지 번호에 따른 data 요청
 async function requestData(ArticleNo){
-
 	let data = await fetch("pet.do?command=titleContent&ArticleNo="+ArticleNo).then(function(res){
       return res.json();
     });
@@ -63,17 +69,22 @@ async function requestData(ArticleNo){
 	document.getElementById('title').innerHTML=data.title;
 	let content = data.content;
 	console.log("content :" + content);
-	document.getElementById('content').innerHTML=data.content;
-	
-	
+	document.getElementById('content').innerHTML=data.content;	
 }
 
+// 글 삭제
 function deleteData(){
 	let ArticleNo = document.getElementById('TextArticleNo').value;
 	location.href="pet.do?command=delete&ArticleNo="+ArticleNo;
 }
 
+// 글 업데이트
 function updateData(){
 	let ArticleNo = document.getElementById('TextArticleNo').value;
 	location.href="pet.do?command=updateform&ArticleNo="+ArticleNo;	
+}
+
+function applyData(){
+	let ArticleNo = document.getElementById('TextArticleNo').value;
+	location.href="petboard_adopt_info.jsp";
 }

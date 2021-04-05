@@ -172,13 +172,10 @@ div.right {
 									value="<%=dto.getMem_role()%>" readonly="readonly"><br></td>
 							</tr>
 							<tr>
-								<td colspan="2"><input type="submit" class="btn"
-									value="수정완료" style="background-color: #f5df4e;"> <input
-									type="button" class="btn" value="뒤로가기"
-									style="background-color: #f5df4e;"> <input
-									type="button" class="btn" value="회원탈퇴"
-									style="background-color: #f5df4e;"
-									onclick="location.href='login.do?command=deleteuser&mem_no=<%=dto.getMem_no()%>'">
+								<td colspan="2">
+									<input type="submit" class="btn" value="수정완료" style="background-color: #f5df4e;">
+									<input type="button" class="btn" value="뒤로가기" style="background-color: #f5df4e;"> 
+									<input type="button" class="btn" value="회원탈퇴" style="background-color: #f5df4e;"onclick="location.href='login.do?command=deleteuser&mem_no=<%=dto.getMem_no()%>'">
 								</td>
 							</tr>
 
