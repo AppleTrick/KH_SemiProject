@@ -28,7 +28,10 @@ public class ChecklistController extends HttpServlet {
 		String command = request.getParameter("command");
 		ChecklistBiz biz = new ChecklistBiz();
 		
-		if(command.equals("insert")) {
+		if(command.equals("checklistform")) {
+			response.sendRedirect("petboard_adopt_checklist.jsp");
+			
+		}else if(command.equals("insert")) {
 			String q1name = request.getParameter("q1name");
 			String q2call = request.getParameter("q2call");
 			String q3adr = request.getParameter("q3adr");

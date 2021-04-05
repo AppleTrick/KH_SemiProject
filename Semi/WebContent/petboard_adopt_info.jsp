@@ -33,13 +33,9 @@
 							<img src="resources/img/adopt_info.png"
 								data-original="adopt_info.png" />
 						</div>
-						<div class="checklist_image" style="text-align: center;">
-							<a href="petboard_adopt_checklist.jsp"> <!-- 입양체크리스트페이지로 이동 -->
-								<img src="resources/img/checklist.png"
-								data-original="checklist.png" name="checklist" width="300"
-								height="93" />
-							</a>
-						</div>
+							<div class="checklist_image" style="text-align: center;"><!-- checklist 이동하는 부분 -->
+								<input type="image" src="resources/img/checklist.png" onclick="location.href='checklist.do?command=checklistform'" >
+							</div>
 						<div class="mb-4"></div>
 					</div>
 					<!-- 카드 끝 -->
