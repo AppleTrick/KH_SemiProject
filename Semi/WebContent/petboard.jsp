@@ -76,7 +76,7 @@
 								<!-- dto.getBrd_no()==2 일경우(입양대기)	 -->
 								
 								<div class="pic wait">
-									<img src="resources/saveFile/cat/<%= dto.getImage() %>" data-original="<%= dto.getImage() %>" articleNo="<%=dto.getArticle_no() %>" chk="stop"/>
+									<img src="resources/saveFile/<%= dto.getImage() %>" data-original="<%= dto.getImage() %>" articleNo="<%=dto.getArticle_no() %>" chk="stop"/>
 								</div>			    	
 			    	
 						    	

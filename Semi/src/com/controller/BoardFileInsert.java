@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
@@ -48,8 +49,7 @@ public class BoardFileInsert extends HttpServlet {
 	
 	public void profileUpload(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		// 이미지를 업로드할 경로
-		
+		// 이미지를 업로드할 경로		
 		String saveDirectory = request.getSession().getServletContext().getRealPath("/savefile");
 		
 		System.out.println(saveDirectory);
@@ -57,11 +57,24 @@ public class BoardFileInsert extends HttpServlet {
 		// 크기
 		int maxPostSize = 10 * 1024 * 1024;
 		
+		// 응답해주는 값
 		PrintWriter out = response.getWriter();
+		// 파일저장
 		MultipartRequest multi = new MultipartRequest(request, saveDirectory, maxPostSize, "euc-kr", new DefaultFileRenamePolicy());
 		Enumeration<?> files =multi.getFileNames();
 		String formName=(String)files.nextElement();
 		String fileName=multi.getFilesystemName(formName); // 파일의 이름 얻기
+		
+		
+		// 파일 저장 경로
+		File file = new File(saveDirectory);
+		try {
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
 		
 		
 		if(fileName == null) { 
