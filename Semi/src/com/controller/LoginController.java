@@ -188,7 +188,7 @@ public class LoginController extends HttpServlet {
 			System.out.println(res);
 			
 			if(res>0) {
-				jsResponse(response, "mypage.jsp", "개인정보 수정이 완료되었습니다.");
+				jsResponse(response, "index.jsp", "개인정보 수정이 완료되었습니다.");
 				
 				
 			}else{
