@@ -90,7 +90,7 @@
 	<link rel="stylesheet" href="resources/css/loginpage.css" />
 	
 	<script type="text/javascript">
-
+	
     function idCheckProc() {
         var chk = document.getElementsByName ("mem_id")[1].title;
         if(chk == 'n'){
@@ -101,10 +101,18 @@
     
     function idCheck(){
         var mem_id = document.getElementsByName("mem_id")[1].value; 
+        //팝업창 가운데 정렬
+        var screenW = screen.availWidth; // 스크린 가로사이즈
+        var screenH = screen.availHeight; // 스크린 세로사이즈
+        var popW =300; //팝업창 가로사이즈
+        var popH =200; //팝업창 세로사이즈
+        var posL=(screenW-popW)/2; //팝업창 가로 포지션
+        var posT=(screenH-popH)/2; //팝업창 세로 포지션
+        
         if(mem_id==null|| mem_id.trim() == ""){
             alert("id를 입력해 주세요 !");
         }else {
-            open("login.do?command=idchk&mem_id="+mem_id,"","width=200, height=200");
+            open('login.do?command=idchk&mem_id='+mem_id,'test','width='+popW+',height='+popH+',top='+posT+',left='+posL+',resizable=no,scrolbars=no');
         }
     }
     
@@ -127,6 +135,12 @@
         container.classList.toggle('active');
         section.classList.toggle('active');
     }
+   
+	
+	
+	
+	
+
     
     <%
 	LoginDto logindto;
@@ -160,7 +174,7 @@
             <div class="user signinBx">
 
                 <div class="imgBx">
-                    <img src="resources/img/keys.jpg">
+                    <img src="resources/img/dog_login.jpg">
                 </div>
 
                 <div class="formBx">
@@ -170,6 +184,7 @@
                         <input type="text" placeholder="Username" name="mem_id">
                         <input type="password" placeholder="PassWord" name="mem_pw">
                         <input type="submit" value="Login">
+                        <input class="homeBtn" type="button" value="Main" onclick="location.href='index.jsp'">
                         <p class="signup"> 아이디가 없으신가요? <a onclick="toggleForm();">회원가입</a></p>
                         
                         <div class="SNSButton">
@@ -217,7 +232,7 @@
                     </form>
                 </div>
                 <div class="imgBx">
-                    <img src="resources/img/text.jpg">
+                    <img src="resources/img/cat_login.jpg">
                 </div>
             </div>
         </div>

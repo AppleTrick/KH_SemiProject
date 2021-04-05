@@ -87,7 +87,7 @@ public class LoginController extends HttpServlet {
 				}
 			}else{
 	    	
-				jsResponse(response, "index.jsp", "존재하지 않는 아이디이거나, 아이디 또는 비밀번호가 틀렸습니다");
+				jsResponse(response, "move.do?move=loginpage", "존재하지 않는 아이디이거나, 아이디 또는 비밀번호가 틀렸습니다");
 	    	
 
 			}

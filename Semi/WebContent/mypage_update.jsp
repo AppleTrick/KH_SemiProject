@@ -79,7 +79,7 @@ div.right {
 	<div class="mt-4">
 		<div class="container d-flex justify-content-center">
 			<div class="col-9">
-				<h1>회원정보수정</h1>
+				<h2>회원정보수정</h2>
 				<p>
 					"<%=dto.getMem_id()%>"님의 정보입니다.
 				</p>
@@ -117,8 +117,8 @@ div.right {
 				<div class="right">
 					<form action="login.do" method="post" id="2_form">
 
-						<input type="hidden" name="command" value="userupdate"> <input
-							type="hidden" name="mem_no" value="<%=dto.getMem_no()%>">
+						<input type="hidden" name="command" value="userupdate"> 
+						<input type="hidden" name="mem_no" value="<%=dto.getMem_no()%>">
 
 
 
@@ -129,8 +129,8 @@ div.right {
 							</colgroup>
 							<tr>
 								<th>아이디</th>
-								<td><input type="text" name="mem_id" required="required"
-									value="<%=dto.getMem_id()%>" readonly="readonly"></td>
+								<td>
+								<input type="text" name="mem_id" required="required" value="<%=dto.getMem_id()%>" readonly="readonly"></td>
 
 							</tr>
 
