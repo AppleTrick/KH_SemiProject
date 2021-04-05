@@ -87,7 +87,7 @@ public class LoginController extends HttpServlet {
 				}
 			}else{
 	    	
-				jsResponse(response, "index.jsp", "아이디, 비밀번호가 틀렸습니다");
+				jsResponse(response, "index.jsp", "존재하지 않는 아이디이거나, 아이디 또는 비밀번호가 틀렸습니다");
 	    	
 
 			}
@@ -205,7 +205,9 @@ public class LoginController extends HttpServlet {
 			
 			int res = biz.deleteMember(mem_no);
 			if(res>0) {
-				jsResponse(response, "index.jsp", "회원 탈퇴가 완료되었습니다");
+				jsResponse(response, "index.jsp", "회원 탈퇴가 완료되었습니다. 언제든지 다시 돌아와주세요 ! ");
+				HttpSession session = request.getSession(false);
+		    	session.invalidate();
 			}else {
 				jsResponse(response, "mypage.jsp", "회원탈퇴가 정상적으로 되지 않았습니다.. 다시 시도하세요 ");
 			}
