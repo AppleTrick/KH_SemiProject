@@ -52,6 +52,16 @@ public class BoardFileInsert extends HttpServlet {
 		// 이미지를 업로드할 경로		
 		String saveDirectory = request.getSession().getServletContext().getRealPath("/savefile");
 		
+		// 파일 저장 경로
+		File file = new File(saveDirectory);
+		try {
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
+		
 		System.out.println(saveDirectory);
 
 		// 크기
@@ -66,15 +76,7 @@ public class BoardFileInsert extends HttpServlet {
 		String fileName=multi.getFilesystemName(formName); // 파일의 이름 얻기
 		
 		
-		// 파일 저장 경로
-		File file = new File(saveDirectory);
-		try {
-			if (!file.exists()) {
-				file.mkdirs();
-			}
-		} catch (Exception e2) {
-			e2.printStackTrace();
-		}
+		
 		
 		
 		if(fileName == null) { 
