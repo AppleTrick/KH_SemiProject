@@ -135,8 +135,7 @@
 					<input type="hidden" value="" id="TextArticleNo">
 					<input type="button" value="삭제하기" class="modal-button" onclick="deleteData()">
 					<input type="button" value="수정하기" class="modal-button" onclick="updateData()">
-					<input type="button" value="입양신청하러가기" class="modal-button"
-						id="apply" onclick="">
+					<input type="button" value="입양신청하러가기" class="modal-button" id="apply" onclick="applyData()">
 				</div>
 			</div>
 		</div>

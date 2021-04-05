@@ -67,15 +67,31 @@ System.out.println("session 담겼을까요?"+dto);
           그리고 국내에서는 매년 십만 마리 이상 하루에 약 200마리의 반려동물들이 길거리에 버려지고 있습니다. <br>
           이 중 새 보호자를 찾거나 원래 집으로 돌아가는 경우도 있지만 대부분은 자연사하거나 안락사 됩니다. <br>
           인간에 의해 상처받고 고통받는 것에 책임을 느끼고 작은 보탬이 되고자 애니멀네이션을 설립하였습니다. <br>
-          
-          <br>
+
+		</p>
+	   </div>
+      </div>
+    </section>
+	<!-- about 부분 종료 -->
+	<!-- about 부분 시작 -->
+    <section class="about1" id="about">
+      <div class="title1">
+        <h2 class="section-title1">About Us</h2>
+      </div>
+      <div class="content">        
+        <div class="column col-right">
+          <h2 class="content-title1">ANIMALNATION</h2>
+          <p class="paragraph-text1" style="font-size: 14pt;">
           애니멀네이션은 흩어져있는 보호소의 정보를 모아 한눈에 보여주어 중간다리의 역할을 하는 플랫폼입니다.<br> 
 		  저희는 잊혀져 가는 유기동물들의 입양을 도와주고, 운영비용이 모자란 보호소에 후원금을 전달 합니다. <br>
 		  여러분들의 소중한 마음이 모여 올바른 반려동물 문화가 자리잡게 될 것입니다.<br>
-
 		</p>
-<!--           <a href="" class="btn">See More</a>
- -->        </div>
+	   </div>
+	   <div class="column col-left">
+          <div class="img-card">
+            <img src="resources/indexResources/cat.jpg" alt="">
+          </div>
+        </div>
       </div>
     </section>
 	<!-- about 부분 종료 -->

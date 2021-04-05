@@ -83,3 +83,8 @@ function updateData(){
 	let ArticleNo = document.getElementById('TextArticleNo').value;
 	location.href="pet.do?command=updateform&ArticleNo="+ArticleNo;	
 }
+
+function applyData(){
+	let ArticleNo = document.getElementById('TextArticleNo').value;
+	location.href="petboard_adopt_info.jsp";
+}
