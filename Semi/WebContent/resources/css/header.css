@@ -27,7 +27,7 @@ header {
 }
 
 header.sticky{
-  background: #3a6cf4;
+  background: #f5df4e;
   padding: 10px 200px;
 }
 
@@ -50,7 +50,7 @@ header .navigation a {
 }
 
 header .navigation a:hover{
-  color: #3a6cf4;
+  color: #f5df4e;
 }
 
 header.sticky .navigation a:hover{

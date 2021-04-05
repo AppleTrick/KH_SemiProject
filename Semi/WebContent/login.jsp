@@ -34,6 +34,7 @@
 	        // Request scopes in addition to 'profile' and 'email'
 	        scope: 'profile email'
 	      });
+	      
 	      attachSignin(document.getElementById('customBtn'));
 	    });
 	  };
@@ -83,21 +84,7 @@
       font-family: 'Roboto', sans-serif;
     }
   </style>
-   <!--  <script>
-    //등록된 계정 정보를 가져오는 메소드?
-     function onSignIn(googleUser) {
-    //function onSignIn() {
-    	//var auth2 = gapi.auth2.getAuthInstance();
-        var profile = googleUser.getBasicProfile();
-        var id_token = googleUser.getAuthResponse().id_token;
-        /* console.log("ID Token: " + id_token); */      
-        location.href="sns.do?command=googlelogin&google_email="+profile.getEmail();
-     }
-    //로그아웃 함수
-    function signOut() {
-		gapi.auth2.getAuthInstance().disconnect();
-	}
-    </script> -->
+   
     
 	<!-- login css -->
 	<link rel="stylesheet" href="resources/css/loginpage.css" />
