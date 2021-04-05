@@ -85,12 +85,11 @@
   
   </update>
   
-  <update id="deleteUser" parameterType="int">
-  UPDATE LOGINBOARD
-  SET MEM_ENABLED='N'
+  <delete id="deleteUser" parameterType="int">
+  DELETE FROM LOGINBOARD
   WHERE MEM_NO= #{mem_no}
   
-  </update>
+  </delete>
   
   <select id="tokenchk" resultType="int" parameterType="String" >
   SELECT COUNT(*)
