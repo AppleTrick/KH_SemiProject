@@ -91,6 +91,11 @@
   
   </delete>
   
+  <delete id="deleteUserboard" parameterType="int">
+  DELETE FROM ALL_BOARD
+  WHERE MEM_NO= #{mem_no}
+  </delete>
+  
   <select id="tokenchk" resultType="int" parameterType="String" >
   SELECT COUNT(*)
   FROM LOGINBOARD

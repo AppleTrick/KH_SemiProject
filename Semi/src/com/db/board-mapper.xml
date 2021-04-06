@@ -4,18 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardmapper">
 
-	<resultMap type="BoardDto" id="BoardMap">
-		<result property="article_no" column="ARTICLE_NO" />
-		<result property="brd_no" column="BRD_NO" />
-		<result property="admin_writer" column="ADMIN_WRITER" />
-		<result property="mem_writer" column="MEM_WRITER" />
-		<result property="title" column="TITLE" />
-		<result property="content" column="CONTENT" />
-		<result property="regdate" column="REGDATE" />
-		<result property="hit" column="HIT" />
-	</resultMap>
-
-
 
 	<select id="selectList" resultType="BoardDto">
 		SELECT ARTICLE_NO, BRD_NO, MEM_NO, TITLE, CONTENT, REGDATE,HIT, IMAGE,MEM_NAME
