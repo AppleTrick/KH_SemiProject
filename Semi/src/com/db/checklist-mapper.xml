@@ -6,6 +6,7 @@
 <mapper namespace="checklist">
 	
 	<resultMap type="ChecklistDto" id="ChecklistMap">
+		<result property="checklist_no" column="CHECKLIST_NO"/>
 		<result property="mem_no" column="MEM_NO" />
 		<result property="q1name" column="Q1NAME"/>
 		<result property="q2call" column="Q2CALL"/>
@@ -22,7 +23,6 @@
 
 	<insert id = "insert" parameterType="ChecklistDto">
 		INSERT INTO CHECKLISTBOARD VALUES
-		(1, #{q1name}, #{q2call}, #{q3adr}, #{q4marriage}, #{q5job}, #{q6pet},
-		#{q7pet2}, #{q8fam}, #{q9why}, #{q10baby}, #{q11etc})
+		(CHECKLISTSEQ.NEXTVAL, #{mem_no}, #{q1name}, #{q2call}, #{q3adr}, #{q4marriage}, #{q5job}, #{q6pet}, #{q7pet2}, #{q8fam}, #{q9why}, #{q10baby}, #{q11etc})
 	</insert>
 </mapper>

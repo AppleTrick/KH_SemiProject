@@ -86,7 +86,6 @@ public class BoardFileInsert extends HttpServlet {
 			// 파일이 업로드 되지 않았을때 
 			out.print("파일 업로드 되지 않았음"); 
 		} else { // 파일이 업로드 되었을때 
-			//fileName=new String(fileName.getBytes("8859_1"),"UTF-8");
 			String uploadPath = "savefile\\" + fileName;
 			
 			System.out.println("savefile\\" + fileName);

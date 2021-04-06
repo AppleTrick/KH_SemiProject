@@ -2,6 +2,7 @@ package com.dto;
 
 public class ChecklistDto {
 	
+	private int checklist_no;
 	private int mem_no;
 	private String q1name;
 	private String q2call;
@@ -17,6 +18,15 @@ public class ChecklistDto {
 	
 	public ChecklistDto() {
 	}
+	
+	public int getChecklist_no() {
+		return checklist_no;
+	}
+
+	public void setChecklist_no(int checklist_no) {
+		this.checklist_no = checklist_no;
+	}
+
 
 	public int getMem_no() {
 		return mem_no;
