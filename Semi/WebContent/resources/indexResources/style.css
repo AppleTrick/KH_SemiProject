@@ -396,6 +396,7 @@ section {
 .work .content .card{
   width: 260px;
   margin: 15px;
+  background: #939597;
 }
 
 .work .content .card .card-img{
