@@ -91,8 +91,8 @@
 				}			
        		} else {
 	      	%>
-	       	<a href="move.do?move=loginpage">
-	       		<button>로그인</button> 
+	       	<a href="move.do?move=loginpage" id="login">
+	       		로그인
 	       	</a>
 	       	<%
        		}

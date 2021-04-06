@@ -145,7 +145,7 @@ public class LoginController extends HttpServlet {
 				
 				
 			}else{
-				jsResponse(response, "login.do?command=joinform", "회원가입에 실패하였습니다. 회원가입 내용을 확인하세요.");
+				jsResponse(response, "login.jsp", "회원가입에 실패하였습니다. 다시 시도해주세요.");
 				
 				
 			}
