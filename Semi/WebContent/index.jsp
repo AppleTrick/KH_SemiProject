@@ -99,38 +99,38 @@ System.out.println("session 담겼을까요?"+dto);
 	<section class="sliderBody">
 		<div class="img-slider">
 	        <div class="slide3 active">
-	            <img src="resources/indexResources/cat.jpg" alt="" class="mainImage">
+	            <img src="resources/img/slide1photo.jpg" alt="" class="mainImage">
 	            <div class="info">
-	                <h2>Slide 01</h2>
-	                <p>In this video, You will learn how to design a Responsive Image Slider(Slideshow / Carousel) with Manual Navigation Buttons and Auto-Play Navigation functionalities only using pure javascript. In this Image Slider, you can add more images you want without changing any CSS styles because </p>
+	                <h2>입양 신청 지원</h2>
+	                <p style="font-size: 16pt;">사지 말고 입양하세요. <br> 한 아이를 입양함으로써 우리 삶에 당장의 변화는 없지만, <br> 그 아이에게는 살아가는 세상의 전부가 바뀝니다. </p>
 	            </div>
 	        </div>
 	        <div class="slide3">
-	            <img src="resources/indexResources/cat.jpg" alt="" class="mainImage">
+	            <img src="resources/img/slide2photo.jpg" alt="" class="mainImage">
 	            <div class="info">
-	                <h2>Slide 02</h2>
-	                <p>In this video, You will learn how to design a Responsive Image Slider(Slideshow / Carousel) with Manual Navigation Buttons and Auto-Play Navigation functionalities only using pure javascript. In this Image Slider, you can add more images you want without changing any CSS styles because </p>
+	                <h2>입양 후기</h2>
+	                <p style="font-size: 16pt;">따뜻한 품에 안착해 새로운 가족이 된 아이들의 입양 후기를 볼 수 있습니다.</p>
 	            </div>
 	        </div>
 	        <div class="slide3">
-	            <img src="resources/indexResources/dog.jpg" alt="" class="mainImage">
+	            <img src="resources/img/slide3photo.jpg" alt="" class="mainImage">
 	            <div class="info">
-	                <h2>Slide 03</h2>
-	                <p>In this video, You will learn how to design a Responsive Image Slider(Slideshow / Carousel) with Manual Navigation Buttons and Auto-Play Navigation functionalities only using pure javascript. In this Image Slider, you can add more images you want without changing any CSS styles because </p>
+	                <h2>나와 닮은꼴 동물 찾기</h2>
+	                <p style="font-size: 16pt;">간단히 사진을 업로드하는 것만으로 나와 닮은 동물을 찾아 드립니다.</p>
 	            </div>
 	        </div>
 	        <div class="slide3">
-	            <img src="resources/indexResources/dog.jpg" alt="" class="mainImage">
+	            <img src="resources/img/slide4photo.jpg" alt="" class="mainImage">
 	            <div class="info">
-	                <h2>Slide 04</h2>
-	                <p>In this video, You will learn how to design a Responsive Image Slider(Slideshow / Carousel) with Manual Navigation Buttons and Auto-Play Navigation functionalities only using pure javascript. In this Image Slider, you can add more images you want without changing any CSS styles because </p>
+	                <h2>주변 병원 및 보호소 안내</h2>
+	                <p style="font-size: 16pt;">가까운 동물병원 및 보호 시설 위치를 안내해 드립니다</p>
 	            </div>
 	        </div>
 	        <div class="slide3">
-	            <img src="resources/indexResources/dog.jpg" alt="" class="mainImage">
+	            <img src="resources/img/slide5photo.jpg" alt="" class="mainImage">
 	            <div class="info">
-	                <h2>Slide 05</h2>
-	                <p>In this video, You will learn how to design a Responsive Image Slider(Slideshow / Carousel) with Manual Navigation Buttons and Auto-Play Navigation functionalities only using pure javascript. In this Image Slider, you can add more images you want without changing any CSS styles because </p>
+	                <h2>펫닥터</h2>
+	                <p style="font-size: 16pt;">간편한 검색 기능으로 아이들의 이상 증상을 확인하세요 </p>
 	            </div>
 	        </div>
 	        <div class="navigation">
