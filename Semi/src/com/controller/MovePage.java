@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MovePage
  */
-@WebServlet("/move.do")
+@WebServlet("/move1.do")
 public class MovePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

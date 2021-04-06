@@ -10,27 +10,104 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-<context-param> 
-	<param-name>pageSize</param-name> 
-	<param-value>10</param-value> 
-</context-param> 
-<context-param> 
-	<param-name>pageBlock</param-name> 
-	<param-value>10</param-value> 
-</context-param> 
-
-<servlet> 
-	<servlet-name>bbsServlet</servlet-name> 
-	<servlet-class>com.edu.bbs.BBSServlet</servlet-class> 
-	<init-param> 
-	<param-name>bbsProperties</param-name> 
-	<param-value>D:\Dev\education\bbs\WebContent\bbs.properties</param-value> 
-	</init-param> 
-	</servlet> 
-	
-	<servlet-mapping> <servlet-name>bbsServlet</servlet-name> 
-	<url-pattern>*.bbs</url-pattern> 
-	</servlet-mapping> 
+  <servlet>
+  	<servlet-name>BoardFileInsert</servlet-name>
+  	<servlet-class>com.controller.BoardFileInsert</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BoardFileInsert</servlet-name>
+  	<url-pattern>/BoardFileInsert.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>checklist</servlet-name>
+  	<servlet-class>com.controller.ChecklistController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>checklist</servlet-name>
+  	<url-pattern>/checklist.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>crawling</servlet-name>
+  	<servlet-class>com.controller.CrawlingController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>crawling</servlet-name>
+  	<url-pattern>/crawling.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>donate</servlet-name>
+  	<servlet-class>com.controller.DonateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>donate</servlet-name>
+  	<url-pattern>/donate.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>file</servlet-name>
+  	<servlet-class>com.controller.FileController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>file</servlet-name>
+  	<url-pattern>/file.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>infinitContent</servlet-name>
+  	<servlet-class>com.controller.InfinitContent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>infinitContent</servlet-name>
+  	<url-pattern>/infinitContent.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>move</servlet-name>
+  	<servlet-class>com.controller.MovePage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>move</servlet-name>
+  	<url-pattern>/move.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>login</servlet-name>
+  	<servlet-class>com.controller.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>login</servlet-name>
+  	<url-pattern>/login.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>notice</servlet-name>
+  	<servlet-class>com.controller.NoticeBoardController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>notice</servlet-name>
+  	<url-pattern>/notice.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>pet</servlet-name>
+  	<servlet-class>com.controller.PetBoardController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>pet</servlet-name>
+  	<url-pattern>/pet.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>sns</servlet-name>
+  	<servlet-class>com.controller.SnsLoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>sns</servlet-name>
+  	<url-pattern>/sns.do</url-pattern>
+  </servlet-mapping>
   
 </web-app>
 

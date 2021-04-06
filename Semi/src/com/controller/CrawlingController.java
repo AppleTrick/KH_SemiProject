@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.biz.BoardBiz;
 import com.dto.BoardDto;
 
-@WebServlet("/crawling.do")
+@WebServlet("/crawling1.do")
 public class CrawlingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,8 +32,8 @@ public class CrawlingController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		// 서버 실행시 파일 경로
-		String rootPath = request.getSession().getServletContext().getRealPath("/") ;
-		String savePath = rootPath + "resources\\saveFile\\" ;
+		String rootPath = request.getSession().getServletContext().getRealPath("/resources/saveFile") ;
+		//String savePath = rootPath + "resources\\saveFile\\" ;
 
 		String command = request.getParameter("command");
 		System.out.println(command);
@@ -47,8 +47,8 @@ public class CrawlingController extends HttpServlet {
 			String title = "입양대기";
 			Crawling crawling = new Crawling();
 			// 크롤링 후 저장한 내용을 자장
-			List<String> listCat = crawling.CatCrawling(savePath);
-			List<String> listDok = crawling.DokCrawling(savePath);
+			List<String> listCat = crawling.CatCrawling(rootPath);
+			List<String> listDok = crawling.DokCrawling(rootPath);
 			
 			System.out.println(listCat.size());
 			System.out.println(listDok.size());

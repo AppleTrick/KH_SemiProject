@@ -16,7 +16,7 @@ import org.json.simple.JSONObject;
 import com.biz.BoardBiz;
 import com.dto.BoardDto;
 
-@WebServlet("/pet.do")
+@WebServlet("/pet1.do")
 public class PetBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

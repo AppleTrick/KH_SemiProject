@@ -17,7 +17,7 @@ import com.dto.BoardDto;
 /**
  * Servlet implementation class InfinitContent
  */
-@WebServlet("/infinitContent.do")
+@WebServlet("/infinitContent1.do")
 public class InfinitContent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     

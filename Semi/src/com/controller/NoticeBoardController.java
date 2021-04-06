@@ -16,7 +16,7 @@ import com.dto.BoardDto;
 import com.dto.PagingDto;
 import com.dto.SemiDto;
 
-@WebServlet("/notice.do")
+@WebServlet("/notice1.do")
 public class NoticeBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
