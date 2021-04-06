@@ -27,6 +27,10 @@ public class BoardBiz {
 	public int delete(int article_no) {
 		return dao.delete(article_no);
 	}
+	
+	public List<BoardDto> infinitySelect(int start, int end){
+		return dao.infinitySelect(start, end);
+	}
 
 	
 	

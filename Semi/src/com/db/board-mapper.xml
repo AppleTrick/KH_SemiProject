@@ -4,19 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardmapper">
 
-	<resultMap type="BoardDto" id="BoardMap">
-		<result property="article_no" column="ARTICLE_NO" />
-		<result property="brd_no" column="BRD_NO" />
-		<result property="admin_writer" column="ADMIN_WRITER" />
-		<result property="mem_writer" column="MEM_WRITER" />
-		<result property="title" column="TITLE" />
-		<result property="content" column="CONTENT" />
-		<result property="regdate" column="REGDATE" />
-		<result property="hit" column="HIT" />
-	</resultMap>
-
-
-
 	<select id="selectList" resultType="BoardDto">
 		SELECT ARTICLE_NO, BRD_NO, MEM_NO, TITLE, CONTENT, REGDATE,HIT, IMAGE,MEM_NAME
 		FROM ALL_BOARD JOIN LOGINBOARD
@@ -64,5 +51,20 @@
 		WHERE B.RNUM > #{startRow}
 		]]>
 	</select>
+	
+	<select id="infinityScroll" parameterType="map" resultType="BoardDto">
+		SELECT C.*
+		FROM (
+			SELECT ROWNUM RNUM, B.*
+			FROM (
+				SELECT ARTICLE_NO, BRD_NO, MEM_NO, TITLE, CONTENT, REGDATE, HIT, IMAGE
+				FROM ALL_BOARD
+				WHERE BRD_NO = 2 OR BRD_NO = 3
+				ORDER BY ARTICLE_NO DESC
+				) B
+			ORDER BY ROWNUM ASC
+			) C
+		WHERE RNUM BETWEEN #{start} AND #{end}
+	</select>	
 
 </mapper>

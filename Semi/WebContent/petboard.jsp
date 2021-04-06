@@ -1,6 +1,5 @@
 <%@page import="com.biz.BoardBiz"%>
 <%@page import="com.dto.BoardDto"%>
-<%@page import="com.dto.PetDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -58,8 +57,9 @@
 					</div>		
 
 					<!-- 글게시물  -->
-					<div class="photo-gallery">
+					<div class="photo-gallery" id="photo-gallery">
 						<%
+							System.out.println(list.size());
 							if(list == null || list.size() ==0){
 						%>
 							<div>
@@ -69,27 +69,32 @@
 							} else {			
 								//getBrd_no() :2 =입양 대기, :3 = 입양 후기게시판 
 								//전체페이지를 불러오는 코드
+								int a = 0;
 								for (BoardDto dto : list){
-									if(dto.getBrd_no()==2){
+									if(a>15){
+										break;
+									}
+									if(dto.getBrd_no() == 2){
 									
 						%>
 								<!-- dto.getBrd_no()==2 일경우(입양대기)	 -->
 								
 								<div class="pic wait">
-									<img src="resources/saveFile/<%= dto.getImage() %>" data-original="<%= dto.getImage() %>" articleNo="<%=dto.getArticle_no() %>" chk="stop"/>
+									<img src="resources/saveFile/<%= dto.getImage() %>" data-original="<%= dto.getImage() %>" articleNo="<%=dto.getArticle_no() %>" chk="stop" onclick="clicks(this)"/>
 								</div>			    	
 			    	
 						    	
 						<%
-									}else if(dto.getBrd_no()==3){
+								}else if(dto.getBrd_no()==3){
 						%>
 								<!-- dto.getBrd_no()==3 일경우(입양후기)	 -->	
 									<div class="pic after">
-										<img src="savefile/<%= dto.getImage() %>" data-original="<%= dto.getImage() %>" articleNo="<%=dto.getArticle_no() %>" />
+										<img src="savefile/<%= dto.getImage() %>" data-original="<%= dto.getImage() %>" articleNo="<%=dto.getArticle_no() %>" onclick="clicks(this)"/>
 									</div>			
 
 						<%				
 									}
+									a++;
 								}
 							}
 						%>
@@ -116,7 +121,7 @@
 		</div>
 	</div>
 	<!-- 모달창생성 -->
-	<div class="modal1">
+	<div class="modal1" onclick="CloseModal(this);">
 
 		<div class="full-img">
 			<div class="modalImg">

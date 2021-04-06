@@ -1,7 +1,9 @@
 package com.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -83,6 +85,27 @@ public class BoardDao extends SqlMapConfig {
 		}
 		
 		return res;
+	}
+	public List<BoardDto> infinitySelect(int start, int end){
+		SqlSession session = null;
+		List<BoardDto> list = new ArrayList<BoardDto>();
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("start", start);
+		map.put("end", end);
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			list = session.selectList("boardmapper.infinityScroll",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+		
+		session.close();
+		}
+		
+		return list;
 	}
 	
 	

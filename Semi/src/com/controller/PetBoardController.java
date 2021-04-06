@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 
 import com.biz.BoardBiz;
-import com.biz.PetBiz;
 import com.dto.BoardDto;
-import com.dto.PetDto;
 
 @WebServlet("/pet.do")
 public class PetBoardController extends HttpServlet {

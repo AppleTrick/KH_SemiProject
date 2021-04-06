@@ -52,11 +52,14 @@ public class BoardFileInsert extends HttpServlet {
 		// 이미지를 업로드할 경로		
 		String saveDirectory = request.getSession().getServletContext().getRealPath("/savefile");
 		
-		// 파일 저장 경로
-		File file = new File(saveDirectory);
+		String savefile = "savefile";
+    	ServletContext scontext = getServletContext();
+    	String realFolder = scontext.getRealPath(savefile);
+    	// 폴더명을 저장
+    	File folder = new File(realFolder);
 		try {
-			if (!file.exists()) {
-				file.mkdirs();
+			if (!folder.exists()) {
+				folder.mkdirs();
 			}
 		} catch (Exception e2) {
 			e2.printStackTrace();

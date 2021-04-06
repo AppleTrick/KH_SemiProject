@@ -41,6 +41,7 @@
 		SELECT ARTICLE_NO, MEM_WRITER, TITLE, CONTENT, REGDATE, HIT FROM ALL_BOARD WHERE ARTICLE_NO = #{article_no}
 	</select>
 
+
 	<insert id = "insert" parameterType="petDto">
 		INSERT INTO ALL_BOARD
 		VALUES(ALL_BOARDSEQ.NEXTVAL, 2, '관리자', '사용자', #{title}, #{content}, SYSDATE, 3)
@@ -58,5 +59,7 @@
 	<delete id="delete" parameterType="petDto">
 		DELETE FROM ALL_BOARD WHERE ARTICLE_NO = #{article_no}
 	</delete>
+	
+	
 
 </mapper>
