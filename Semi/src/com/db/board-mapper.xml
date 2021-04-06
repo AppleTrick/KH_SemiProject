@@ -3,7 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardmapper">
-
 	<select id="selectList" resultType="BoardDto">
 		SELECT ARTICLE_NO, BRD_NO, MEM_NO, TITLE, CONTENT, REGDATE,HIT, IMAGE,MEM_NAME
 		FROM ALL_BOARD JOIN LOGINBOARD

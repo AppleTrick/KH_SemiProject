@@ -26,7 +26,7 @@ th,td{
 	<div class="mt-4 mb-4">
 		<div class="container d-flex justify-content-center">
 			<div class="col-9">
-				<img src=resources/img/donate.png />
+				<img src=resources/img/donate1004.png  width="1000px"/>
 					<form action="donate.do" method="post">
 						<input type="hidden" name="command" value="pay">
 							<table>

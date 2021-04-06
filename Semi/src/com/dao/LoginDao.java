@@ -161,6 +161,7 @@ public class LoginDao extends SqlMapConfig {
 		
 		try(SqlSession session = getSqlSessionFactory().openSession(true);){
 			res = session.insert("loginmapper.deleteUser",mem_no);
+			res = session.insert("loginmapper.deleteUserboard",mem_no);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -168,6 +169,8 @@ public class LoginDao extends SqlMapConfig {
 		return res;
 		
 	}
+	
+	
 	
 	
 	//sns login token check
