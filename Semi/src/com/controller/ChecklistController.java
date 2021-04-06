@@ -32,6 +32,7 @@ public class ChecklistController extends HttpServlet {
 			response.sendRedirect("petboard_adopt_checklist.jsp");
 			
 		}else if(command.equals("insert")) {
+			int mem_no = Integer.parseInt(request.getParameter("mem_no"));
 			String q1name = request.getParameter("q1name");
 			String q2call = request.getParameter("q2call");
 			String q3adr = request.getParameter("q3adr");
@@ -45,6 +46,7 @@ public class ChecklistController extends HttpServlet {
 			String q11etc = request.getParameter("q11etc");
 			
 			ChecklistDto dto = new ChecklistDto();
+			dto.setMem_no(mem_no);
 			dto.setQ1name(q1name);
 			dto.setQ2call(q2call);
 			dto.setQ3adr(q3adr);

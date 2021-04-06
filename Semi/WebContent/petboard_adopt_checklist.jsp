@@ -26,8 +26,12 @@
 <title>Checklist</title>
 </head>
 <body>
+<%
+LoginDto logindto = (LoginDto) session.getAttribute("dto");
+%>
 <form action="checklist.do" method="post">
 	<input type="hidden" name="command" value="insert" />
+	<input type="hidden" name="mem_no" value="<%=logindto.getMem_no()%>">
 	<%@ include file="Form/header.jsp"%>
 	<div class="mt-4">
 		<div class="container d-flex justify-content-center">

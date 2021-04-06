@@ -23,6 +23,6 @@
 
 	<insert id = "insert" parameterType="ChecklistDto">
 		INSERT INTO CHECKLISTBOARD VALUES
-		(CHECKLISTSEQ.NEXTVAL, 2, #{q1name}, #{q2call}, #{q3adr}, #{q4marriage}, #{q5job}, #{q6pet}, #{q7pet2}, #{q8fam}, #{q9why}, #{q10baby}, #{q11etc})
+		(CHECKLISTSEQ.NEXTVAL, #{mem_no}, #{q1name}, #{q2call}, #{q3adr}, #{q4marriage}, #{q5job}, #{q6pet}, #{q7pet2}, #{q8fam}, #{q9why}, #{q10baby}, #{q11etc})
 	</insert>
 </mapper>
