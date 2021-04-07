@@ -22,7 +22,7 @@
 				"http://localhost:8787/Semi/login_callback.jsp");
 
 		// 접근 토큰 값 출력
-		alert(naver_id_login.oauthParams.access_token);
+		//alert(naver_id_login.oauthParams.access_token);
 
 		// 네이버 사용자 프로필 조회
 		naver_id_login.get_naver_userprofile("naverSignInCallback()");
