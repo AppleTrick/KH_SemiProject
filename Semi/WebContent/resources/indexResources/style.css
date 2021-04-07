@@ -271,6 +271,7 @@ section {
 .about1 .content .col-right{
   position: relative;
   width: 50%;
+  margin-top: 50px;   
 }
 
 .about1 .content .col-left .img-card img{
@@ -303,6 +304,7 @@ section {
   color: white;
   text-align: justify;
   word-break : keep-all;
+  margin-top: 50px;   
  
 }
 
