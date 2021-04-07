@@ -29,7 +29,7 @@ import com.biz.LoginBiz;
 /**
  * Servlet implementation class FileController
  */
-@WebServlet("/file.do")
+@WebServlet("/file1.do")
 public class FileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -61,7 +61,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
             "ISFP": {"animal": "요크셔 테리어", "explain": "보석을 좋아한다면 요크셔가 어떨까요?! \n 북부 잉글랜드에서는 움직이는 보석견으로 불린다고 합니다!!", "img": "resources/image/4.5fe48161dfcf410ea1f5730b4f292413.jpg"},
             "INFP": {"animal": "슈나우저", "explain": "고급스러움을 느끼고 싶다면 슈나우저가 어떨까요?! \n 뚱하고 심드렁한 표정이 아주 매력적입니다!!", "img": "resources/image/3.su.jpg"},
             "INTP": {"animal": "코카스파니엘", "explain": "집순이 집돌이 분들에게 안성맞춤!!! \n 지구력이 떨어져서 조금만 놀아줘도 금방 지쳐서 잠들어요~~", "img": "resources/image/4.83112e0057eb404682311029979f036f.jpg"},
-            "ESTP": {"animal": "시고르자브종", "explain": "시골에 사신다면 역시 시고르자브종이죠!! \n 시고르자브종의 위엄을 느껴보쉴?", "img": "resources/image/4.83112e0057eb404682311029979f036f.jpg"},
+            "ESTP": {"animal": "시고르자브종", "explain": "시골에 사신다면 역시 시고르자브종이죠!! \n 시고르자브종의 위엄을 느껴보쉴?", "img": "resources/image/6.h0of6r3f5a6nm3ogv40x.jpg"},
             "ESFP": {"animal": "프렌치 불톡", "explain": "혹시 혼자사시나요~~? 그렇다면 프렌치 불독이 어떨까요?! ", "img": "resources/image/4.83112e0057eb404682311029979f036f.jpg"},
             "ENFP": {"animal": "스피츠", "explain": "고집이 있으시다면 스피츠를 추천해 드립니다!! \n 전혀 심심치 않을거에요!!", "img": "resources/image/2.spit.jpg"},
             "ENTP": {"animal": "포메라니안", "explain": "영국 왕족이 키웠다고 하는 포메를 키우면서 \n 여왕의 기분을 느껴보시는건 어떠신가요?!", "img": "resources/image/3.four.jpg"},

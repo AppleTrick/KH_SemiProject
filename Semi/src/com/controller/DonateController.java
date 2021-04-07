@@ -15,7 +15,7 @@ import com.dto.BoardDto;
 import com.dto.DonateDto;
 import com.dto.PagingDto;
 
-@WebServlet("/donate.do")
+@WebServlet("/donate1.do")
 public class DonateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

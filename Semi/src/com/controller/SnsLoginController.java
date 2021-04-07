@@ -17,7 +17,7 @@ import com.dto.LoginDto;
 /**
  * Servlet implementation class SnsLoginController
  */
-@WebServlet("/sns.do")
+@WebServlet("/sns1.do")
 public class SnsLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

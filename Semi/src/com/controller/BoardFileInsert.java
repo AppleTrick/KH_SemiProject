@@ -20,7 +20,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
 
-@WebServlet("/BoardFileInsert.do")
+@WebServlet("/BoardFileInsert1.do")
 public class BoardFileInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

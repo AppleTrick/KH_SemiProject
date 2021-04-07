@@ -69,7 +69,7 @@
 							} else {			
 								//getBrd_no() :2 =입양 대기, :3 = 입양 후기게시판 
 								//전체페이지를 불러오는 코드
-								int a = 0;
+								int a = 1;
 								for (BoardDto dto : list){
 									if(a>15){
 										break;

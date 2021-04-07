@@ -77,10 +77,11 @@ public class Crawling {
 				continue;
 			}
 			// 파일 저장 경로
-			File file = new File(savePath+name);
+			File file = new File(savePath+"/"+name);
+			File file1 = new File(savePath);
 			try {
-				if (!file.exists()) {
-					file.mkdirs();
+				if (!file1.exists()) {
+					file1.mkdirs();
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();
@@ -162,10 +163,11 @@ public class Crawling {
 				continue;
 			}
 			// 파일 저장 경로
-			File file = new File(savePath+name);
+			File file = new File(savePath+"/"+name);
+			File file1 = new File(savePath);
 			try {
-				if (!file.exists() ) {
-					file.mkdirs();
+				if (!file1.exists()) {
+					file1.mkdirs();
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();
