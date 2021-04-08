@@ -222,7 +222,7 @@ System.out.println("session 담겼을까요?"+dto);
         </div>
         <div class="card reveal">
           <div class="card-img">
-            <img src="resources/img/dog.jpg" alt="">
+            <img src="resources/img/je.png" alt="">
           </div>
         </div>
         <div class="card reveal">
