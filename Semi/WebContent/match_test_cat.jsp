@@ -37,6 +37,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script>
+		// 성향 조사 문항
         var num = 1;
         var q = {
         		1: {"title": "문제 1번", "type": "EI", "A": "바깥에 나가 활동적인 일을 하는것이 좋다", "B": "바깥에 나가는것 보다 집에서 노는 것이 더 기분이 좋다"},
@@ -52,6 +53,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
                 11: {"title": "문제 11번", "type": "JP", "A": "무언가 하고싶을 때 일단 시작하고 본다", "B": "무엇을 하던 준비기간이 길다"},
                 12: {"title": "문제 12번", "type": "JP", "A": "내가 놓는곳이 바로 그 물건의 자리이다", "B": "내 방의 물건은 항상 제자리에 있다"}     
         }
+		// 결과 문항
         var result = {
             "ISTJ": {"animal": "카오스", "explain": "규칙적이며 착실한 타입의 당신. 주어진 일은 끝까지 완수하고 단체생활에 매우 잘 적응하는 편이에요<br> 여러가지 색이 섞여 카리스마 넘쳐보이는 외모와 충성심 강한 카오스와 닮았네요 ", "img": "resources/image/kaos.jpg"},
             "ISFJ": {"animal": "페르시안", "explain": "차분하고 헌신적이며 인내심이 강한 당신 혼자만의 시간을 즐기는군요!<br> 혼자만의 시간을 즐기는 차분한 타입의 느긋한 성격의 소유자 페르시안 고양이와 닮았어요", "img": "resources/image/persian.jpg"},
@@ -70,22 +72,24 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
             "ENFJ": {"animal": "메인쿤", "explain": "사람을 좋아하고 마음이 약한 당신은 제 사람이라면 한없이 베풀어 주는 착한사람!<br>어떤 환경에서도 적응력이 높고 온순한 성격으로 신사라고 불리우는 메인쿤과 닮았네요~  ", "img": "resources/image/7.cun.jpg"},
             "ENTJ": {"animal": "뱅갈", "explain": "솔직,결단,통솔력을 두루 갖춘 이시대의 리더인 당신은 호기심과 지적 욕구가 많아 보여요<br>사람을 좋아하고 호기심이 많은 뱅갈고양이와 아주 닮았아요", "img": "resources/image/2.bang.jpg"},
         }
-
+        // 성향 조사 시작
         function start() {
             $(".start").hide();
             $(".question").show();
             next();
         }
-
+        // A 항목의 버튼을 클릭하면 +1
         $("#A").click(function() {
             var type = $("#type").val();
             var preValue = $("#"+type).val();
             $("#"+type).val(parseInt(preValue)+1);
             next();
         });
+        // B 항목을 클릭하면 바로 다음으로
         $("#B").click(function() {
             next();
         });
+        // 질문 항목이 항목 만큼만
         function next() { 
             if (num == 13) {
                 $(".question").hide();
@@ -100,6 +104,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
                 $("#explain").html(result[mbti]["explain"]);
                 num++;
             } else {
+            	// 질문을 하나씩 클릭할 때마다 프로그레스 바가 1씩 증가
                 $(".progress-bar").attr('style', 'width: calc(100/12*'+num+'%)');
                 $("#title").html(q[num]["title"]);
                 $("#type").val(q[num]["type"]);

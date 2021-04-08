@@ -46,7 +46,7 @@ public class CrawlingController extends HttpServlet {
 			int brd_no = Integer.parseInt(request.getParameter("brd_no"));
 			String title = "입양대기";
 			Crawling crawling = new Crawling();
-			// 크롤링 후 저장한 내용을 자장
+			// 크롤링 후 저장한 내용을 저장
 			List<String> listCat = crawling.CatCrawling(rootPath);
 			List<String> listDok = crawling.DokCrawling(rootPath);
 			
@@ -137,6 +137,7 @@ public class CrawlingController extends HttpServlet {
 				}
 				System.out.println("중복제거중");
 			}
+			// db에 중복제거 한 값 저장
 			if (listCatImg != null && listDokImg != null & listCatContent != null && listDokContent != null) {
 				for (int i = 0; i < listCatImg.size(); i++) {
 					BoardDto catDto = new BoardDto();

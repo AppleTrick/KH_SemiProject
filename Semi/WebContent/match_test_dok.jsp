@@ -13,7 +13,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
 	<%@ include file="Form/header.jsp"%>
     <article class="start">
         <h1 class="mt-5 text-center">나랑 꼭 닮은 동물</h1>
-        <button type="button" class="btn btn-success mt-5" onclick="start();">강아지</button>
+        <button type="button" class="btn btn-success mt-5" onclick="start();">Start</button>
     </article>
     <article class="question">
         <div class="progress mt-5">
@@ -26,7 +26,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
     </article>
     <article class="result">
         <img id="img" class="rounded-circle mt-5" src="resources/image/dog-4633734_640.jpg" alt="animal">
-        <h2 id="animal" class="text-center mt-5">동물품종</h2>
+        <h2 id="animal" class="text-center mt-5">동물품종</h2> 
         <h3 id="explain" class="text-center mt-5">설명</h3>
     </article>
     <input type="hidden" id="EI" value="0">
@@ -37,6 +37,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script>
+    	// 성향 조사 문항
         var num = 1;
         var q = {
             1: {"title": "문제 1번", "type": "EI", "A": "바깥에 나가 활동적인 일을 하는것이 좋다", "B": "바깥에 나가는것 보다 집에서 노는 것이 더 기분이 좋다"},
@@ -52,6 +53,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
             11: {"title": "문제 11번", "type": "JP", "A": "무언가 하고싶을 때 일단 시작하고 본다", "B": "무엇을 하던 준비기간이 길다"},
             12: {"title": "문제 12번", "type": "JP", "A": "내가 놓는곳이 바로 그 물건의 자리이다", "B": "내 방의 물건은 항상 제자리에 있다"}        
         }
+        // 결과 문항
         var result = {
             "ISTJ": {"animal": "진돗개", "explain": "규칙적이며 착실한 타입의 당신. 주어진 일은 끝까지 완수하고 단체생활에 매우 잘 적응하는 편이에요 <br> 용맹하고 충성심이 강한 진돗개와 많이 닮았어요!", "img": "resources/image/8.a1e186d576f2b.jpg"},
             "ISFJ": {"animal": "슈나우저", "explain": "매우솔직하고 빈말을 잘 못하는 착실한 타입의 당신, <br> 총명하고 외향적인 강아지인 슈나우저와 닮았어요!!", "img": "resources/image/3.su.jpg"},
@@ -71,21 +73,24 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
             "ENTJ": {"animal": "웰시코기", "explain": "솔직,결단,통솔력을 두루 갖춘 이시대의 리더인 당신은 호기심과 지적 욕구가 많아 보여요<br> 외향적이고 호기심 많은 성격인 웰시코기와 좋은 친구가 될 것 같아요! ", "img":"resources/image/5.koki.jpg" },        
       
         }
-        
+        // 성향 조사 시작
         function start() {
             $(".start").hide();
             $(".question").show();
             next();
         }
+        // A 항목의 버튼을 클릭하면 +1
         $("#A").click(function() {
             var type = $("#type").val();
             var preValue = $("#"+type).val();
             $("#"+type).val(parseInt(preValue)+1);
             next();
         });
+        // B 항목을 클릭하면 바로 다음으로
         $("#B").click(function() {
             next();
         });
+        // 질문 항목이 항목 만큼만 
         function next() {
             if (num == 13) {
                 $(".question").hide();
@@ -100,6 +105,7 @@ integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xX
                 $("#explain").html(result[mbti]["explain"]);
                 num++;
             } else {
+            	// 질문을 하나씩 클릭할 때마다 프로그레스 바가 1씩 증가
                 $(".progress-bar").attr('style', 'width: calc(100/12*'+num+'%)');
                 $("#title").html(q[num]["title"]);
                 $("#type").val(q[num]["type"]);
