@@ -271,7 +271,7 @@
 	
 	<!-- 네이버아이디로로그인 버튼 노출 영역 -->
 	<script type="text/javascript">
-  		var naver_id_login = new naver_id_login("JKUnL3XzuIStyOJXkUaH", "http://localhost:8787/Semi/login_callback.jsp");
+  		var naver_id_login = new naver_id_login("JKUnL3XzuIStyOJXkUaH", "http://qclass.iptime.org:8686/Semi/login_callback.jsp");
   		var state = naver_id_login.getUniqState();
 	  	naver_id_login.setButton("green", 2,36); // 새성된 버튼 색깔 green 3번 옵션으로 넣어줌 
 	  	naver_id_login.setDomain("http://localhost:8787"); // service url 넣어줌 
