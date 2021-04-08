@@ -19,7 +19,7 @@
 	<!-- 네이버아디디로로그인 Callback페이지 처리 Script -->
 	<script type="text/javascript">
 		var naver_id_login = new naver_id_login("JKUnL3XzuIStyOJXkUaH",
-				"http://localhost:8787/Semi/login_callback.jsp");
+				"http://qclass.iptime.org:8686/Semi/login_callback.jsp");
 
 		// 접근 토큰 값 출력
 		//alert(naver_id_login.oauthParams.access_token);
