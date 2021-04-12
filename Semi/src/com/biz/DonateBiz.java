@@ -17,9 +17,11 @@ public class DonateBiz {
 	public List<DonateDto> selectList() {
 		return dao.selectList();
 	}
+	// 페이징
 	public List<DonateDto> pagingList(int startRow, int endRow, String donate_phone) {
 		return dao.pagingList(startRow, endRow, donate_phone);
 	}
+	// 페이징을 위해 파라미터 값을 받은 총 갯수
 	public String getTotalCount(String donate_phone) {
 		return dao.getTotalCount(donate_phone);
 	}

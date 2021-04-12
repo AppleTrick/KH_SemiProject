@@ -207,27 +207,27 @@ System.out.println("session 담겼을까요?"+dto);
       <div class="content">
         <div class="card reveal">
           <div class="card-img">
-            <img src="resources/img/dog.jpg" alt="">
+            <img src="resources/img/ch.png" alt="">
           </div>
         </div>
         <div class="card reveal">
           <div class="card-img">
-            <img src="resources/img/dog.jpg" alt="">
+            <img src="resources/img/cha.png" alt="">
           </div>
         </div>
         <div class="card reveal">
           <div class="card-img">
-            <img src="resources/img/dog.jpg" alt="">
+            <img src="resources/img/cj.png" alt="">
           </div>
         </div>
         <div class="card reveal">
           <div class="card-img">
-            <img src="resources/img/dog.jpg" alt="">
+            <img src="resources/img/je.png" alt="">
           </div>
         </div>
         <div class="card reveal">
           <div class="card-img">
-            <img src="resources/img/dog.jpg" alt="">
+            <img src="resources/img/bj.png" alt="">
           </div>
         </div>
       </div>

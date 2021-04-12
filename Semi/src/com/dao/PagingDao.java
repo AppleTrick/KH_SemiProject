@@ -14,7 +14,7 @@ public class PagingDao extends SqlMapConfig {
 	
 	String namespace = "boardmapper.";
 
-	// ================= select list with pagination ================= //
+	// 공지사항 관련 게시물 리스트 startRow 부터 endRow까지
 	public List<BoardDto> pagingList(int startRow, int endRow) {
 		List<BoardDto> list = new ArrayList<BoardDto>();
 		endRow += startRow;
@@ -35,7 +35,7 @@ public class PagingDao extends SqlMapConfig {
 		
 		return list;
 	}
-
+	// 공지사항 관련 게시물 갯수
 	public int getTotalCount(){
 		int total = 0;
 

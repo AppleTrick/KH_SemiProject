@@ -14,7 +14,6 @@ import com.biz.BoardBiz;
 import com.biz.PagingBiz;
 import com.dto.BoardDto;
 import com.dto.PagingDto;
-import com.dto.SemiDto;
 
 @WebServlet("/notice1.do")
 public class NoticeBoardController extends HttpServlet {

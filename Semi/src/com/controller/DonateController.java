@@ -50,8 +50,7 @@ public class DonateController extends HttpServlet {
 			System.out.println(dto);
 			
 			int res = biz.insertDonate(dto);
-			if (res > 0) {
-			} else {
+			if (res == 0) {
 				dispatch(request, response, "donate.jsp");
 			}
 		// 회원정보 or 비회원 정보, 결제방법, 결제금액을 전달(결제페이지)
@@ -82,13 +81,7 @@ public class DonateController extends HttpServlet {
 				dispatch(request, response, "donate_card.jsp");
 			}
 			// 결제 내역 확인
-		} else if (command.equals("donatemain")) {	
-//			List<DonateDto> list = biz.selectList();
-//			System.out.println(list);
-//			
-//			request.setAttribute("list", list);
-//			
-//			dispatch(request, response, "donate_account.jsp");
+		} else if (command.equals("donatemain")) {
 			String donate_phone = request.getParameter("donate_phone");
 			
 			int pageNum = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
@@ -114,8 +107,10 @@ public class DonateController extends HttpServlet {
 			// 홈으로 이동
 		} else if (command.equals("main")) {
 			dispatch(request, response, "index.jsp");
+			// 강아지 설문
 		}else if (command.equals("강아지상")) {
             dispatch(request, response, "match_test_dok.jsp");
+            // 고양이 설문
         } else if (command.equals("고양이상")) {
             dispatch(request, response, "match_test_cat.jsp");
         }
