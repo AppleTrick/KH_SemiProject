@@ -35,7 +35,7 @@
 	      <a href="move.do?move=home" class="brand">
 	      	<img src="resources/img/logo.png" alt="" width="200px">
 	      </a>
-	      <!-- ? -->k smfls
+	      <!-- ? -->
 	      <div class="menu-btn"></div>
 	      
 	      <!-- 항복 부분 -->
