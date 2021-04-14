@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
-import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

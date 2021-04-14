@@ -1,6 +1,4 @@
 <%@page import="java.io.PrintWriter"%>
-<%@page import="com.dto.SemiDto"%>
-<%@page import="com.dao.SemiDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
